@@ -21,7 +21,7 @@ DEPENDÊNCIA FUNCIONAL:
 -> Evita redundância de dados, inconsistências e perda de dados em operações de remoções ou alterações.
 DEPENDÊNCIA FUNCIONAL TOTAL:
 -> Em uma tabela relacional uma coluna 'Y' depende funcionalmente de uma coluna 'X' em todas as tuplas da tabela.
--> Para cada valor na coluna 'x' da tabela ocorre o mesmo valorna coluna 'y'. ( X -> Y) Em que X auto determina Y e Y autoDEPENDE de X.
+-> Para cada valor na coluna 'x' da tabela ocorre o mesmo valor na coluna 'y'. ( X -> Y) Em que X auto determina Y e Y autoDEPENDE de X.
 
 DEPENDÊNCIA FUNCIONAL PARCIAL:
 -> Os atributos não chave de uma tabela dependem funcionalmente de parte da chave primária.
@@ -57,6 +57,78 @@ FORMA NORMAL DE BOYCE E CODD(FNBC):
 ->NEM TODA RELAÇÃO QUE ESTÁ NA 3FN ESTA NA FNBC.
 ->Duas tuplas distintas mesmo que representem uma relação 'x' não podem possuir o mesmo valor para superchave.
 -> A chave primária em FNBC, a SUPERCHAVE deve possuir cardinalidade mínima, ou seja, com menor número de atributos.
+=====================================================================================================
+FUNCAB/2010/SES-GO/ANALISTA DE SISTEMAS
+1. Uma variável esta na forma normal de Boyce Codd(FNBC), se e somente se:
+a.Existirem dependências multivaloradas? Não.. Essa forma é a 4FN
+b.Seus únicos determinantes forem as chaves candidatas? SIM.
+c.Apenas os atributos não chave forem irredutivelmente dependentes da chave primária? 2FN
+d.Todo atributo não chave é dependente de forma não transitiva da chave primária. - 3FN
+================================================================================
+2014-FCC-Analista Judiciário
+Uma forma normal FN é uma regra que deve ser obedecida por uma tabela por ser considerada bem projetada.
+I) A tabela contém dependências transitivas,ou seja, as colunas que não sejam chave primária não dependem funcionalmente de outras colunas ou cobina
+ções(aninhadas) que não sejam chave primária.  - 3FN
+II) A tabela não contém dependências parciais, ou seja, cada coluna não chave depende da chave primária completa e não apenas parte dela. - 2FN
+=====================================================================================
+2011-Banca:FCC
+Para uma tabela estar na FNBC ela também esta normalizada na 3FN;
+==================================================================
+DEPENDÊNCIA MULTIVALORADA:
+Se um atributo (A1 de R=relação) determina um conjunto finito de valores para os outros atributos (A2...An de R) então(A2...An)possuem dependência
+multivalorada de (A1 em R)
+(A1->->A2...An) ou (A1->->An)
+====================================================================================================================================
+QUARTA FORMA NORMAL(4FN):
+-> Uma relação esta na quarta forma normal quando além de estar na 3FN,NÃO CONTÉM DEPENDÊNCIAS MULTIVALORADAS.
+-> Uma coluna irá depender multivaloradamente de outra coluna, da mesma relação, quando um valor do atributo determinante identifica repetidas vezes
+um conjunto de valores na coluna que é dependente.
+OBS: a 4FN deve passar pela 3FN mas não da FNBC, a FNBC é uma extensão da 3FN.
+===========================================================================================================================================
+QUINTA FORMA NORMAL(5FN):
+-> Se e somente se toda dependência de JUNÇÃO EM R for resultado de chaves candidatas de R.
+-> Na 5FN uma relação R não pode ser decomposta em duas projeções sem perda. Tal limitação é denominada de DEPENDÊNCIA DE JUNÇÃO(DJ).
+=> Sendo assim, a relação R pode ser obtida pela recomposição das três relações decompostas.
+Exemplo: Relação 'R'(id_vendedor,id_montadora,id_produto)
+1°relação=montadora->produto
+2°relação=vendedor->produto
+2°relação=vendedor->montadora
+======================================================================================================
+RESUMO:
+1FN = Se e somente se todos os atributos são atômicos
+2FN = Devem estar na 1FN e não pode haver dependências funcionais parciais
+3FN = Deve estar na 2FN e não pode haver dependências funcionais TRANSITIVAS.
+FNBC = Deve estar na 3FN e os atributos determinantes devem ser chaves candidatas simples (mínimo de cardinalidade)
+4FN = Deve estar na 3FN e não deve haver dependências MULTIVALORADAS 
+5FN = Se e somente se a dependências de JUnção for baseada em chaves candidatas em decomposição sem perdas.
+========================================================================
+CESPE - 2018 -  QUESTÃO SOBRE A 5FN:
+--> Uma relação esta na quinta forma normal quando o conteúdo do registro não pode ser mais reconstruído(efetuir JOIN) a partir de outros registros
+menores extraidos desse registro considerado. CERTO
+=========================================================================
+2016 - Banca: AOCP
+-> Uma banca esta na 4FN quando além de estar na 3FN:
+a. Não contém dependências multivaloradas  -> 4FN
+b. São eliminadas as dependências parciais -> 2FN
+c. Não contem dependências funcionais X -> errado, toda normalização deve conter dependencia funcional  em que (X->Y) em que Y depende de X.
+d. São eliminadas tabelas aninhadas ( atributo multivalorado pode ser encontrado em tabelas dentro de outras tabelas) -> 1FN
+e. Não contem dependências transitivas -> 3FN
+=====================================================================================================================
+2015 - Banca: COSEAC - UFF
+Coluna I:
+1.1FN
+2.2FN
+3.3FN
+4.BCFN
+5.5FN
+Coluna II:
+( ) Seus únicos determinantes são chaves candidatas.
+( ) Não contém tabelas aninhadas.
+( ) Evitar dependências parciais
+( ) Combater dependências de junções
+( ) Evitar dependências transitivas.
+Sequências correta: 4 - 1 - 2- 5 - 3
+==========================================================
 
 
 
