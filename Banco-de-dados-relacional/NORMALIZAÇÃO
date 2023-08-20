@@ -1,0 +1,38 @@
+Normalização:
+
+1.Conjunto de técnicas aplicáveis a uma tabela com o objetivo de corrigir erros de projeto que resultam em anomalias de atualização.
+2.Consiste em decompor esquemas com o objetivo de evitar anomalias de atualização(inclusão, exclusão,modificação)
+
+CENÁRIO DE NORMALIZAÇÃO:
+-> Planilhas, arquivos e dados transacionais que precisam ser transformados em banco de dados e para que os dados sejam consistentes dentro do 
+banco de dados é necessário a técnica de normalização.
+O QUE SÃO ANOMALIAS DE ATUALIZAÇÃO?
+-> São problemas que decorrem da implementação de BD não-normalizados. Geralmente com REDUNDÂNCIA De dados nas colunas e muitas das vezes ocorrem
+dependências PARCIAIS e TRANSITIVAS;
+Exemplo: ANOMALIA DE INCLUSÃO: INCLUIR VALORES NULOS (não é uma boa prática)
+         ANOMALIA de EXCLUSÃO: Ao excluir registros, dados relacionados a outra tabela também podem ser excluidos.
+         ANOMALIA de MODIFICAÇÃO: Ao alterar dados de uma tabela é preciso alterar informações em diversos outros registros da mesma tabela.
+
+NORMALIZAÇÃO DE BOYCE CODD:
+1°FORMA NORMAL (1FN) = Se e somente se todos os seus atributos conterem apenas valores ATÔMICOS(simples,indivisíveis). A relação não pode conter 
+atributos MULTIVALORADOS, COMPOSTOS e ANINHADOS.
+
+DEPENDÊNCIA FUNCIONAL:
+-> Evita redundância de dados, inconsistências e perda de dados em operações de remoções ou alterações.
+DEPENDÊNCIA FUNCIONAL TOTAL:
+-> Em uma tabela relacional uma coluna 'Y' depende funcionalmente de uma coluna 'X' em todas as tuplas da tabela.
+-> Para cada valor na coluna 'x' da tabela ocorre o mesmo valorna coluna 'y'. ( X -> Y) Em que X auto determina Y e Y autoDEPENDE de X.
+
+DEPENDÊNCIA FUNCIONAL PARCIAL:
+-> Os atributos não chave de uma tabela dependem funcionalmente de parte da chave primária.
+Exemplo:
+
+CPF--->Cod_Projeto--->--->Horas--->Nome_Proj---->Nome_Empregado
+
+Ocorre uma dependência funcional parcial nessa relação por que CPF autodeterminada Nome_empregado, assim como 'nome_empregado'autodepende de 'CPF'.
+Assim como 'CPF' e 'cod_projeto' autodetermina 'horas' e 'horas' autodepende de 'CPF' e 'cod_projeto'.
+Outro detalhe que determina a DEPENDENCIA FUNCIONAL PARCIAL seria o 'cod_projeto' autodeterminar 'nome_projeto' e não 'CPF', portanto é PARCIAL.
+
+
+
+
