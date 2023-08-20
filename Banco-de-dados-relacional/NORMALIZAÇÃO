@@ -49,6 +49,14 @@ num_pedido --->cod_vendedor--->nome_vendedor
 -------------------------------------------------------------------
 3°FORMA NORMAL(3FN):
 --> Uma relação está na 3FN Se e SOMENTE SE estiver na 2FN e nenhum atributo não chave for transitivamente dependente da chave.
+========================================================================================
+FORMA NORMAL DE BOYCE E CODD(FNBC):
+->Uma relação esta na FNBC se para toda dependência funcional do tipo X->Y, sendo 'X' uma superchave. Essa superchave deve ter somente um atributo.
+->Existem superchaves de mais de um atributo, que juntas podem compor uma superchave dentro da relação.
+->TODA RELAÇÃO QUE ESTA NA FNBC TAMBÉM ESTÁ NA 3FN.
+->NEM TODA RELAÇÃO QUE ESTÁ NA 3FN ESTA NA FNBC.
+->Duas tuplas distintas mesmo que representem uma relação 'x' não podem possuir o mesmo valor para superchave.
+-> A chave primária em FNBC, a SUPERCHAVE deve possuir cardinalidade mínima, ou seja, com menor número de atributos.
 
 
 
