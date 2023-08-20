@@ -33,6 +33,20 @@ Ocorre uma dependência funcional parcial nessa relação por que CPF autodeterm
 Assim como 'CPF' e 'cod_projeto' autodetermina 'horas' e 'horas' autodepende de 'CPF' e 'cod_projeto'.
 Outro detalhe que determina a DEPENDENCIA FUNCIONAL PARCIAL seria o 'cod_projeto' autodeterminar 'nome_projeto' e não 'CPF', portanto é PARCIAL.
 
+2°FORMA NORMAL(2FN) = 
+-> Deve estar na 1FN e se todo atributo não chave possuir dependência funcional TOTAL em relação a chave primária.
+
+DEPENDÊNCIA FUNCIONAL TRANSITIVA:
+-> Um atributo 'C' é dependente funcional transitiva de 'A' se 'C' for funcionalmente dependente de 'B'. 'B' é funcionalmente dependente de 'A',
+na mesma relação.
+Segue exemplo:
+
+Num_pedido---->data--->valor--->---->cod_vendedor--->nome_vendedor = (A--->B--->C)
+Ou seja: 
+O atributo 'C'= 'nome_vendedor' é autodependente de 'A' transitivamente por que 'B'= 'cod_vendedo'r é dependente de 'A'= 'num_pedido'
+Sendo assim:
+num_pedido --->cod_vendedor--->nome_vendedor
+
 
 
 
