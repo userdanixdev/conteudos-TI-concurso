@@ -46,6 +46,10 @@ Ou seja:
 O atributo 'C'= 'nome_vendedor' é autodependente de 'A' transitivamente por que 'B'= 'cod_vendedo'r é dependente de 'A'= 'num_pedido'
 Sendo assim:
 num_pedido --->cod_vendedor--->nome_vendedor
+-------------------------------------------------------------------
+3°FORMA NORMAL(3FN):
+--> Uma relação está na 3FN Se e SOMENTE SE estiver na 2FN e nenhum atributo não chave for transitivamente dependente da chave.
+
 
 
 
