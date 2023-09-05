@@ -1,0 +1,184 @@
+Banco de dados  - Conceitos fundamentais - 
+
+Banco de dados desempenham um papel importante em várias áreas no cotidiano:
+1.Recuperação de informações na web (www)
+2.Operações como cartão de crédito
+3.Baixar arquivos da internet.
+4.Comprar passagens aéreas
+5.Marcar consultas
+6.Reservas em um Hotel
+7.Operações Bancárias
+8.Renovação de CNH
+9.Compras em Supermecado
+10.Declaração de imposto de renda
+(todas essas aplicações possuem um repositório de dados)
+Entre outros...
+Antigamente eram ambientes tradicionais de processamento de arquivos...
+Porém,esse ambientes eram complexos em relação ao controle de segurança, insconsistências, problemas com Atomicidade, 
+ausência de padronização,complexidade para acesso aos dados e redundância não controlada.
+Para compartilhar os dados com redundância controlada é necessário um Banco de dados.
+SGBD = Aplicações que controlam um BD. (intermediário)
+Conceitos:
+#Coleção de dados relacionados.
+#Conjunto de dados integrados com o intuito de atender a uma comunidade de usuários.
+#Fatos conhecidos que podem ser registrados e possuem significado implícito.
+#Coleção lógica e coerente de dados.
+#Representação do aspecto do mundo real sobre o qual vai ser criado o BD e sua aplicação.
+#Coleção logicamente coerente de dados com algum significado inerente.
+#Construído para uma finalidade específica
+#Complexidade variável e de qualquer tamanho.
+SIGLA: DATABASE Management Systems :
+	Coleção de programas.
+	Permitem aos usuários criar e manter um BD.
+	Software de propósito geral que possibilita a definição(DDL),construção(DDL) e manipulação de BD.(DML) - SQL
+Definir um BD envolve especificar : Tipos dados
+				    Estruturas  e restrições para os dados que serão armazenados.
+
+Catálogo = Metadados
+
+(2018 - Banca: CESPE - PF)
+Acerca de BD,julgue o item:
+Situação hipotética: Ao analisar um computador, Marcos encontrou inúmeros emails, vídeos e textos advindos, em sua maioria,
+de comentários em redes sociais.. Descobriu também que havia relação entre vários vídeos e textos encontrados em um diretó-
+rio específico.
+Assertiva: Nessa situação, tendo como referência somente essas informações, Marcos poderá inferir que se trata de um grande
+banco de dados relacional, visto que um diretório é equivalente a uma tabela e cada arquivo de texto é equivalente a uma tu-
+pla; além disso, como cada arquivo possui um código único, poderá deduzir que esse código é a chave primária que identifica
+o arquivo de forma unívoca. (ERRADO- Pelo cenário completo da questão, seria mais correto inferir que seria um repositório de dados.)
+
+ESPP/MPE/TI - 2010
+Uma característica fundamental da abordagem de BD é que seu sistema contém não apenas o próprio BD, mas também uma definição ou descrição 
+completa de sua estrutura e restrições. Essa definição é armazenada no catálogo do SGBD e apresenta diversas informações tais como:
+estrutura de cada arquivo, o tipo e o formato de armazenamento de cada item de dados e diversas restrições sobre os dados.
+A informação armazenada no catálogo é chamada de METADADO e descreve a estrutura do BD.
+2016- CESPE - FUB
+Em um projeto de BD, a modelagem conceitual define quais dados vão aparecer no BD, mas sem considerar a sua implementação. CERTO
+
+Banco de dados :
+- Coleção de dados inter-relacionados, com algum significado inerente,isto é, informações de interesse de uma ou mais organizações.
+- Representa algum aspecto do mundo real
+- Conjunto de dados integrados destinados a atender as necessidades de uma comunidade de usuários
+- Pode ter qualquer tamanho e complexidade
+- Banco de dados não é software.
+- Pode ser MANUAL ou computadorizado.
+OBS: Vale ressaltar que para ser caracterizado como BD a coleção de dados deve ter uma relação COERENTE na qual se pode extrair informações de interesse
+de uma ou mais organizações.
+- É projetado e construído com dados para um propósito específico.
+- Um BD possui um conjunto predefinido de usuários e aplicações que representa algum aspecto do mundo real e qualquer alteração é automaticamente
+refletida no BD.
+-Um sistema de BD tem como função AGRUPAR DADOS RELACIONAIS E LOGICAMENTE COERENTES.
+Obs: Um 'dado' é a representação física de um evento no tempo e espaço que não agrega fundamento ou significado. Agora um BD é uma coleção de dados
+relacionados. Trata-se de um conjunto de dados estruturados que são confiáveis,coerentes e compartilhados por usuários que tem a necessidade de informa-
+ções diferentes. Ou seja, uma variedade aleatória de dados não pode ser chamada de BD. Sendo assim , deve-se ter uma finalidade específica por que ele 
+possui um grupo de usuários bem definido e algumas aplicações, previamente concebidas, sobre as quais esses usuários interessados fazem acesso aos dados.
+Agora um SISTEMA DE BANCO DE DADOS refere-se a uma organização de componentes que define e regula a coleta,armazenamento, o gerenciamento e a utilização
+de dados em um ambiente de BD.
+- Sendo assim, uma coleção de dados AO ACASO não pode ser interpretada como um BD.
+POR EXEMPLO -  SE UMA PASTA ESTÁ ARMAZENADA O FLUXO DE CAIXA DA LOJA DE SUA MÃE. ARQUIVOS DE MÚSICA DE UM ÁLBUM DO SEU CANTOR PREFERIDO E ANÚNCIOS DE IMÓVEIS
+QUE SEU PAI ESTAVA ANALISANDO, ISSO CORRESPONDE A UM CONJUNTO DE DADOS SEM NENHUMA RELAÇÃO LÓGICA OU COERENTE ENTRE ELES. LOGO, NÃO PODE SER CARACTERIZADO
+COMO BANCO DE DADOS.
+Obs: O que caracteriza um bando de dados é a forma como os dados estão inter-relacionados, representando um universo de discurso, que apresenta um
+significado relevante a um grupo de usuários.
+Um BD pode atender a usuários diferentes com visões diferentes.
+- Atualmente os BDs são utilizados para armazenar e processar dados de caracteres em geral, e já apresentam recursos para tratar dados multimídias, como
+filmes, fotografias. São os dados binários BLOB(Binary Large Object)
+DADOS: São fatos em sua forma primária que se forem guardados de maneira organizada pode vir a ser um fato organizado de maneira significativa e relacional.
+Podem formar uma informação. Exemplo: Dados das peças em estoque, assim é possível obter uma lista de peças em falta.
+BANCO DE DADOS: Conjunto de dados devidamente relacionados capazes de apresentar uma informação. Trata-se de uma coleção de dados inter-relacinados,
+ARMAZENADOS DE FORMA CENTRALIZADA OU DISTRIBUÍDA, COM ALGUM SIGNIFICADO INERENTE. São informações que podem ser de interesses de uma ou mais organizações.
+Pontos fundamentais:
+	1.Os dados constituem os blocos de construção das informações.
+	2.As informações são produzidas pelo processamento de dados e são utilizadas para revelar o significado dos dados.
+	3.Portanto, com informações precisas melhor a tomada de decisões.
+Gerenciamento de dados:
+	É uma disciplina que foca na geração, armazenamento e na recupeção adequada dos dados. E em geral, um gerenciamento eficiente exige a utilização
+de BD computacional.
+Autor Korth: Um BD é uma coleção de dados inter-relacionados, representando informações sobre um domínio específico.
+
+Um SGBD pode dar suporte a muitos tipos de BD que podem ser classificados de acordo com o número de usuários,localização e o tipo de extensão.
+Quanto ao número de usuários classifica-se como MONOUSUÁRIO/MULTIUSUÁRIO:
+BD MONOUSUÁRIO:
+-Suporte a apenas um usuário por vez.
+-Banco de dados desktop.
+Se um usuário estiver usando
+os outros usuários devem esperar.
+BD Multiusuário:
+- Suporte a vários usuários simultaneamente.
+-Chamado de BD de grupo de trabalho.
+-Quando é utilizado por uma organização inteira
+é chamado de BD EMPRESARIAL.
+
+Um BD que dê suporte a dados localizados em um único local é chamado de BD centralizado.
+Já um que dê suporte a dados distribuídos por vários locais diferentes é chamado de BD distribuído.
+
+Tipo de armazenamento:
+1.Armazenamento volátil: a informação usualmente não sobrevive a quedas no sistema.
+2.Armazenamento não-volátil: A informação sobrevive a quedas de sistema.
+3.Armazenamento estável: A informação residente em armazenamento estável nunca é perdida.
+
+Um BD projetado principalmente para dar suporte as operações diárias de uma empresa é classificado como BD Operacional(transacional ou de produção)
+Os DATAWAREHOUSES (Armazém de dados) focam na armazenagem dos dados utilizados para gerar informações necessárias à tomada de decisões táticas e 
+estratégicas. Além de poder armazenar dados provenientes de muitas fontes. A maioria dos dados de suporte a decisões baseiam-se em dados históricos
+obtidos de BD operacionais. Um DW é um repositório de informações colhidas de várias origens, armazenadas sob ume esquema unificado, em um único local,
+para sustentar a tomada de decisão com dados. Serve para criar uma visão única e centralizada dos dados que estavam dispersos em diversos BD. Permite
+que usuários finais executem consultas, gerem relatórios e façam análises.
+
+SGBDS: 
+Um BD pode ser criado e mantido por um conjunto de aplicações desenvolvidas especialmente pra esta tarefa, o SGBD.
+O SGBD é um software(conjunto de programas) que executa os programas de DEFINIÇÃO,CONSTRUÇÃO,MANIPULAÇÃO E COMPARTILHAMENTO de BD.
+As informações são estruturadas e armazenadas de uma forma CONSISTENTE E INTEGRADA.
+Os SGBDs são programas capazes de criar BD, e a partir daí realizar uma série de operações: inclusão,atualização,impressão, ordenação.
+SGBD = Conjunto de dados + conjunto de programas de acesso aos dados.
+Os SGBDs são softwares, já BD não são. Os BD armazenados em um SGBD é que tem significado e são importantes para a organização que os mantém.
+Os SGBDs são um conjunto de softwares para gerenciar um BD que provê armazenamento e acesso multiusuário eficiente a uma grande quantidade de dados
+armazenados.
+Um SGBD é um software que permite a criação e manipulação de bases de dados. Seus objetivos incluem:
+	1.Armazenar dados de forma eficiente.
+	2.Consultar dados obtendo respostas rápidas.
+	3.Modificar dados concorrentemente.
+Para tanto, um SGBD apresenta funções de DEFINIÇÃO,RECUPERAÇÃO E ALTERAÇÃO de dados em um BD.
+O surgimento veio devido a necessidade de armazenamento e de recuperação de grandes volumes de informações, propiciando um ambiente seguro e adequado.
+	Um SGBD evita REDUNDÂNCIA -> É a repetição de um mesmo dado em locais distintos. A redundância pode ser utilizada em situações em que haja necessidade de
+melhoria no desempenho e/ou economia de recursos da transmissão;
+	Manter a INTEGRIDADE--> Garante que os dados armazenados no BD estão corretos. Para manter a integridade de dados, implementa-se regras de negócios por
+meio de restrições de integridade(automáticas ou usando TRIGGERS/STORED PROCEDURES)
+SGBDs:
+	1.Tolerante a falhas - Fornece recursos para recuperação de falhas tanto de software quanto de hardware.
+	2.Melhoria na INTEGRAÇÃO dos dados - 
+	3.Minimização de INCONSISTÊNCIA dos dados - Ocorre quando diferentes versões dos mesmos dados aparecem em locais diferentes.
+	4. Restrição de acesso não autorizado - Fornece um subsistema de autorização e segurança o qual é utilizado pela DBA para criar contas
+e especificar as restrições dessas contas. O controle de restrições aplica-se tanto ao acesso aos dados quanto ao uso de softwares inerentes ao SGBD.
+Segue mais vantagens ao uso de um SGBD:
+	DENSIDADE: Não há necessidade de volume de papéis.
+	VELOCIDADE: A recuperação e modificação dos dados é realizada de maneira muito rápida.
+	ATUALIDADE: Informações precisas e atualizadas estão disponíveis a qualquer momento.
+	PROTEÇÃO: Os dados podem ficar melhor protegidos a perdas não intencionais e acesso ilegal.
+	CONTROLE CENTRALIZADO DOS DADOS OPERACIONAIS: Redundância dos dados: 
+		1.Dados armazenados de forma desnecessária em locais diferentes é evitada.
+		2.Desperdício de espaço evitado. 
+		3.Inconsistência evitada -  Informações incorretas evitadas - Redundância controlada(propagação de atualizações)
+		4.Compartilhamento de dados por várias aplicações
+		5.Permite aplicar restrições de segurança
+		6.Mantem a integridade dos dados , por meio da geração de regras de integridade
+		7.Suporte a transações.
+Obs:O termo redundância de dados consiste na gravação de um mesmo dado em dois locais(ou mais) distintos.Não é recomendado 
+Obs2: A insconsistência em BD significa ter dados incompletos.
+Obs3: Durabilidade significa que os dados são ÍNTEGROS.Isto é, se um campo tem o valor 'x', então este valor será mantido até que algum aplicativo o
+delete ou altere.
+Obs4: Segurança significa que os dados só serão acessados por usuários que em algum momento ganharam permissão para uso. Um usuário pode ter permissão
+para ler ou consultar e não para inserir dados na tabela,por exemplo.
+INTEGRIDADE DE DADOS: Significa que os campos terão os dados armazenados de forma consistente nos formatos e restrições que lhe foram atribuídos.
+
+ARQUITETURA CLIENTE-SERVIDOR:
+I.Cliente: Projetado para ser executado em uma estação de trabalho ou em um computador pessoal. EM geral, os programas de aplicação e as interfaces 
+de usuário que acessam o BD, são acessados.
+II.SERVIDOR: Trata do armazenamento de dados, acessos, pesquisas e outras funções:
+	Todas as tarefas de gestão de base de dados e os processos para consultas de clientes, atualizações dos arquivos, controle de versão e aplica
+ções são atribuídas ao SERVIDOR.
+	
+
+
+
+
+
+

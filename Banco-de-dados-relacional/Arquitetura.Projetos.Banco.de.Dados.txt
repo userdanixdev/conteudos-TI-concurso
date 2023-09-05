@@ -1,0 +1,318 @@
+ARQUITETURA BANCO DE DADOS:
+	
+	Natureza autodescritiva pelo fato de armazenar definições completa de restrições e estruturas do BD.(catálogo)
+As informações do catálogo são chamadas de Metadados.
+
+	Independência entre Programas e dados: Permite mudanças na estrutura de armazenamento e nas operações sobre os 
+dados sem ter que mudar os programas que acessam os dados -  A independência de Dados.
+
+Representação Conceitual
+	- Abstração de Dados: Um modelo de dados usado para esconder detalhes de armazenamento apresentando ao usuário
+conceitos dos dados.
+	- Modelo de dados: É um tipo de abstração de dados usado para prover esse representação conceitual.
+As múltiplas visões : cada usuário pode acessar a diferentes visões do BD as quais descrevem somente os dados de interesse
+do usuário.
+Controle de Redundância:
+			- No SGBD cada item lógico do dado é armazenado num único lugar.
+			- Pode haver redundância controlada.
+Características do BD:
+	SEGURANÇA: Restrição de acesso não autorizado dos dados. O SGBD provê mecanismos de autenticação de usuários.
+	BACKUPe RECOVERY: Possibilidade de cópia de segurança e recuperação de FALHAS de hardware e software.
+	MULTIPLAS INTERFACES PARA USUÁRIOS: Linha de comando, GUI, APIs.
+	MANUNTENÇÃO DE RESTRIÇÕES DE INTEGRIDADE DE BD: Capacidade de definir e impor restrições.
+
+ARQUITETURA ANSI/SPARC:
+	Nível externo de visão
+	Mapeamento externo/conceitual
+	Nível Conceitual
+	Mapeamento Conceitual/Interno
+	Nível Interno
+
+Nível externo ou Visões de usuário - Descreve parte do banco de dado na qual um determinado grupo de usuários está interessado.
+Nível conceitual - Possui um esquema conceitual que descreve a estrutura de todo o BD para a comunidade de usuários.
+Obs: Esconde detalhes da estrutura de armazenamento físico e se concentra na descrição de:
+	*Entidades
+	*Tipos de dados
+	*Relacionamentos
+	*Operações de usuários
+	*Restrições	
+Nível interno é o armazenamento físico que descreve a estrutura de armazenamento físico do BD.
+Utiliza um modelo de dados físicos para definir detalhes completos sobre o armazenamento e os trajetos de acesso
+ao banco de dados.
+
+PROJETO DE BD:
+1.Análise de requisitos	(1.2-Requisitos do DB)
+		|
+2.Projeto  Conceitual - Exemplo: (O esquema conceitual independe de um SGBD específico.)
+		|			(Modelo Entidade-Relacionamento)
+		|
+3.Projeto    Lógico - ||---> É o esquema lógico entendido como mapeamento do modelo conceitual para o modelo SGBD.(RELACIONAL,OO,RELACIONAL-OBJETO)
+		|     ||---> Podem ser ajustados conforme as características do modelo implementado por um SGBD específico.
+		|     ||----> Independente de um SGBD e DEPENDENTE do modelo de dados.	
+		|
+		|
+4.Projeto    Físico - ||----> Depende do SGBD com o banco de dados implementado para o propósito do negócio.
+--------------------------------------------------------------------------------------------------------------------------------
+2018 Banca:CESPE-FUB
+Um ESQUEMA de BD geralmente agrupa e apresenta as diferentes tabelas, seus campos e o relacionamento entre eles e outras tabelas. - SIM -
+Sim, em outras palavras, um esquema de banco de dados indica como as entidades que compõem o BD se relacionam entre si, incluindo tabelas, exibições,
+procedimentos armazenados e muito mais.
+2018 Banca: If-MT 
+Considere as sequintes afirmações relacionadas a BD:
+I.Um sistema de BD é uma coleção de dados inter-relacionados e um conjunto de programas que permitem aos usuários acessar e modificar esses dados. (SIM)
+II.Para cada abstração criada no nível de visão, os dados são replicados no nível físico. (Não faz isso.)
+III.O nível físico é o nível de abstração mais mais baixo e descreve como os dados são realmente armazenados. (SIM)
+IV.O nível de visão é o nível de abstração mais alto e descreve apenas parte do BD. (SIM)(ARQUITETURA-ANSI/)
+
+		---> Projeto de Banco de Dados é DIFERENTE da Arquitetura ANSI/SPARC<----
+
+Questão de concurso :
+2014/CESPE
+A construção de um modelo particular para cada SGBD,obtido a partir da transformação do modelo conceitual, é o objetivo do projeto lógico. SIM
+CESPE/2019/SEFAZ/AUDITOR:
+AS funções de um sistema de gerenciamento de BD incluem:
+a)gerenciar a integridade de dados, o dicionário e o armazenamento de dados, bem como a memória do computador enquanto o SGBD estiver em execução. (Não)
+(A integridade,dicionário e armazenamento estão associados sim, mas o gerenciamento de memória é o sistema operacional.)
+
+b)Transformar e apresentar dados, controlar o acesso de multiusuário e prover interfaces de comunicação do BD. SIM
+Os SGBDs podem incluir forma de transformação e apresentação de dados e permitir aplicativos de interface. Além disso, o acesso aos dados é concorrente
+e o controle de acesso é papel fundamental.
+
+c)gerenciar o backup e a recuperação dos dados, bem como o escalonamento de processos no processador por meio do BD. (não)
+Gerenciar o backup e recuperação de dados sim, mas o escalonamento de processos no processador compete ao sistema operacional.
+
+d)Gerenciar o sistema de arquivos e a segurança do BD. (Não)
+Não compete aos SGBDs gerenciar o sistema de arquivos. Esta é uma função do sistema operacional.
+
+e)Gerenciar a entrada e saída de dispositivos, linguagens de acesso ao BD e interfaces de programação de aplicação. (não)
+Os SGBDs interpretam linguagem SQL e NoSQL e permitem a comunicação entre uma aplicação, porém, não gerenciam dispositivos de entrada e saída
+em um computador.
+
+CETRO/ANVISA/2013:
+Quanto aos sistemas de gerenciamento de BD, assinale a alternativa correta:
+a)Sua função geral é fornecer uma interface entre o usuário e o sistema de BD. (CERTO)
+( Um SGBD é um software(conjunto de programas) de caráter geral, que executa processo de definição,construção,manipulação e compartilhamento de BD
+entre vários usuários e aplicações, incluindo módulos para consulta,atualização e interfaces entre o sistema e o usuário.
+Inclusive possuem grandes coleções de informações estruturadas e armazenadas de uma foma consistente e integrada.
+São capazes de criar BD e realizar uma série de operações, podemos dizer então que um SGBD é um conjunto de dados + conjunto de programas de acesso aos
+dados.
+b)Sempre tem um gerenciador de transações.(não) Os SGBDs mais simples não possuem gerenciador de transações.
+
+c)O dicionário de dados impõe certos controles sobre a recuperação e concorrência do BD. (não)
+Não é uma atribuição do dicionário, o dicionário é uma representação de uma coleção de metadados que contêm definições e representações de elementos dos dados.
+Um dos benefícios de um dicionário de dados bem preparado é a consistência entre os itens de dados por meio de diferentes tabelas. Com seu formato de
+acordo com seu domínio, por exemplo.
+d)A verificação da integridade de dados deve ser feita somente no tempo de compilação.(não)
+A verificação de integridade dos dados é obtida pelas restrições impostas(chaves). E elas são implementadas no momento da definição do esquema de dados,
+sendo checados NO MOMENTO DA EXECUÇÃO. Mas não deve ser feita somente no tempo, é melhor no momento.
+e)Não incluem compiladores de DML. (NÃO).
+INCLUEM SIM O PRÉ-COMPILADOR DML E UM COMPILADOR DDL. SENDO ASSIM, PRECISAM AO MENOS INTERPRETAR A LINGUAGEM DDL QUE SERVE PARA DEFINIR O ESQUEMA DO BD
+E O DML QUE VISA MANIPULAR OS DADOS(INCLUIR,ALTERAR,EXCLUIR,CONSULTAR) POR MEIO DO USUÁRIO.
+
+VENESP/CETESB/2013:
+Alguns SGBDs relacionais possuem um módulo de otimização de consultas que visa?
+MELHORAR O DESEMPENHO DAS CONSULTAS SUBMETIDAS AO GERENCIADOR.
+obs: O sistema de BD é dividido em módulos específicos, de modo a atender todas as suas funções, algumas delas fornecidas pelo sistema operacional.
+Esses módulos podem ser organizados em dois grandes grupos:
+	PROCESSAMENTO DE CONSULTAS: Que visa melhor desempenho das consultas submetidas ao gerenciador.
+	ADMINISTRAÇÃO DE ARMAZENAMENTO DE DADOS: Que além de gerenciar o desempenho, gerencia as transações,autorizações e integridade do dicionário de dados.
+Merecem destaque os componentes de processamentos de consultas:
+	COMPILADOR DML: traduz comandos DML da linguagem de consulta em instruções de baixo nível.
+	INTERPRETADOR DDL: Interpreta os comandos DDL e registra-os em um conjunto de tabelas que contém metadados.
+	COMPONENTES DE TRATAMENTO DE CONSULTAS: executam instruções de baixo nível geradas pelo compilador DML.
+
+CESPE/DEPEN/2015:
+Os níveis interno,externo e conceitual da arquitetura de um BD são responsáveis, respectivamente,por gerenciar o modo como os dados serão armazenados fisicamente
+,por gerenciar o modo como os dados serão vistos pelos usuários e por representar todo o conteúdo de informações de BD.
+------> SIM <---------
+O grande objetivo de um sistema de BD é prover os usuários com uma visão abstrata do dados. O sistema omite certos detalhes de como os dados são 
+armazenados e mantidos. O propósito central de um SGBD consiste em proporcionar aos usuários essa visão. Definindo diversos níveis de abstração.
+
+ARQUITETURA ANSI/SPARC: --atenção--
+
+NÍVEL VISÃO(EXTERNO):   Nível mais alto de abstração: gerencia o modo como os dados serão vistos pelos usuários.
+			Descreve parte do BD.
+NÍVEL LÓGICO(CONCEITUAL):	Nível médio de abstração:
+				Descreve QUAIS os dados são realmente armazenados no BD e quais os relacionamentos existentes entre eles.
+				O BD é descrito em termos, símbolos e nomenclaturas com estruturas simples. Embora a implementação, em um projeto de BD, possam
+				envolver complexas estruturas de nível físico. 
+NÍVEL FÍSICO(Interno):	Descreve COMO os dados são armazenados. Estrututas complexas, de baixo nível, são descritas em detalhes...
+
+ESAF/AFC-STN/2008:
+Em relação ao nível lógico de abstração de dados nos sistemas de BD, é correto afirmar que:
+a)Descreve estruturas de dados complexas de baixo nível. [Não, esse é nível fisico ou interno.]
+b)Descreve quais dados estão armazenados no BD e as relações existentes entre eles. (SIM)
+obs:O nível lógico são representados os dados da aplicação e os relacionamentos existentes entre os mesmo. O esquema conceitual oculta os detalhes das
+estruturas de armazenamento físico e se concentra na descrição das entidades, tipos de dados, relacionamentos,operações do usuário e restrições.
+
+EXISTE DIFERENÇA ENTRE BD E SGBD?
+	BD é como uma coleção de dados relacionados,sendo esses dados definidos como fatos que possuem um significado implícito.
+	É uma coleção de dados inter-relacionados que contém informações relevantes para uma empresa.
+	OBS: O BANCO DE DADOS É SIMPLESMENTE UM DEPÓSITO ESTRUTURADO DE DADOS ENQUANTO O SGBD É UM PROGRAMA(CONJUNTO DE SOFTWARES) UTILIZADO
+	PARA MANIPULAR DADOS E A ESTRUTURA DO BD.
+
+FCC/2013/MPE:
+A capacidade de alterar o esquema conceitual sem mudar o esquema externo ou os programas, podendo modificar o esquema conceitual para expandir o BD
+(adicionando um tipo de registro ou item de dados), variar as restrições ou reduzir o BD(removendo um tipo de registro ou item de dados) é
+chamada de:
+INDEPENDÊNCIA LÓGICA DE DADOS:
+				Permite a alteração do esquema conceitual,modificando-se a estrutura lógica do BD,sem que seja necessário reescrever os
+				programas.
+INDEPENDÊNCIA FÍSICA DE DADOS:
+				Permite a modificação do esquema físico sem que seja necessário reescrever os aplicativos que acessam seus dados.
+				EM geral, as modificações no nível físico são realizadas para melhorar o desempenho do sistema.
+
+( são um dos objetivos da arquitetura ANSI/SPARC - em criar independência de dados.)
+
+FCC/MPE/2013:
+Na arquitetura de uma estrutura básica de SGBD, as funcionalidades do sistema são distribuidas entre dois tipos de módulos:
+A questão aborda a arquitetura CLIENTE-SERVIDOR. Todas as tarefas de apresentação ao usuário e os processos associados com entrada de dados, como 
+validação de campos,formulação de consultas ao servidor e atualização de informação, e solicitações ao servidor são atribuídas ao cliente.
+AS TAREFAS DE GESTÃO DA BASE DE DADOS E OS PROCESSOS PARA CONSULTAS DE CLIENTES, ATUALIZAÇÕES DOS ARQUIVOS DO SERVIDOR, CONTROLE DE VERSÃO DO CLIENTE
+E APLICAÇÕES QUE ABRANGEM TODA A EMPRESA SÃO ATRIBUÍDAS AO SERVIDOR.
+		ASSIM, NO CLIENTE ESTÃO AS APLICAÇÕES E/OU INTERFACES QUE ACESSAM OS DADOS DO SERVIDOR,
+		OS DADOS E AS FUNÇÕES DE MANIPULAÇÃO DOS MESMOS ESTÃO ALOCADOS NO SERVIDOR.
+
+CESPE/SERPRO/2013:
+Registros são mapeados em blocos de discos, sendo organizações lógicas de um arquivo. Blocos possuem um tamanho fixo, que é determinado pelas proprie
+dades físicas do disco e pelo sistema operacional, entretanto o tamanho dos registros pode variar.
+---- Resposta :SIM <-----
+
+Esse elementos lógicos dos dados constituem os conceitos de fundação de dados nos quais está embutido um BD.
+	CARACTERE: O elemento lógico mais básico, constitui em um único símbolo alfabético,numérico ou outro. Podem variar de bits ou bytes para 
+representar digitalmente um caractere. Lembre-se que esses se referem ao armazenamento físico.
+	CAMPO: É um grupamento de caracteres que representam uma caracterísitca de uma pessoa, lugar,objeto ou evento.Um campo representa um ATRIBUTO
+ou alguma ENTIDADE.
+	REGISTRO: É uma coleção de campos inter-relacionados. Geralmente contém vários campos, como além do nome, número de previdência social, 
+departamento e salário. OS REGISTROS PODEM SER DE COMPRIMENTO FIXO OU VARIÁVEL.
+	ARQUIVO: É uma coleção de registros inter-relacionados. Por exemplo, arquivo da folha de pagamento de todos os funcionários de uma empresa e 
+não somente de um funcionário.
+	BANCO DE DADOS: Trata-se de uma coleção integrada de registros ou arquivos logicamente inter-relacionados.
+			Um BD do pessoal de uma empresa, com arquivos de folha de pagamento, atividades e qualificações dos funcionários.
+OS DADOS ARMAZENADOS EM UM BD NÃO DEPENDEM DOS PROGRAMAS DE APLICAÇÃO QUE O UTILIZAM. NEM DO TIPO DE DISPOSITIVOS DE ARMAZENAMENTO SECUNDÁRIO NOS QUAIS
+SÃO ARMAZENADOS.
+	Por fim a questão está correta. Cabe destacar que o sistema operacional determina o tamanho dos blocos de disco de acordo com as características
+	físicas do disco. Os registros são mapeados em arquivos e os arquivos em BLOCOS DE DISCOS. Os arquivos, assim como os registros, podem variar
+	de tamanho, no entanto os blocos de disco possuem tamanho FIXO. Os arquivos são formados por um conjunto de blocos de disco.
+
+SGBDs é um conjunto de programas que permitem a diversos usuários acessar e modificar uma coleção de arquivos inter-relacionados.
+A meta de SGBD é simplificar e facilitar o acesso aos dados. O desempenho de um sistema depende da eficiência das estruturas de dados usadas para
+representar os dados no BD.
+UFG/2014 - UEAP:
+	Em uma situação de falha, o SGBD busca restaurar o BD ao estado consistente mais recente antes do momento da falha. Para realizar essa função,
+o sistema precisa manter informações sobre as mudanças que foram aplicadas aos itens de dados pelas diversas transações. Tais mudanças ficam
+armazenadas no ARQUIVO DE LOG DE UM BANDO DE DADOS. que armazena todas as operações realizadas em um BD. Esse registro é importante para restaurar
+uma situação de falha quanto para segurança,identificando o autor de cada operação.
+DICIONÁRIO DE BD que alguns chamam de catálogo, são armazenados as informações a respeito das tabelas do SGBD, os METADADOS. Que contem informações:
+	ELEMENTOS DE DADOS
+	STORED PROCEDUREDS
+	INDICES
+	TRIGGERS
+	PERFIS DE USUÁRIOS E PRIVILÉGIOS
+	RESTRIÇÕES DE INTEGRIDADE.
+
+CESPE/2013/SERPRO:
+Considere que a sigla SGBD, sempre que empregada,se refere a sistema gerenciador de BD. Na arquitetura de um sistema de BD, o elemento importante para
+o gerenciamento do banco é a aplicação/programa. [ ERRADO ]
+Para se considerar como elemento importante precisa-se de uma organização de componentes que define e regula a coleta,armazenamento o gerenciamento e a
+utilização de dados em um ambiente. O sistema de BD deve ser composto por cinco partes principais:
+	HARDWARE
+	SOFTWARE
+	PESSOAS
+	PROCEDIMENTOS
+	DADOS.
+		E O FUNCIONAMENTO COMPLETO DO SISTEMA DE BD NECESSITA DE TRÊS TIPOS DE SOFTWARES:
+				1.SISTEMA OPERACIONAL
+				2.SGBD
+				3.APLICATIVOS E UTILITÁRIOS
+O SISTEMA OPERACIONAL:
+	- Gerencia todos os componentes do hardware e possibilita que os outros softwares sejam executados nos computadores.
+	- O SGBD gerencia o BD em um sistema de BD;
+	- Aplicativos e utilitários são utilizados para acessar e manipular dados no SGBD e gerenciar o ambiente computacional no qual ocorre o acesso
+e a manipulação de dados.
+
+CESPE/2010/BANCO DA AMAZÔNIA:
+	O nível conceitual de dados é um nível de simulação entre os níveis interno e externo. [ ERRADO ]	
+(O nível conceitual realiza um mapeamento entre os níveis interno e externo. O nível conceitual não leva em conta o banco de dados em si, mas a
+forma como as estruturas serão criadas para armazenar dados.)
+
+CESPE/2010/BANCO.AMAZONIA:
+	Se um sistema de BD prove independência física dos dados, é correto inferir que esse sistema também permite independência lógica de dados.
+[ERRADO] Não podemos inferir que o sistema irá permitir independência lógica se há alteração do nível físico sem obter independência lógica.
+
+CESPE/2010/BANCO.AMAZONIA:
+	O mapeamento do nível conceitual para o nível interno é a chave para a independência de dados física. Assim como o mapeamento do nível externo
+para o conceitual é a chave para a independência lógica de dados.
+Obs: QUEM GARANTE ESSE INDEPENDÊNCIA ENTRE OS NÍVEIS É O PROCESSO DE MAPEAMENTO. ASSIM, É MUITO IMPORTANTE ENTENDER A ARQUITETURA DE TRÊS ESQUEMAS OU
+CAMADAS.
+
+Nívels Externo: Usuários finais
+	Mapeamento externo = conceitual = Independência lógica
+Nível Conceitual: Esquema Conceitual
+	Mapeamento conceitual = interno = Independência Física
+Nível Interno: Esquema Físico.
+
+CESGRANRIO/PETROBRAS/2010:
+	A independência de dados lógica, definição componente da arquitetura de três esquemas para sistemas de BD, corresponde a capacidade de se
+efetuarem:
+	 - Mudanças no nível conceitual, sem a necessidade de modificação dos níveis externos e em programas aplicativos. [ SIM ]
+	( A independência de dados de nível lógico é a capacidade de se alterar o esquema lógico sem reescrever os programas da aplicação.)
+	(	Deve-se ressaltar que em alguns casos é necessária somente a recompilação da aplicação. )
+
+CESPE/2010/Banco.AMAZONIA:
+O Administrador de Banco de dados deve ter um bom conhecimento a respeito do sistema operacional no qual o SGBD está instalado. Em caso de problemas
+e definição de procedimentos de recuperação, um bom conhecimento sobre os processos, gerência de memória e o sistema de arquivos utilizados pelo
+sistema operacional pode fazer uma grande diferença no desempenho do BD.
+Responsabilidades de um Administrador de Dados:
+	São exigidos conhecimentos em diversas áreas relacionadas direta e indiretamente com os SGBDs propriamente ditos:
+		ARQUITETURA DE COMPUTADORES:
+			Para a administração de um SGBD pode ser necessário o conhecimento da estrutura física de servidores para obtenção de melhor
+desempenho e maior segurança.
+		SISTEMAS OPERACIONAIS:
+			Deve-se conhecer o sistema operacional e alguns conceitos sobre processos, gerência de memória e sistema de arquivos,
+indispensáveis para a resolução de problemas e definição de procedimentos de recuperação.
+		REDES: 
+			Para monitoração do desempenho deve-se ter além do conhecimento básico conhecer bem as camadas de rede e aplicação.
+		PROJETO CONCEITUAL e LÓGICO DE BD:
+			É necessário conhecer e poder interpretar os modelos de dados que serão criados e armazenados na base de dados, bem como
+conhecer as implicações que estes modelos podem causar no desempenho de um SGBD.
+		ARQUITETURA DE SGBDs:
+			Deve-se conhecer os fundamentos básicos que guiam as implementações dos SGBDs atuais, o administrador tem facilidade no 
+entendimento e questionamento da arquitetura utilizada.
+
+FCC/banco.brasil/2006:
+	Uma interface padrão utilizada para acessar SGBD, desenvolvida pela MICROSOFT, é denominada:
+	ODBC = Open Database Communication = que é uma API(aplication Program Interface) PADRÃO, utilizada para acessar SGBDS.
+OBS: O OBJETIVO DO ODBC É TORNAR POSSÍVEL O ACESSO A QUALQUER DADO A PARTIR DE QUALQUER APLICATIVO, INDEPENDENTEMENTE DE QUE SGBD ESTEJA RESPONSÁVEL
+PELO DADO. ISSO É ALCANÇADO UTILIZANDO UMA CAMADA INTERMEDIÁRIA - O DRIVER - ENTRE O APLICATIVO E O SGBD.
+
+CESPE/EMBASA/2010:
+	No que concerne a conceitos básicos de BD, julgue os itens: Os metadados,definidos como dados dos dados, são abstrações dos dados de mais alto
+nível que descrevem dados de um nível inferior.  [CERTO]
+	[ A questão está certa pois a abstração nesse contexto nada mais é do que uma representação conceitual do dado que irá mostrar mais dados sob
+uma abstração de outro nível INFERIOR.]
+
+CESPE/EMBASA/2010:
+	A organização de um conjunto de metadados utilizados no BD colabora para o gerenciamento de informações e permite a melhor interpretação dos
+usuários quanto aos termos identificados dos itens. [CERTO] Por que os metadados facilitam para quem precisa acessar aqueles dados, saber o que eles
+representam na prática.
+
+ESAF/MPOG/2008:
+	Um SGBD tem como função: LIMITAR E CONTROLAR DADOS REDUNDANTES EM MÚLTIPLOS SISTEMAS.
+
+ESAF/STN/2008:
+	No gerenciamento de transações em BD, a propriedade que deve ser garantida para dar suporte a ideia de execução simultânea de um par de 
+transações é denominada:
+	ISOLAMENTO.
+
+CESPE/2013/MC:
+	Atualmente, os BDs são utilizados para armazenar e processar dados de caracteres em geral, não apresentando recursos para tratar dados 
+multimídias, como filmes e fotografias. [ERRADO]
+	OS DADOS MULTIMÍDIA CITADOS NA QUESTÃO SÃO DADOS BINÁRIOS. VÁRIOS SGBDS TÊM O RECURSO DE ARMAZENAR DADOS BINÁRIOS, ÚTEIS PARA FILMES, FOTOGRAFIAS
+ÁUDIOS. NA ORACLE EXISTE UM TIPO DE DADO 'BLOB'	(BINARY LARGE OBJECT) QUE PODEM ARMAZENAR ATÉ 4GB DE DADOS BINÁRIOS.
+	
+
+				
+
+
+

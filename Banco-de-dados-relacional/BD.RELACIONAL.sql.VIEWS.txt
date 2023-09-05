@@ -1,0 +1,76 @@
+SQL VIEWS - Banco de dados Relacional
+
+Relação única que é derivada de outras tabelas ou visões previamente definidas.
+- É uma forma de implementar segurança em banco de dados. - 
+Ocultando informações a determinados grupos de usuários.
+- É uma tabela virtual.
+1.- Há limitação em operar uma view.
+2.- Não há limitações em operações de consulta.
+3.- Não é recomendado fazer atualização pelas views.
+4.- Ao definir uma view, o SGBD armazena a definição, os comandos e não o RESULTADO da consulta.
+5.- O comando para criar é: CREATE VIEW:
+CREATE VIEW v AS (expressão da consulta)
+v =  é o nome da view
+Para remover a view é: DROP VIEW <nome da view> 
+6.- É possível criar uma view em cima de outra view.
+Exemplo: CREATE VIEW vw_transações_suspeitas AS SELECT nome,dt_tr,val_tr,tp_tr FROM transacoes WHERE valor>200000 AND tp_tr = 'D'
+Criação de outra view em cima dessa:
+	CREATE VIEW vw_transacoes_suspeitas(cliente,data,valor,tipo) AS SELECT nome,dt_tr,val_tr,tp_tr FROM transacoes WHERE valor>2000000 AND tipo = 'D'
+
+As atualizações de views vão ocorrer também nas definidoras a partir dos comandos DML da própria view. Porém, podem ocorrer problemas
+com consistência de dados.
+
+WITH CHECK OPTION é o comando de restrição para quando atualizar a view , a inserção é rejeitada pelo SGBD.
+
+Critérios para a view ser atualizável:
+1. A PK ou chave candidata estiver presente na lista de atributos.
+2.Possui apenas uma relação para a cláusula FROM.  (SUB-QUERY não é possível)
+3.A cláusula SELECT possui apenas atributos de relação. Não será feita atualização com expressão agregadas ou distinct.
+4.Os atributos não listados na tabela original podem ser definidas como nulos.(se atualizar, sem restrições)
+5. A consulta não possui cláusula GROUP BY ou HAVING.
+
+Critérios que não são atualizáveis:
+1.Views definidas em múltiplas tabelas (JOINS)
+2.Funções de agregação.(max,min,avg,count)
+
+TIPOS DE VIEWS:
+VIEW simples: Recupera linhas de uma única tabela, não contem funções de grupo e pode aceitar operações DML.
+CREATE VIEW vw_funcionario AS SELECT nome,matricula FROM tfuncionario;
+SELECT*FROM vw_funcionario WHERE matricula = 126;
+VIEW Complexa: Uma view complexa recupera linhas de várias tabelas, contém funções de grupo (agregação) e não permite operações DML.
+exemplo:
+CREATE VIEW vw_funcionario AS SELECT nome,matricula,nome_departamento FROM tfuncionario.e, tdepto.d 
+WHERE d.tdepartamento_id = e.tfuncionario_id;
+
+VIEWS MATERIALIZADAS:
+ - ORACLE e POSTGREES - 
+Esses SGBDS permitem armazenar as relações resultantes de uma view de modo que se as relações reais mudarem. A view permanecerá ATUALIZADA.
+é o processo de manuntenção de view para manterem.
+
+Questão de concurso 2019 - Banca: UFC orgao:UFC Tec.de.TI
+O SGBD é responsável por manter as informações das views atualizadas, mesmo quando ocorre alguma alteração nas tabelas
+bases utilizadas na construção da view.
+2018 - CESPE - FUB - 
+Uma view materializada armazena apenas a consulta que define e apresenta o resultado sempre atualizado de todas as operações de definição de dados DDL.
+ERRADA. Uma view simples armazena a consulta. A materializada guarda cópia dos dados assim também guardar as operações DML e não DDL.
+2018 - CESPE - TCE/MG
+1.Visões complexas podem utilizar comandos DML para manipulação de dados. (não podem utilizar DML)
+2.Visões fazem referência a tabelas, sem armazenar nenhuma linha. Sim
+3.Visões complexas podem conter funções. SIM
+4. Visões e tabelas temporárias são equivalentes quanto ao tratamento. (são diferentes)
+
+CREATE MATERIALIZED VIEW biologo_vw AS SELECT nome,endereco,telefone FROM FUNCIONARIO WHERE codigo_biologo=674;
+
+2014 - CCV-UFS:Banca
+Em SQL, é possível criar estruturas que funcionam como uma tabela virtual, cujo comportamento assemelha-se a uma tabela real de BD, entretanto, sem 
+armazenar informações. Essas estruturas não existem como uma entidade independente na base de dados física. Ela é uma VIEW.
+2018 - CESPE - STJ
+A diferença entre a materialized e view comum em um banco de dados é o fato de que a primeira é armazenada em cache como uma tabela física, enquanto 
+a segunda existe apenas virtualmente. SIM, correto.
+2017 - CESPE - TCE
+A respeito de banco de dados relacionais uma visão é derivada de uma ou mais relações e armazena os dados em uma tabela física do banco de dados,
+visando tornar ágeis as consultas. (NÃO. não armazena os dados, é somente um pseudônimo, um ALIAS. Uma tabela VIRTUAL.)
+
+
+
+

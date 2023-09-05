@@ -1,0 +1,261 @@
+Banco de dados relacional - Gerenciamento de Transações - 
+Transação -  Unidade lógica de processamento. Incluindo uma ou mais operações sendo formada por uma sequência de operações que precisam
+ser excecutadas integralmente(ou desfeita totalmente) - ATOMICIDADE
+-Portanto, é uma unidade atômica de trabalho que é completada integralmente ou não é realizada.
+Tipos de falhas que comprometem transações de BD:
+1. Falha do computador(system crash - colapso do sistema)
+	1.1 - Erro de hardware, software ou Rede.
+2. Erros de sistemas.
+	2.2 - Overflow - ex: Estouro de memória
+	2.3 - Divisão por zero
+	2.4 - Erros lógicos
+3. Erros locais ou condições de exceção detectados pela transação.
+	3.1 - Dados não encontrados - saldo insuficiente - 
+4. Imposição de controle de concorrência:
+	4.4 - Bloqueios, situações de impasse (deadlocks) - Dependência de recursos de uma transação com base em outra transação, por exemplo.
+5. Falha de disco ( Perda de blocos )
+6. Problemas Físicos ou catástrofes:
+	6.1 - Incêndio, Falta de energia, Sabotagem.
+
+Diagrama de estados de uma transação em BD:
+
+1.Inicio transação
+	1.1 - Ativa ( READ - LEITURA ) < ---- Parcialmente confirmada -------- >COMMIT(confirmação)------>2.0 CONFIRMADA -  3.0 - FINALIZADA
+		    ( WHITE - GRAVAR )				
+
+TRANSAÇÕES (Comandos):
+
+DTL ( Data Transaction Language ) =
+
+BEGIN_TRANSACTION(INICIAR TRANSAÇÃO )-  Marca o início da execucação da transação. (Somente em alguns BD)
+READ/WRITE - Especifica operações de leitura/escrita nos itens de BD.
+END_TRANSACTION (Finalizar Transação ) = Especifica que as operações de leitura ou gravação terminaram e marca o final da execucação da transação.
+COMMIT_TRANSACTION (Confirmar Transação) = Sinaliza o final bem-sucedido da transação e não serão desfeitas. De modo que quaisquer atualização 
+executada pela transação pode ser seguramente confirmada(commited). ( confirma a transação )
+ROLLBACK(ABORT) - Comando de sinalizar que a transação terminou sem sucesso, de modo que quaisquer alteração deve ser DESFEITO. ( DESFAZ )
+
+INSTRUÇÕES DE CONTROLE:
+
+COMMIT - finaliza a transação atual tornando PERMANENTE todas as alterações.
+SAVEPOINT - <nome_savepoint> - Marca um ponto de gravação dentro da transação atual, sendo utilizado para dividir uma transação em partes menores.
+ROLLBACK TO SAVEPOINT - Descarta o ponto de gravação determinado.
+ROLLBACK - Finaliza a transação atual, descartando todas as alterações de dados não salvas.
+(Questão de concurso - os comandos COMMIT e ROLLBACK são utilizados para finalizar uma transação. Pois o ROLLBACK será finalizada SEM SUCESSO.)
+----------------------------------------------------------------------------------------------------------------
+Processamento de transações:
+1. INSERT INTO unidade (id_unidade,nome,nome_unidade,id_uni_superior) VALUES (10,'Diretoria de ti',5);
+(11,'Coordenação de Sistemas',10);
+2.SAVE POINT ponto1;
+3.DELETE FROM empregado WHERE salario<1000;
+4.ROLLBACK TO SAVEPOINT ponto1;   (** exemplo: o delete não era pra ser feito, então o rollback to savepoint desfaz até o savepoint. O 3 foi desfeito)
+5.UPDATE empregado SET salario = salario * 1.05 WHERE id_unidade = 11;
+6.COMMIT;
+
+ACID - Propriedades de uma transação:
+
+ATOMICIDADE = É uma transação como uma unidade atômica de processamento. Ou realizada integralmente ou não é realizada.
+CONSISTÊNCIA = A transação será a mesma de um estado para outro, de um BD para outro.
+(sem problemas de integridade)
+ISOLAMENTO = A execução de uma transação não deve sofrer interferência de qualquer outra que estejam executadas concorrentemente.
+(exclusividade na execução da transação)
+DURABILIDADE (PERSISTE) = alteração aplicada no BD, depois de uma transação confirmada, mesmo com falhas, não serão toleradas PERDAS.
+(-Após uma transação ter sido finalizada com sucesso, suas alterações no BD tornam-se persistentes, mesmo se houve queda ou falha no sist.)
+(- Permanência da gravação no banco)
+Transação Concorrente:
+read_item(x): leitura do item 'x' do BD e transfere para uma variável x da memória recebendo 'x(-n)'
+white_item(x): escreve o valor de x alterado da memória no item x do BD.
+
+Exemplo:
+Transação 01 = T1
+Read item x;
+x=x-n;
+write_item x
+=============================================
+Cenário de problemas de transações concorrentes:
+
+- Perda de atualização: Colapso de transações
+- Leitura suja: Colapso de transações
+- Leitura não repetitiva: Colapso de transações
+
+===============================================
+Escalonamento de transações seriável:
+t1-->t2 and t2--->t1
+Tanto a transação 1 autodetermina o t2 como a transação2 autodetermina t2. (Ambas isoladamente)
+
+t1>t2					t2>t1
+t1 = read_item(x);			t2=read_item(x);
+x=x-n; 					
+write_item(x)				x=x+m;
+read_item(y);				write_item(x);
+y=y+n;
+write_item(y)				
+
+					t1=read_item(x);
+----------------------------		x=x-n; 
+					write_item(x);
+t2= read_item(x);			read_item(y);
+x=x+M;					y=y+n;write_item(y)
+write_item(x);
+
+Sa=T1 = T2
+
+-----------------------------------------------------------------------------
+
+
+1.Entrarão em conflito as duas transações que pertencerem a transações diferentes;
+2.Acessam o mesmo item x;
+3.Pelo menos uma operação é write(x).
+
+Controle de concorrência - Gerenciamento de bloqueios - 
+- Realizar um bloqueio de itens de dados. Um LOCK é uma variável associada a um item de dados que descreve o status do item.
+- Bloqueios são utilizados para sincronizar o acesso por transações concorrentes.
+
+- Bloqueio binário - 1.l
+
+SEGURANÇA EM BD:
+
+Um SGBD fornece técnicas que possibilitem que certos usuários ou grupos de usuários acessem apenas partes selecionadas de um BD.
+VIEWS por exemplo. Sem obter acesso ao restante do banco de dados.
+O SGBD inclui um subsistema de autorização e segurança de BD, responsável por garantir a segurança do BD.
+A segurança inclui a criação de esquemas a fornecer e revogar privilégios a usuários autorizados.
+
+SIGILO - Usuários não devem acessar dados aos quais não possuem permissão. - Confidencialidade
+Integridade - Usuários não devem modificar dados sem permissão.
+Disponibilidade - O dado deve estar disponível sempre que preciso.
+Ex: O BD precisa estar disponível quando determinado usuário devidamente autorizado necessitar realizar uma operação.
+
+MEDIDAS de SEGURANÇA:
+- Importante definir um política de segurança que especifica QUAIS SÃO OS USUÁRIOS que possuem autorização de acesso ao BD e QUAL FINALIDADE.
+Existem dois mecanismos de segurança:
+1.-DISCRICIONÁRIO - Usados para conceder privilégios aos usuários individualmente, como os modos de acesso a arquivos ou registro de dados (leitura, inserção,
+exlusão e/ou atualização com o comando 'GRANT'.
+2.-OBRIGATÓRIO: Usados para impor segurança de acordo com o nível de usuários classificados.(grupos de usuários)
+3.-Controle de acesso: Prevenir o acesso de pessoas não autorizadas. Dados de autenticação são verificados quando o usuário
+faz login.
+4.-CONTROLE DE LOGIN: As operações realizadas por determinado usuário são registrados nos arquivos de log.
+5.-Controle de acesso aos logs:Identificar a conta do usuário, o terminal, IP da máquina, data e horário de acesso aos arquivos de log.
+Em caso de problemas, realizar auditorias, para restaurar versões anteriores...
+
+Responsabilidades de um DBA:
+1.Classificar usuários e acesso aos dados de acordo com a política da organização.
+2.Abrir contas, definir users/password de acesso ao BD
+3.Atribuir e retirar privilégios de determinados perfis
+4.Definir níveis de segurança.
+
+CONTROLE DE ACESSO DISCRICIONÁRIO:
+1.Baseado em Privilégios:
+	Consiste no direito de acesso a objetos do BD. Incluindo mecanismos de concessão e revogação.
+2. Método Típico:
+	2.1-GRANT - (Conceder)
+	2.2-REVOKE - (retirar um privilégio já concedido.)
+Obs: O subsistema do SGBD mantem uma tabela de privilégios, com dados de quem recebeu e perdeu os privilégios sobre os objetos.(dicionário de dados)
+
+Sintaxe de um DB :
+
+GRANT privilégios ON objeto ON usuários
+[WITH GRANT OPTION] - Delegar privilégios. - 
+É possível conceder o privilégio do usuário conceder privilégios a outros usuários, ou seja, ele pode
+transferir seus privilégios para outros usuários(com ou sem o GRANT OPTION)
+Exemplo: Maria criou as tabelas FUNCIONARIO(mat,nome,data_nasc,salario,num_dep) e DEPARTAMENTO(id_dep,nome,sigla,gerente).
+
+Maria é proprietária da tabela,e ela pode conceder privilégios sobre essas tabelas.
+GRANT insert, delete ON funcionario,departamento TO joao;  <-João não tem permissão para propagar privilégios.
+GRANT select ON funcionario, departamento TO joana WITH GRAN OPTION; <- Joana tem permissão para propagar privilégios.
+GRANT select ON funcionario TO marcos;
+
+Outro exemplo:
+GRANT insert,delete ON funcionario TO manoel; <- Manoel pode consultar e inserir tuplas na tabela funcionário.
+exemplo02:
+GRANT delete ON departamento TO antonio WITH GRAN OPTION <-- Antonio pode excluir registros da tabela depto e autorizar outros
+usuários a fazerem o mesmo. Mas somente o DELETE de DEPARTAMENTO.
+Exemplo03:
+GRANT update(salario) ON funcionario TO renata <  Renata pode apenas modificar o campo salário da tabela funcionário.
+
+Outros exemplos:
+Pode permitir comandos de SELECT - Permitir ler dados de todas as colunas da tabela.
+INSERT - Permitir inserir tuplas com valores não nulos ou não default da coluna.
+DELETE - Permitir que o usuário exclua registros da tabela
+REFERENCES - Permitir definir chaves estrangeiras, que fazem referência a coluna especificada.
+
+COMANDO REVOKE:
+Exemplo: GRANT select ON funcionario TO maria WITH GRANT OPTION; <-João concedeu privilégios a Maria.(além de recuperar dados,poderá propagar...)
+	 GRANT select ON funcionario TO renata WITH GRANT OPTION <-Maria concedeu privilégios a renata por que João concedeu privilégios a ela.
+	 REVOKE select ON funcionario FROM maria CASCADE; <-- Joao então revogou os privilégios de Maria. E Renata também perde os privilégios.
+**A Renata poderia ter mantido o privilégio se tivesse recebido de João diretamente.**
+
+ALTA DISPONIBILIDADE DE UM BD:
+
+Descrever as características de um sistema com alta disponibilidade de permanecer disponível pelo maior tempo possível durante a execução
+de serviços. Ex: Sistema de controle aéreo.
+Possui garantias de funcionalidades e alta tolerância a falhas de hardware,software e energia através de dispositivos que gerem redundância
+no sistema.
+
+Existem dois parâmetros para medir o grau de disponibilidade:
+1.Tempo Médio entre Falhas (Mean Time Between Failures)
+2.Tempo Médio de Recuperação (Mean Time to Repair)
+
+CLUSTER em BD:
+Cluster é um implementação de compartilhamento de recursos computacionais, utilizando dois ou mais dispositivos de computação.
+É um agrupamento ou 'nós', vários 'nós'de computadores conectados entre si e trabalhando em conjunto com a finalidade de aumentar desempenho na execução 
+das tarefas.
+Comuns em rede local, com padrão Ethernet por menor custo.
+Vantagens:
+1.Alto Desempenho
+2.Escalabilidade
+3.Tolerância a falhas
+4.Baixo Custo
+5.Independência de fornecedores.
+
+3 tipos de clusters:
+
+1. HPC- High Performance Computing(Alta performance)
+2. LB - Load Balance ( Balanceamento de Carga)
+3. HA - Alta disponibilidade (High Availability)
+
+HPC - Utilizados para obter alto desempenho em menor tempo. Máquinas com vários processadores. Utilizado para processar grandes quantidades de dados:
+Ex: Resultados de concursos, eleições, variedades de dados como cálculos. 
+
+LB - Dividir as tarefas igualmente entre nós. As requisições são direcionadas para o nó que estiver com o menor número de tarefas e de acordo c/ demanda.
+Ex: Utilizadas em aplicações WEB.
+
+ESCALABILIDADE HORIZONTAL- Aumentar a disponibilidade horizontal (scale out) em adicionar mais 'nós' ao sistema como um novo computador com uma nova aplicação.
+Ex: NoSQL.
+ESCALABILIDADE VERTICAL (scale up)- Significa adicionar recursos em um único 'nó' do sistema(mais memória,processador)
+
+Questão concurso -COMPERVE - TJ-RN - 2020:
+Para que um software seja considerado um SGBD deve ter como requisitos: COMPARTILHAMENTO DE DADOS, FORNECIMENTO DE MÚLTIPLAS INTERFACES E 
+RESTRIÇÕES DE INTEGRIDADE,  a qual responde com mais precisão sobre os conceitos de SGBD.
+
+GERENCIAMENTO de TRANSAÇÃO:
+	Uma transação é um conjunto de operações que realiza uma única função lógica em uma aplicação de BD.
+	Muitas das vezes várias operações no BD formam uma única unidade lógica de trabalho.
+	Um sistema de BD deve garantir as propriedades ACID(ATOMICIDADE,CONSISTÊNCIA,ISOLAMENTO,DURABILIDADE)
+
+ATOMICIDADE = Uma transação é uma unidade atômica de processamento que deve ser executada integralmente ou totalmente desfeita.
+LOGO, a transação será executada em sua totalidade, com todas as suas operações finalizadas e refletidas no BD, ou não será executada de modo algum.
+
+CONSISTÊNCIA = A execução de uma transação deve levar o banco de dados de um estado consistente a outro. Isso significa respeitar todas as restrições
+de integridade como unicidade de chaves e integridade referencial.
+	A execução completada a transação deverá levar o BD de um estado consistente para outro onde o BD deve satisfazer as restrições especificadas no
+esquema. Bem como quaisquer outras restrições que devam controlar o BD.
+
+ISOLAMENTO = A execução de uma transação não pode ser afetada por outras sendo executadas concorrentemente, devem ser isoladas. Para isso suas atuali-
+zações não devem ser efetivadas até que se tenha uma confirmação (COMMIT)
+O isolamento determina que uma transação deve ser executada como se estivesse isolado das demais.Cada transação assume que está sendo executada sozinha.
+O sistema garante que os resultados intermediários da transação permaneçam escondido de outras transações executando concorrentemente.
+
+DURABILIDADE = Os efeitos de uma transação confirmada não podem ser desfeitos, a menos que outra transação modifique tais dados. Sendo que se deve preve
+nir falhas durante a efetivação da transação.
+A durabilidade busca assegurar que as mudanças aplicadas no BD por uma transação efetivada devem persistir no BD. E as mudanças não devem ser perdidas
+em razão de uma falha,por exemplo.
+
+
+
+
+
+
+
+
+
+	
+
