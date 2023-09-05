@@ -1,0 +1,106 @@
+Gatilhos ( Triggers)
+
+- Um gatilho é disparado quando determinado evento de BD ocorre.
+- Composto por EVENTO, CONDIÇÃO E AÇÃO.
+- o EVENTO estã associado com operações (INSERT,UPDATE,DELETE)
+- Não é possível definir com SELECT, pois é uma consulta, ou seja os registros não são modificados.
+- Gatilhos não é padrão SQL.
+Sintaxe:
+CREATE OR REPLACE TRIGGER estoque
+BEFORE INSERT OR DELETE OF qtde ON item_venda
+REFERENCES OLD AS antigo NEW AS novo
+-Habilitar,Desabilitar e Remover gatilhos:
+ALTER TRIGGER <nome do gatilho> ENABLE | DISABLE
+
+Questão FCC - 2018 - DPE:
+Na especificação de uma trigger de um banco de dados relacional, há declaração de 3 estrututuras, denominadas:
+d)EVENTO,CONDIÇÃO E AÇÃO.
+2018 - FCC - DPE
+A função básica de um gatilho ou trigger, em BD relacional é:
+d)Executar comandos previamente declarados, quando da ocorrência de um evento no BD, também especificado em sua
+definição.
+2012 - FCC - TST
+Em um SGBD, normalmente é possível criar gatilhos(triggers), cujo disparo pode ocorrer em decorrência
+b)de alguma operação de exclusão,modificação ou inserção de um registro em uma tabela do BD.
+
+STORED PROCEDURES:
+É utilizada para armazenar funcionalidades que podem ser chamadas a partir de gatilhos ou aplicações escritas em 
+linguagens de programação.
+Vantagens: 
+1.Procedimentos Armazenados é compilada e armazenada no BD.
+2.Redução do tráfego de dados entre a aplicação e BD.
+3.Reutilização, ou seja, o procedimento pode ser utilizado em diversas aplicações.
+
+É necessário declarar e depois chama-la.
+Ex:
+CREATE PROCEDURE selecionar_produtos()
+BEGIN
+	SELECT*FROM PRODUTO;
+END
+DELIMITER;
+
+----chamada ---
+CALL <nome do procedimento>(parâmetros);
+CALL selecionar_produtos()
+
+--- Usado em MYSQL ----
+Questões:
+2011 - Banca: FCC TRT
+Com relação aos modos de parâmetros de procedures PL/SQL é correto afirmar:
+b)Existem três modos de parâmetros: IN,OUT e IN OUT
+2010 FCC - DPE
+Não se trata de uma característica das stored procedures:
+a.Acionar outra SP - SIM
+b.Utilizar somente comandos SQL padronizados - NÃO
+C.Receber diversos parâmetros de entrada. SIM
+d.Propiciar maior segurança no acesso aos dados. SIM
+e.Retornar um valor de status para indicar aceitação ou falha na execução. SIM
+2016 - Quadrix - CRO :
+Qual o conceito de uma coleção de comandos em SQL para otimização de BD e que encapsula tarefas repetitivas, aceita 
+parâmetros de entrada e retorna um valor de status(para indicar aceitação ou falha na execução)?
+e.Stored Procedures
+2014 - VUNESP
+Em bancos de dados relacionais, os procedimentos armazenados constituem uma ferrramenta disponibilizada:
+a.um tipo de tabela necessária ao sistema. Não
+b.um tipo de índice necessário ao sistema. Não
+c.o conjunto de usuários e senhas de um BD. Não
+d. o conjunto de domínios de cada tabela de BD. Não
+e.Programas armazenados no servidor de BD. SIM.
+
+Sistemas de BD distribuidos:
+É uma coleção de diversas bases de dados, interligadas logicamente através de uma rede de computadores.
+O SGBD Distribuído é o sistema de software que possibilita a gerência da base de dados distribuída e torna a distribuição transparente para o usuário.
+
+Características:
+REPLICAÇÃO = O sistema mantém várias cópias idênticas da relação e armazena cada uma em um local diferente.
+FRAGMENTAÇÃO = O sistema divide a relação em vários fragmentos, armazenando em locais diferentes.
+Fragmentação de dados uma relação R é dividida em uma série de fragmentos R1,R2...Rn.
+Os fragmentos contém informação suficiente para permitir a reconstrução da relação original R.
+Cada tupla da relação R precisa pertencer a pelo menos um dos fragmentos, de modo que a relação original possa ser reconstruída.
+
+Existem dois esquemas diferentes para fragmentar uma relação:
+1.Fragmentação Horizontal - Cada tupla da relação R precisa pertencer a pelo menos um dos fragmentos, de modo que a relação original possa ser reconstruída.
+2.Fragmentação Vertical - Envolve a definição de vários subconjuntos de atributos(colunas). R1,R2,Rn de modo que R seja formado pela UNIÃO desses subconjuntos.(Colunas)
+
+Transparência na Gerência dos Dados Distribuídos,Fragmentados e Replicados:
+- Transparência de Fragmentação - os usuários não precisam saber como uma relação foi fragmentada.
+- Transparência de Local - os usuários não sabem o local físico dos dados.
+- Transparência de Replicação - os usuários não precisam saber como a relação foi replicada.
+
+2011 - FCC - INFRAERO
+Analista - BD
+Em relação ao armazenamento de dados, em BD distribuídos, considere:
+I.Uma mesma tabela pode ser armazenada em mais de um servidor para aumentar a disponibilidade e o paralelismo. SIM - HORIZONTAL e/ou vertical, por exemplo.
+II.A localização das réplicas deve considerar os locais e usuários que acessam os dados replicados com maior frequência. SIM
+III. Na fragmentação horizontal, cada fragmento contém um subconjunto de tuplas da relação completa e cada tupla precisa ser armazenada
+em pelo menos um servidor. SIM
+IV.Na fragmentação vertical, as tuplas são distribuidas, uma a uma, entre os servidores, e cada servidor armazena as tuplas pertencentes a 
+determinadas faixas de valores. (vertical são colunas e não tuplas.)
+2017 - FCC - DPE
+Em sistemas de bancos de dados distribuidos utiliza-se, frequentemente, a técnica de replicação de tabelas, sendo que tal técnica apresenta como 
+características proporcionar:
+c. Maior disponibilidade,menor problema de concorrência e maior sobrecarga na atualização de réplicas.
+2011 - CESPE - MEC
+A fragmentação horizontal divide uma relação segundo seus atributos mantendo somente alguns atributos da relação. A fragmentação vertical de uma
+relação é um subconjunto das tuplas que pertencem a um fragmento especificado por uma condição sobre um ou mais atributos da relação. -ERRADO-
+ERRADO - as definições de fragmentação na questão estão invertidas.
