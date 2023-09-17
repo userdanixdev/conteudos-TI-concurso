@@ -1,0 +1,76 @@
+TIPOS DE USUÁRIOS:
+
+
+Projetista de BD
+	1.Responsável pela identificação dos dados a serem armazenados no BD e pela escolha da estrutura apropriada para 
+representar e armazenar esses dados.
+DBA -Database Administrator -  Administrador de Banco de Dados -
+	1. Monitora o uso do DB em relação a segurança,desempenho,disponibilidade.
+	2.Especifica as regras de segurança e autorização de acesso ao BD;
+	3.Define a estrutura de armazenamento e métodos de acesso;
+	4.Define procedimentos de cópia(backup),recuperação.
+	5.Implementa as políticas de segurança da organização.
+Programador de Aplicações:
+	Escreve os programas de aplicação. Realiza requisições do SGBD por meio de aplicações e comandos(DML) ou;
+	outras ferramentas de softwares para acessar base de dados. Ex: Interfaces, interfaces gráficas.
+USUÁRIO FINAL:
+	Manipulam o BD com linguagens de consulta e programas de aplicação:
+	LEIGOS =  Interagem com o BD através dos programas.
+	CASUAIS = Interagem com o BD com consultas mais complexas
+	AVANÇADOS = Interagem com o BD submetendo requisições em uma linguagem de consulta de banco de dados com comandos SQL
+ADMINISTRADOR DE DADOS:
+	Diminuir redundância de dados;
+	Definir padrões de nomenclatura
+	Levantamento de requisitos funcionais de BD. (Funcionalidades específicas e fundamentais de um aplicativo a ser criado.)
+	Cria modelo conceitual de BD.
+	Conhecimento de variedade de BD para atender a diversas áreas do negócio.
+PROJETISTA DE BD:
+	Responsável pela identificação dos dados que devem ser armazenados no BD, escolhendo a estrutura correta para representar e armazenar dados.
+	Muitas das vezes atuam como 'staff' do DBA, assumindo responsabilidade após a construção do BD.
+	É função do projetista avaliar as necessidades de cada grupo de usuários para definir as visões que serão necessárias, fazendo com que o BD
+seja capaz de atender as necessidades do clientes.
+ANALISTAS DE SISTEMAS E PROGRAMADORES DE APLICAÇÕES:
+	Desenvolvem aplicações específicas para transações que atendam os requisitos de negócio e os programadores implementam estas especificações
+com programas, testes,depuração e documentando(artefatos) e dando manuntenção ao mesmo.
+USUÁRIOS FINAIS:
+	Realizam consultas,atualizações e gerando documentos.
+		USUÁRIOS CASUAL: Acessam o BD usando linguagens de consultas para especificar suas necessidades.
+		USUÁRIO NOVATO: Utilizam consultas que já foram exaustivamente testada.
+		USUÁRIO SOFISTICADO: São usuários que estão familiarizado com o SGBD e realizam consultas complexas.
+
+Portanto, poderemos chamar um BD e o software SGBD de um SISTEMA DE BANCO DE DADOS.
+Refere-se a uma organização de componentes que define e regula a coleta,armazenamento e gerenciamento e a utilização de dados em um ambiente de BD.
+O sistema de BD é composto de cinco partes principais: Hardware,software,pessoas,procedimentos e dados.
+HARDWARE:
+	Refere-se a todos os dispositivos físicos do sistema como os próprios computadores(estação de trabalho, servidores), dispositivos de armaze-
+namento, impressoras,dispositivos de rede(hub,swtiches,roteadores,fibra ótica).
+SOFTWARE:
+	O funcionamento completo do sistema de SGBD necessita de trê tipos de softwares: Sistema Operacional, SGBD, aplicativos e usuários.
+	SISTEMA OPERACIONAL:
+			- Gerencia todos os componentes de hardware e possibilita que os outros softwares sejam executados nos computadores.
+	SGBD:
+			- Gerencia o BD em um sistema de BD. Alguns exemplos são: SQL Server,Oracle,MySQL.
+	Aplicativos/utilitários:
+			- São utilizados para acessar e manipular dados no SGBD através de aplicativos para gerar relatórios,tabelas e outras info.
+para facilitar na tomada de decisão.
+			- Utilitários podem ser chamados de interfaces gráficas para suporte de criação de estruturas e modelagem de dados. Assim como
+controlar acesso e monitorar operações.
+
+PESSOAS:
+ 	- São os usuários finais, administradores de sistemas,administradores de BD, projetistas de BD, analistas e programadores de sistema.
+PROCEDIMENTOS:
+	- São instruções e regras que orientam o projeto e a utilização do sistema de BD. Aplicam padrões pelos quais os negócios são conduzidos dentro
+da organização e em relação aos clientes. Também são utilizados para garantir que haja um modo organizado de monitorar e auditorar tanto os dados que entra no
+banco como as informações geradas pela utilização desses dados.
+	DADOS:
+	São a matéria prima e bruta a partir do qual as informações são geradas.
+	Sendo assim, um grande objetivo de um sistema de BD é prover aos usuários uma visão abstrata dos dados. Dessa forma, o sistema omite certos detalhes de
+como os dados são armazenados e mantidos. Uma vez que muitos usuários de BD não são treinados para computação, a complexidade está escondida por meio
+de diversos níveis de abstração pelos quais o BD pode ser visto, que simplificam a interação do usuário com o sistema.
+	Uma arquitetura conhecida é a ANSI/SPARC, fundamentada em três níveis em que cada nível corresponde a uma abstração diferente mas que se ligam e podem
+independer umas das outras.
+	1.Nível de Visão do Usuário(EXTERNO);
+	2.Nível Lógico (CONCEITUAL);
+	3.Nível Físico(INTERNO).
+
+		
