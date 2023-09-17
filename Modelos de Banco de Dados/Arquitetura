@@ -1,0 +1,153 @@
+Arquitetura BD:
+Gerenciador de dados armazenados: Controla o acesso aos dados armazenados no disco.
+Compilador(processador) DDL: compila as definições do esquema,armazenando-as no catálogo do SGBD.
+Processador do BD em tempo de execução(run-time): Recebe operações de recuperação ou atualização e executa tais operações sobre o BD.
+Compilador de consultas: Compila as consultas de alto nível que são fornecidas interativamente e gera chamadas run-time.
+Pré-compilador DML: Extrai comandos DML de um programa de aplicação escritos em uma linguagem de programação hospedeira e envia ao
+compilador DML.
+Compilador DML: recebi e compila comandos DML extraídos pelo pré-compilador e gera o código objeto para acesso ao BD.
+
+ortanto, poderemos chamar um BD e o softares SGBD de um SISTEMA DE BANCO DE DADOS.
+Refere-se a uma organização de componentes que define e regula a coleta,armazenamento e gerenciamento e a utilização de dados em um ambiente de BD.
+O sistema de BD é composto de cinco partes principais: Hardware,software,pessoas,procedimentos e dados.
+HARDWARE:
+	Refere-se a todos os dispositivos físicos do sistema como os próprios computadores(estação de trabalho, servidores), dispositivos de armaze-
+namento, impressoras,dispositivos de rede(hub,swtiches,roteadores,fibra ótica).
+SOFTWARE:
+	O funcionamento completo do sistema de SGBD necessita de trê tipos de softwares: Sistema Operacional, SGBD, aplicativos e usuários.
+	SISTEMA OPERACIONAL:
+			- Gerencia todos os componentes de hardware e possibilita que os outros softwares sejam executados nos computadores.
+	SGBD:
+			- Gerencia o BD em um sistema de BD. Alguns exemplos são: SQL Server,Oracle,MySQL.
+	Aplicativos/utilitários:
+			- São utilizados para acessar e manipular dados no SGBD através de aplicativos para gerar relatórios,tabelas e outras info.
+para facilitar na tomada de decisão.
+			- Utilitários podemo ser chamados de interfaces gráficos para suporte de criação de estruturas e modelagem de dados. Assim como
+controlar acesso e monitorar operações.
+
+PESSOAS:
+ 	- São os usuários finais, administradores de sistemas,administradores de BD, projetistas de BD, analistas e programadores de sistema.
+PROCEDIMENTOS:
+	- São instruções e regras que orientam o projeto e a utilização do sistema de BD. Aplicam padrões pelos quais os negócios são conduzidos dentro
+da organização e em relação aos clientes. Também são utilizados para garantir que haja um modo organizado de monitorar e auditorar tanto os dados que entra no
+banco como as informações geradas pela utilização desses dados.
+DADOS:São a matéria prima e bruta a partir do qual as informações são geradas.
+Sendo assim, um grande objetivo de um sistema de BD é prover aos usuários uma visão abstrata dos dados. Dessa forma, o sistema omite certos detalhes de
+como os dados são armazenados e mantidos. Uma vez que muitos usuários de BD não são treinados para computação, a complexidade está escondida por meio
+de diversos níveis de abstração pelos quais o BD pode ser visto, que simplificam a interação do usuário com o sistema.
+Uma arquitetura conhecida é a ANSI/SPARC, fundamentada em três níveis em que cada nível corresponde a uma abstração diferente mas que se ligam e podem
+independer umas das outras.
+	1.Nível de Visão do Usuário(EXTERNO);
+	2.Nível Lógico (CONCEITUAL);
+	3.Nível Físico(INTERNO).
+
+1.Nível de Visão:
+	1.1 - É o nível mais alto de abstração, descreve partes do BD de acordo com a necessidade do usuário.
+2.Nível Lógico:
+	2.1 - Descreve QUAIS dados estão armazenados e seus relacionamentos. E que envolvem estruturas complexas do nível abaixo(físico).
+3.Nível Físico:
+	3.1 - Descreve COMO os dados estão armazenados, englobando estruturas complexas de linguagens.
+
+OBS: O MODELO DE ARQUITETURA BÁSICA DE SGBD(ANSI/SPARC) É DIVIDIDO EM TRÊS CAMADAS QUE SÃO CHAMADAS DE NÍVEIS. A VISÃO MAIS PRÓXIMA DO USUÁRIO É A
+EXTERNA. DEFINI-SE REGRAS DE NEGÓCIO, A TECNOLOGIA A SER USADA.
+OBS02:A VISÃO CONCEITUAL DESCREVE QUAIS DADOS ESTÃO ARMAZENADOS E SEUS RELACIONAMENTOS.
+OBS03:A VISÃO INTERNA DESCREVE COMO OS DADOS ESTÃO REALMENTE ARMAZENADOS.
+
+Agora a habilidade de modificar a definição de um esquena em um nível sem afetar a definição de esquema num nível mais ALTO é chamado de
+'INDEPENDÊNCIA DE DADOS'.
+É A CAPACIDADE DE ALTERAR O ESQUEMA EM UM NÍVEL SEM ALTERAR O ESQUEMA DO NÍVEL MAIS ALTO.
+NAVATHE:
+	Independência lógica de dados: A capacidade de alterar o esquema conceitual sem ter de alterar os esquemas externos ou de programas de aplicação.
+	Independência física de dados: A capacidade de alterar o esquema interno sem ter de alterar o esquema conceitual e, por consequência, sem ter
+que alterar os esquemas externos.	
+
+Outras definições:
+	1.Independência de dados lógica: Modifica o esquema lógico sem que com isso qualquer programa aplicativo precise ser reescrito. As modificações 
+no nível conceitual são necessárias quando a estrutura lógica do BD é alterada.
+	2.Independência de dados física: Modifica o esquema físico sem que com isso qualquer programa aplicativo precise ser reescrito.(as modificações
+no nível físico são ocasionalmente necessárias para aumento de desempenho.)
+Observação importante:
+	A INDEPENDÊNCIA DE DADOS PODE SER DEFINIDA COMO A IMUNIDADE DAS APLICAÇÕES AS ALTERAÇÕES FEITAS, SEJA NO NÍVEL LÓGICO OU FÍSICO DE UM DB.
+	O OBJETIVO É ALCANÇAR O MÁXIMO DE INDEPENDÊNCIA POSSÍVEL.
+Normalmente, modificações no nível físico visam a melhoria de desempenho.
+Logo, a independência lógica dos dados é mais difícil de ser alcançada do que a independência física devido aos programas serem bastante dependentes 
+da estrutura lógica dos dados que eles acessam.
+
+ESQUEMAS e INSTÂNCIAS:
+	A DESCRIÇÃO de um BD é chamada de ESQUEMA DE UM BD que é especificado durante o projeto de BD. Geralmente ocorrem poucas mudanças no esquema
+do BD.
+O esquema são as COLUNAS ou ATRIBUTOS
+ESQUEMA é o projeto geral do BD que são alterados com pouca frequência.
+	Os dados armazenados em um determinado INSTANTE DO TEMPO forma um conjunto chamado de instância do BD. A instância altera toda vez que uma 
+alteração no BD é feita.
+A instância são seus valores que mudam constantemente. São um conjunto de informações contidas no BD em um dado momento.
+O SGBD É RESPONSÁVEL POR GARANTIR QUE TODA A INSTÂNCIA DO BD SATISFAÇA AO ESQUEMA DO BD, RESPEITANDO SUA ESTRUTURA E SUAS RESTRIÇÕES.
+PORTANTO, UM ESQUEMA DE BD CORRESPONDE AS DECLARAÇÕES DE VARIÁVEL EM UM PROGRAMA.
+
+METADADOS :
+	Os Metadados fornecem uma descrição das características dos dados e do conjunto de relacionamento que ligam os dados encontrados no BD.
+Fornecem informações que complementam e expandem o valor e a utilização dos dados. Trazem uma representação mais completa dos dados no BD.
+É um dos principais instrumentos do Administrador de Dado por que descreve diversos ATRIBUTOS necessários para IDENTIFICAR,LOCALIZAR,COMPREENDER e 
+GERENCIAR dados.
+	Os metadados armazenam,estruturam e correlacionam, preferencialmente em um repositório de metadados. Possibilitando a VISUALIZAÇÃO INTEGRADA
+DE TODO O AMBIENTE DE DADOS DA EMPRESA. Como modelos inter-relacionados, associações destes com os processos funcionais,bases de dados, fluxos de
+informações,infraestrutura de processamento/comunicação.
+METADADO ESTRUTURAL:
+	Representa a informaçãoque descreve a organização e a estrutura dos dados gravados. Informações sobre o formato, tipos de dados usados e o 
+relacionamento sintático entre eles.
+METADADO SEMÂNTICO:
+	Fornece informações sobre o significado dos dados disponíveis e seus relacionamentos SEMÂNTICO. Linhagem de dados(fontes), qualidade(atual)
+o valor do dado(em sua forma de medida ou escala).
+METADADO TÉCNICO: 
+	Descrição dos dados necessários para as diversas ferramentas que precisam armazenar,manipular ou movimentar dados. O próprio BD pode ser a
+ferramenta. Ferramentas OLAP (online Analitical Processing) também
+METADADO DE NEGÓCIOS:
+	Descrição de dados pelos usuários de negócios. Para entender o contexto do negócio e o significado dos dados. Atualmente existem ferramentas
+só para efeito de documentação. Representa instruções de regras de negócio. BD NoSQL por exemplo.
+	O protocolo OAI-PMH(open Archives Initiative-Protocol for Metadada Harvesting)(protocolo aberto de arquivos para coleta de metadados)
+	é um padrão internacional para interoperabilidade de repositórios digitais. Opera sobre o PROTOCOLO HTTP.
+	Eles respondem com metadados estruturados em registros XML, padrão de metadados.
+
+DICIONÁRIO DE DADOS:
+	É uma coleção de metadados que contêm definições e representações de elementos de dados.
+	Dentro do contexto de SGBDs, um dicionário de dados é um grupo de tabelas,habilitadas apenas para leitura ou consulta,ou seja, é uma base de
+dados que contêm:
+	1.Definição precisa sobre elementos de dados;
+	2.Perfis de usuários,papéis e privilégios;
+	3.Descrição de objetos;
+	4.Integridade de restrições
+	5.Stored Procedures e gatilhos;
+	6.Estrutura geral da base de dados
+	7.Informação de verificação
+	8.Alocação de espaço.
+
+UM DOS BENEFÍCIOS DE UM DICIONÁRIO DE DADOS BEM PREPARADO É A CONSISTÊNCIA ENTRE ITENS DE DADOS POR MEIO DE DIFERENTES TABELAS.
+
+CATÁLOGO OU DICIONÁRIO DE DADOS DO SGBD:
+	- Definição ou descrição completa dos metadados que fica armazenada no dicionário de dados do SGBD.
+Esse catálogo contém informações como: 
+					Estrutura de cada tipo de arquivo;
+					Tipo;	
+					Formato de armazenamento de cada item de dados;
+					Restrições sobre os dados;
+					Armazena informações sobre todos os esquemas e todos os mapeamentos correspondentes;
+					Utilizado pelo SGBD e também por usuários do BD que precisam de informações sobre a estrutura do BD.	
+
+GERENCIAMENTO de TRANSAÇÃO:
+	Uma transação é um conjunto de operações que realiza uma única função lógica em uma aplicação de BD.
+	Muitas das vezes várias operações no BD formam uma única unidade lógica de trabalho.
+	Um sistema de BD deve garantir as propriedades ACID(ATOMICIDADE,CONSISTÊNCIA,ISOLAMENTO,DURABILIDADE)
+
+ATOMICIDADE = Uma transação é uma unidade atômica de processamento que deve ser executada integralmente ou totalmente desfeita.
+LOGO, a transação será executada em sua totalidade, com todas as suas operações finalizadas e refletidas no BD, ou não será executada de modo algum.
+CONSISTÊNCIA = A execução de uma transação deve levar o banco de dados de um estado consistente a outro. Isso significa respeitar todas as restrições
+de integridade como unicidade de chaves e integridade referencial.
+ISOLAMENTO = A execução de uma transação não pode ser afetada por outras sendo executadas concorrentemente, devem ser isoladas. Para isso suas atuali-
+zações não devem ser efetivadas até que se tenha uma confirmação (COMMIT)
+DURABILIDADE = Os efeitos de uma transação confirmada não podem ser desfeitos, a menos que outra transação modifique tais dados. Sendo que se deve preve
+nir falhas durante a efetivação da transação.
+
+2018 Banca:CESPE-FUB
+Um ESQUEMA de BD geralmente agrupa e apresenta as diferentes tabelas, seus campos e o relacionamento entre eles e outras tabelas. - SIM -
+Sim, em outras palavras, um esquema de banco dados indica como as entidades que compõem o BD se relacionam entre si, incluindo tabelas, exibições,
+procedimentos armazenados e muito mais.
