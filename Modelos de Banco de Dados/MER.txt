@@ -1,0 +1,261 @@
+MER - Modelo ENTIDADE RELACIONAMENTO - Peter Chen
+Instância:
+	- É a coleção de dados armazenados no BD em um determinado momento.
+	- Sofre alterações constantemente.
+
+ESQUEMA:
+	- Não sofre alterações com frequência.
+	- É a descrição de BD incluindo as entidades e os relacionamentos entre estas.	 
+
+Atributo:
+	É uma propriedade que descreve uma característica particular de um entidade.
+	Caracteriza uma Entidade ou um Relacionamento.
+
+Exemplo: Uma entidade Aluno possui atributos CPF,NOME,MATRICULA,TELEFONE,ENDEREÇO,SEXO,DATA NASCIMENTO.
+	 Uma entidade AUTOMÓVEL possui atributos PLACA,CHASSI,COR,MODELO,MARCA,ANO.
+
+ATRIBUTOS SIMPLES -  São indivisíveis - Não podem ser decompostos em atributos mais básicos. São considerados ATÔMICOS.
+		     Exemplo: SEXO,PESO,COR.
+
+ATRIBUTO COMPOSTO - SÃO DIVISÍVEIS - Podem ser decompostos. Exemplo: O atributo: endereço pode ser dividido em cep, complemento,bairro
+							    Atributo : NOME, em sobrenome, nome. Atributo telefone em celular,fixo.
+
+ATRIBUTO MONOVALORADO - Possui um único valor para uma instância na entidade.
+Exemplo: altura,sexo,peso.
+ATRIBUTO MULTIVALORADO - Possui múltiplos valores para uma instância da entidade.
+OBs: EM UM PROJETO DE BD OS ATRIBUTOS COMPOSTOS OU MULTIVALORADOS NÃO PODEM TER VÁRIOS VALORES NO MESMO ATRIBUTO. <-- NORMALIZAÇÃO.
+Exemplo: telefone,.
+ATRIBUTOS ARMAZENADOS: É armazenado no BD.
+ATRIBUTO DERIVADO: Pode ser obtido a partir de outros atributos ou de entidades relacionadas.
+Exemplo: data de nascimento - idade / nome - sobrenome
+ATRIBUTO COMPLEXO: O atributo pode ser composto e multivalorado ao mesmo tempo. Exemplo: Endereço já é composto - Uma poessoa pode possuir mais de um endereço.
+VALORES NULOS: Uma entidade pode não possuir valor para determinado atributo, por não ser aplicável. O valor nulo pode ser utilizado quando não se sabe
+o valor do atributo. Exemplo: Número certificado reservista do servidor (NULL) -  AUSÊNCIA DE VALOR.
+
+2019-Banca:UFCG/Analista:
+Um modelo básico de entidade-relacionamento é composto por tipos de entidades e especifica relacionamentos existentes entre entidades. Com base nesse
+tema:
+a) Esse modelo foi desenvolvido no começo dos anos 1990 -  [NÃO][Foi desenvolvido antes, ANOS 70]
+b) Somente entidades podem possuir atributos [Não][Relacionamentos também pode possuir atributos]
+c) De acordo com Peter Chen, autor desse modelo, entidades são instâncias de tipos de entidades. (CORRETO)
+d) Uma entidade só pode representar algo que existe fisicamente. [Não][Existem entidades abstratas]
+e) Na notação de Chen, relacionamentos são representados por retângulos[Não][Por LOSÂNGULOS] {Retângulo é entidade}
+
+DOMÍNIO DE VALORES DE UM ATRIBUTO:
+	DOMÍNIO DE VALORES:
+			- Cada atributo de um tipo de entidade está vinculado a um conjunto de valores, ou domínio de valores.
+			- Especifica os valores aquele atributo para cada instância de entidade.[TIPO DO DADO]
+Exemplo: ENDEREÇO É caractere
+	 Ano do veículo: tipo de valor - INTEIRO. [YEAR  em BD.	]
+
+ATRIBUTO CHAVE(IDENTIFICADOR) - é um atributo que identifica unicamente cada instância de uma entidade. Não pode se repetir.
+Exemplo: Número prontuário paciente; CPF,CHASSE DO VEÍCULO
+CHAVE COMPOSTA - A chave pode ser formada por mais de um atributo. A combinação dos valores dos atributos é que torna única cada instância da entidade.
+Exemplo: Atributos CPF_paciente + CRM_médico + data_consulta = Chave COMPOSTA = Identificam unicamente instância da entidade consulta.
+SUPERCHAVE = É considerado qualquer conjunto de um ou mais atributos cujos os VALORES SÃO DISTINTOS para cada instância de entidade.
+			Subconjunto de atributos da entidade que identifique unicamente cada instância.
+				Combinação de valores que não se repete para a superchave
+
+Exemplo: Aluno = {Nome,Idade,Curso,Matrícula,CPF}
+	 SC01(aluno)= {Nome, curso,matricula}
+	 SC02(aluno)= {Idade,Nome,CPF}
+
+A chave é considerada uma superchave da qual não se pode excluir nenhum atributo identificador único e ainda preservar a propriedade de identificação única.
+obs: A superchave é uma chave de cardinalidade mínima.
+
+CHAVE CANDIDATA: É considerado uma superchave com conjunto mínimo de atributos.
+**** PODE EXISTER MAIS DE UMA CHAVE PARA UMA MESMA ENTIDADE. A CHAVE CANDIDATA É UMA SUPERCHAVE. [Para isso precisa ter um conjunto mínimo de atributos]
+Exemplo: Aluno = {Nome, idade, curso, matricula, CPF}
+		 * CH01(aluno) = {Matrícula} < ---- Chave condidata que pode ser eleita, por pertencer ao mundo real e por ter conjunto mínimo e identificador único.
+		 * CH02(aluno) = {CPF}  <--- Chave candidata que pode ser eleita, por ter conjunto mínimo de atributos e identificador único.
+Obs: As vezes a escolha de uma chave candidata leva em consideração do mundo real. ***
+
+CHAVE PRIMÁRIA:
+		- É considerada a chave candidata que foi escolhida no projeto de BD para identifcar unicamente as instâncias de determinada entidade.
+(mundo relacional é do projeto lógico,implemental. Já conceitos representativos não levam em conta a implementação. ATENÇÃO! )
+CHAVE SECUNDÁRIA/ALTERNATIVA = Continua sendo a chave candidata que não foi eleita.
+
+REPRESENTAÇÃO DOS ATRIBUTOS:
+	-	Atributo SIMPLES é um círculo comum
+	-	Atributo CHAVE é um círculo com um SUBLINHADO ou um círculo preto.
+	-	Atributo DERIVADO é um círculo feito por traços.(espaços no círculo)
+	-	Atributo MULTIVALORADO = Um círculo comum e um outro círculo dentro ao redor do primeiro círculo.
+	-	Atributo COMPOSTO = Vários círculos, por fora, feitos a partir de um círculo único.
+	-	Atributo Parcial de ENTIDADE FRACA é um círculo com SUBLINHADO tracejado dentro do círculo.
+
+IDECAN/UNIVASF/2019:
+A modelagem conceitual é uma fase muito importante no projeto de aplicação que envolve banco de dados. O modelo de ENTIDADE-RELACIONAMENTO é um modelo
+conceitual de dados popular e de alto nível. Sobre o modelo:
+a) O objeto básico que representa o modelo ER é um atributo chave-primária. [NÃO][O Objeto básico e fundamental é a ENTIDADE e o RELACIONAMENTO, E NÃO A CHAVE]
+B) Uma entidade nunca deve representar um objeto com existência física(ex:funcionário) [NÃO][PODE TER EXISTÊNCIA FÍSICA OU ABSTRATA DO MUNDO REAL]
+C) O grau de um tipo de relacionamento é o número de tipos de atributos-chaves-participantes.[NÃO][No modelo E-R O grau de relacionamentos são as CARDINALIDADES e seus ATRIBUTOS e é definido por chaves estrangeiras e não pelas primárias]
+D) Diagramas de classes UML não podem ser usados como uma notação alternativa ao diagrama ER.[ERRADO][Diagramas UML podem ser usados como uma notação alternativa ao diagrama E-R, mas não foi destinado à isso.]
+e) O modelo ER descreve os dados como entidades, relacionamentos e atributos. [SIM]
+
+RElACIONAMENTOS:
+	É uma associação entre entidades que representa um fato do mundo real
+	Quando um atributo de uma entidade A refere-se a um atributo da entidade B dizemos que existe um relacionamento entre A e B
+	Exemplo:
+		funcionário[Entidade A] TRABALHA PARA [relacionamento que associa que o funcionário trabalha para o dpto] departamento[Entidade B]
+		Retângulo ---- Losângulo---- Retângulo
+
+Grau de relacionamentos:
+	-Grau 02 - Envolve 2 entidades - Binário
+	-Grau 03 - Envolve 3 entidades - Ternário - Exemplo: Fornecedor(entidade) --- Fornece(relacionamento) ---- Peça(entidade)
+											      |
+										      Projeto(entidade 03)		
+Existe o relacionamento Recursivo:
+	- O relacionamento associa instâncas da mesma entidade. Relaciona uma entidade com ela mesma. [AUTO RELACIONAMENTO]
+Exemplo: Supervisor(entidade) supervisiona(relaciona) supervidor(entidade)
+
+Restrição de Cardinalidade:
+	Determina o número máximo de instâncias de relacionamento na qual a entidade pode participar.
+
+	* M:N(muitos-para-muitos) -  Entidade A está associada a várias instâncias(M) da Entidade B.
+				     Entidade B está associada a várias instâncias(N) da Entidade A.
+	
+	* 1:N(um-para-muitos) -      Uma entidade A está associada a várias instâncias (M)da Entidade B
+				     Uma entidade B está associada,no máximo, a 1(uma) instância da Entidade A. 		
+	
+	* 1:1(um-para-um) 	-    Uma Entidade A está associada,no máximo, a 1(uma)instância da  Entidade B 
+				     E a Entidade B está associada, no máximo, a 1(uma) instância da Entidade A.
+
+Exemplos:
+	Cardinalidade (um-para-um):
+	- Funcionário[ENTIDADE-01]-(1)--- Gerencia ----(1)-Departamento[ENTIDADE-02]	
+	( A leitura correta: O funcionário[entidade-01] se relaciona (GERENCIA - LOSÂNGULO) com somente 1 (um) departamento[Entidade-02].
+	( Assim como o departamento se relaciona[gerenciado] por um funcionário ).
+
+	Cardinalidade (muitos-para-um):
+	- Funcionário[entidade-01]--(n)----- Trabalha[relacionamento]-----(1)-- Departamento[Entidade-02]
+	( a leitura: O funcionário trabalha para somente 1 departamento)
+	( o departamento possui vários funcionários. )
+	
+	Cardinalidade (muitos-para-muitos):
+	- Médico[entidade]--(m)---consulta(relacionamento)----(m)--Paciente[Entidade2]
+	- Sendo assim o médico possui várias instâncias (m) com pacientes através do relacionamento [CONSULTA]
+	- E o paciente[entidade-02] possui vários médicos, instâncias (m), através da consulta(relacionamento).
+
+Restrição de Cardinalidade Mínimo e Máximo:
+	- Envolve associar um par de número inteiros(mínimo e máximo) a cada participação de um determinado relacionamento.	
+	
+	* Funcionário-(1,1)---Gerencia---(1,1)--- Departamento :
+	A entidade funcionário gerencia(relaciona) com no mínimo(1) departamento e no máximo com (1) departamento. (1{mín},1{máx})
+	Assim como a entidade departamento é gerenciada(relação) com no mínimo(1) um funcionário e no máximo 1 funcionário.
+Obs: A restrição de cardinalidade mínima pode ser 0(zero), ou seja, nenhuma instância mesmo tendo relação e um (1) e máximo 2 ou N(vários).
+
+Entidade Fraca:
+		- Definido como um tipo de entidade que não possui identificação própria.
+		- Está sempre associada a uma entidade forte por meio de um relacionamento identificador.
+---- ELA SOMENTE EXISTE PELA CHAVE PRIMÁRIA DA ENTIDADE FORTE. -----
+Representação: Retângulo cercado.
+
+Atributo de Relacionamento:
+			- É entendido como um valor determinado pela combinação das entidades participantes em uma instância do relacionamento.
+
+MER por James Martin:
+			- PRINCIPAIS DIFERENÇAS - 
+	- Características por linhas, somente linhas de ligação.
+	- Somente relacionamentos binários. (não tem ternário, raramente.)
+	- Notação para cardinalidade é gráfica:
+					
+2014-CESPE - ANTAG
+Com relação à administração de dados é recomendável utilizar chaves primárias compostas como identificadores de relações compostas, oriundas
+de um relacionamentos (M:N)muitos para muitos.[CERTO]
+[Na implementação de relacionamentos muitos para muitos, a regra é a criação de uma terceira tabela com chave composta]
+
+
+2015-EXATUS-BANPARÁ
+Em um relacionamento m:n(muitos para muitos)
+a- É necessário criar uma chave da entidade do lado 'n' como chave estrangeira na tabela no lado 'm'. 
+b- É necessário criar ambas as chaves em todas as tabelas envolvidas como chaves estrangeiras.
+c- é necessário criar chaves primárias adicionais, em cada uma das tabelas, para estabelecer o relacionamento entre as entidades.
+d - é necessário criar uma nova tabela com as chaves das entidades envolvidas no relacionamento.[CORRETO]
+e - é necessário acrescentar a chave da entidade do lado m, como chave estrangeira, na tabela no lado n.
+
+MER é semântico e existe uma ESTENDIDO com conceitos adicionais.
+Usado em aplicações mais complexas:
+	-	Projetos de Engenharia
+	-	 Sistemas Geográficas
+	-	Traz conceitos da orientação a objeto. ( A qual não existia no MER original) Compatibilizar com o paradigma atual.
+
+
+GENERALIZAÇÃO(Abstrair)- SUBIR - Classe ou superclasse
+ESPECIALIZAÇÃO(detalhamento) - Sub-classes ( entidade mais específica)
+
+Exemplo: Empregado (entidade classe)
+	 Médico (entidade sub-classe de empregado - Especialização)
+	 Professor ( entidade sub-classe de empregado - Especialização)
+	Engenheiro ( entidade sub-classe herdada da entidade EMPREGADO)
+
+Sendo assim:
+	Sub-classe:
+		- Decorre do agrupamento de entidades em subgrupos de um determinado tipo
+O relacionamento entre a SUPERCLASSE E A SUBCLASSE É CHAMADO DE 'IS-A' - 'É UM' - Algumas representações são triangulares.
+
+HERANÇA - A Sub-classe herda os atributos da superclasse,bem como os relacionamentos em que a superclasse participa.
+	- Todo membro de uma subclasse também é membro da superclasse. ( devido aos atributos incorporados )
+	- O membro da SUPERCLASSE pode não ser membro das subclasses. ( pode ser genérico, sem especialização e depender do fluxo do negócio )
+	- Assim também o membro da superclasse pode ser membro das subs.
+
+ESPECIALIZAÇÃO:
+	É o processo de definição de um conjunto de entidade de baixo nível(subclasses) a partir de entidades de alto nível(superclasse).
+	- Os atributos das subclasses são comuns a todos da superclasse.
+	- Subclasses podem participar de relacionamentos específicos.
+
+- O PROCESSO DE ESPECIALIZAÇÃO PERMITE DEFINIR UM CONJUNTO DE SUBCLASSES DE UM TIPO DE ENTIDADE;
+- ESTABELECER ATRIBUTOS ESPECÍFICOS ADICIONAIS EM CADA SUBCLASSE;
+- ESTABELECER RELACIONAMENTOS ESPECÍFICOS ENTRE AS SUBCLASSES E OUTRAS ENTIDADES DO MODELO.
+
+Generalização - É definido como o processo de reversão da abstração através do qual suprime-se diferenças entre diversos tipos de entidades,
+generalizando numa única superclasse.
+
+Exemplo: [ENTIDADE-01]PESSOA FÍSICA X [ENTIDADE-02]PESSOA JURÍDICA a qual podemos REVERTER A ABSTRAÇÃO e SUPRIMIR as diferenças e criar um 
+SUPERCLASSE diminuindo a redundância de dados sem repetição de atributos.
+
+RESTRIÇÕES:
+	- Um membro de uma superclasse deve ser membro de no máximo uma única SUBCLASSE: - Restrição de DISJUNÇÃO
+		[Ou ele pode ser médico ou professor][Exclusão mútua = Não pode ser as duas ao mesmo tempo.]
+	- Um membro de uma superclasse pode ser membro de mais de uma subclasse: - OVERLAP[Sobreposição] 
+		(Uma entidade superclasse pode ter duas subclasses)
+		[Ele pode ser GERENTE e ENGENHEIRO]
+
+RESTRIÇÃO DE COMPLETUDE:	
+	Cada Entidade de uma superclasse deve ser membro de alguma subclasse na especialização. Representado por duas linhas paralelas.
+							Completude TOTAL (disjunção)
+
+RESTRIÇÃO DE COMPLETUDE PARCIAL:
+	- Uma entidade de uma superclasse pode não pertencer a uma subclasse (disjunção parcial)
+
+AGREGAÇÃO - MER ESTENDIDO - é entendido como uma abstração através da qual relacionamentos são tratados como entidades. 
+	RELACIONAMENTO SE LIGAR A OUTRO RELACIONAMENTO. ( São como entidades ) Somente MER ESTENDIDO
+				*** NO CLÁSSICO NÃO ACONTECE ***
+
+2008-CESPE-IPEA
+Com relação a modelagem de dados:
+	- No MERE, a especialização é o processo de definir um conjunto de subclasses de um tipo de entidade chamado superclasse da especialização.
+O processo de especialização permite estabelecer atributos específicos adicionais para cada subclasse, uma entidade membro de uma subclasse herda 
+atributos específicos adicionais para cada subclasse. Uma entidade membro de uma subclasse herda atributos da superclasse e relacionamentos nos quais
+a superclasse participa.
+
+2016-CESPE-TRE-PI
+Acerca do MERE:
+	a) Uma restrição de disjunção pode ser aplicada a uma especialização, na qual deve ser especificado que as subclasses da especialização devem
+ser mutuamente exclusivas.[CORRETO] (Na especialização tem a restrição de ser um ou outro - A restrição de disjunção PARCIAL)
+	b) A generalização é o resultado da separação de um tipo-entidade de nível mais alto - superclasse - e forma vários tipos entidades de nível
+mais baixo - subclasse.[errado][Isso é especialização. O conceito está invertido na questão.]
+	c) Uma entidade, que é membro de uma subclasse, nem sempre herda todos os atributos da entidade como um membro da superclasse.[errado][SEMPRE HERDA]
+	d) O modelo em questão incorpora conceitos de modelagem entidade-relacionamento, herança, encapsulamento e polimorfismo.[ERRADO]	
+	[O modelo estendido traz alguns conceitos de orientação a objetos,não são todos.HERANÇA É UM CONCEITO USADO.]
+	[Encapsulamento não há como trazer esse conceito para o modelo.]
+	e) A simbologia do referido modelo é a mesma do modelo entidade relacionamento, não havendo novas representações.[NÃO É MESMA, VÁRIAS MUDANÇAS]
+
+
+Patrícia Quintão - MER
+	Modelo de dados:
+			- Um modelo de dados é um conjunto de conceitos que podem ser utilizados para descrever a estrutura lógica e física de um BD.
+Os modelos de dados podem ser divididos em CONCEITUAIS,REPRESENTATIVOS e FÍSICOS.
+	Os modelos de dados conceituais apresentam os dados da forma como os usuários finais percebem. Fornecem
+
+
+	  	
