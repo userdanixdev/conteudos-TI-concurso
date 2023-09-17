@@ -1,0 +1,715 @@
+Patrícia 
+Quintão - 
+MER
+	Modelo de dados:
+			- Um modelo de dados é um conjunto de conceitos que podem ser utilizados para descrever a estrutura lógica e física de um BD.
+Os modelos de dados podem ser divididos em CONCEITUAIS,REPRESENTATIVOS e FÍSICOS.
+	Os modelos de dados conceituais apresentam os dados da forma como os usuários finais percebem. Fornecem uma visão mais próxima do modo como os
+usuários visualizam os dados realmente. O exemplo é o MODELO DE ENTIDADE RELACIONAMENTO (MER).
+	Os modelos de dados representativos ou lógicos ou de implementação : 
+		- São introduzidos informações sobre a forma pela qual os dados são armazenados dentro de um computador.
+			Exemplo: Grande exemplo temos o MODELO RELACIONAL (Tabelas)
+	Modelos físicos: Conhecido como de BAIXO NÍVEL. Oferecem uma visão detalhada do modo como os dados estão realmente armazenados no PC.
+	** LEVA EM CONSIDERAÇÃO TODAS AS REGRAS E LIMITAÇÕES DE BD.** Contém a descrição da implementação da base de dados assim como são descritas
+as estruturas de armazenamento e os métodos de acesso.
+	Outros modelos pouco utilizados:
+	- Modelo Hierárquico ou de árvore - 
+	- Árvore composta por nós. O nível mais alto da árvore denomina-se RAIZ. TOPO
+	- Cada nó representa um REGISTRO com seus CAMPOS. 
+Sua estrutura então é uma coleção de registros que são conectados uns aos outros por meio de ligações.
+Sendo que cada REGISTRO é uma coleção de CAMPOS(atributos), os quais contêm apenas um valor de dado.
+		*** UM REGISTRO PAI PODE TER VÁRIOS FILHOS, MAS UM FILHO SÓ PODE TER UM PAI. ***
+	Obs: Os dados são organizados de cima para baixo ou em estrutura de árvore invertida.
+** É O QUE MAIS SE ADAPTA A SITUAÇÕES NAS QUAIS AS RELAÇÕES LÓGICAS ENTRE OS DADOS PODEM SER REPRESENTADAS COM A ABORDAGEM(UM-PARA-MUITOS). ***
+	Modelo em Rede:
+			- Um modelo em rede é uma extensão do modelo hierárquico. Elimina-se o conceito usado de HIERARQUIA e permite que um mesmo
+registro esteja envolvido em várias associações.
+	- Ao invés de usar relações de cardinalidades um-para-muitos, o modelo em rede é uma relação MEMBRO-PROPRIETÁRIO, na qual um membro pode ter
+muitos proprietários.
+	MODELO RELACIONAL:
+		-O modelo relacional se tornou o mais popular. Usa-se um formato TABULAR PADRÃO. Os elementos são localizados em tabelas BIDIMENSIONAIS.
+E as tabelas são organizadas em linhas e colunas. 
+É utilizado em operações de ÁLGEBRA RELACIONAL para a manipulação de dados: 
+	- Alguns exemplos são SELEÇÃO,PROJEÇÃO E AGRUPAMENTO.
+
+- Os modelos considerados REPRESENTACIONAIS - implementação/lógico - são os modelos em REDE,HIERÁRQUICO E RELACIONAL.
+    				ATENÇÃO! - O modelo E-R é um exemplo de modelo conceitual. - somente!! -
+					( Não é lógico!)
+
+A modelagem conceitual é uma fase muito importante no projeto de uma aplicação de BD.
+Um modelo conceitual de dados é aquele em que os objetos, suas características e relacionamentos possuem uma representação fiel ao ambiente.
+O modelo conceitual independe de HARDWARE e SOFTWARE. Ou seja, não depende de nenhum SGBD para implementá-lo.
+O esquema conceitual é uma descrição concisa dos requisitos de dados dos usuários e inclui detalhes dos tipos de ENTIDADES,RELACIONAMENTOS e RESTRIÇÕES.
+Sendo assim, permite que PROJETISTAS de BD se concentrem em especificar as PROPRIEDADES DOS DADOS. Sem se preocupar com detalhes de armazenamento e implementação.
+
+Alguns conceitos de modelagem de BD:
+	- BOTTOM-UP: Inicia a partir dos conceitos mais detalhados percorrendo o sistema até os mais abstratos.(alto nível de visão)
+	- Top-DOWN: Dos conceitos mais altos de abstração aos mais detalhados.
+	- INSIDE-OUT: Inicia-se dos conceitos mais relevantes adicionando conceitos secundários. O modelo E-R usa-se dessa técnica.
+		( Identifica-se o núcleo do sistema e gradativamente acrescentam-se novas entidades. )
+
+MODELO ENTIDADE-RELACIONAMENTO (PRINCIPAL EXEMPLO DE MODELO CONCEITUAL) Peter Chen apresenta uma notação gráfica para diagramas com poucos conceitos,
+modelo simples e representação gráfica de fácil compreensão.
+O MER ou MODELO ER é um modelo de dados conceitual de alto nível, cujos conceitos foram projetados para estar o mais próximo possível da visão que o
+usuário tem dos dados. Não se preocupando em representar como estes dados estarão realmente armazenados.
+	É usado em projetos de BD com representação gráfica pelo DER (diagrama de Entidade-Relacionamento)
+O modelo é abstrato e define quem são Entidades,relacionamentos e atributos e cardinalidades. Para representar de forma visual temos o DER.
+	As bancas gostam de colocar que o MER é um diagrama sendo que a sigla correta é DER para o diagrama.
+
+ENTIDADES:
+	- Objeto básico tratado pelo modelo Entidade-Relacionamento. É um objeto do mundo real,concreto(pessoas,carro,funcionário)ou abstrato
+(um projeto,curso,disciplina) e que possui existência ---->independente.<---
+		Quando usamos a entidade e referimos ela no diagrama damos o nome de INSTÂNCIA(OCORRÊNCIA).
+
+ATRIBUTOS:
+	- São propriedades particulares que descrevem uma entidade e características de um relacionamento também.
+Exemplo: Entidade CARRO possui diversos atributos como: MARCA,MODELO,COR,FABRICANTE,CHASSI.
+Exemplo: Entidade EMPREGADO pode ter atributos: SETOR,RG,SALÁRIO.
+Exemplo: Entidade FILME pode ter atributos: TÍTULO,ANO,TAMANHO,GÊNERO,CLASSIFICAÇÃO
+* Detalhe: No modelo físico os atributos são chamados de COLUNAS ou CAMPOS. *
+** Detalhe 02: Todo ATRIBUTO deve possuir um DOMÍNIO. Ou seja, um conjunto de possíveis valores para o atributo. A qual no final deve determinar um valor
+a receber, necessariamente.
+*** Se não possuir um domínio, certamente ele será nulo ou desconhecido valor. Caso algum atributo não se aplicar. ***
+Atributos Simples (atômico):
+	-São atributos não divisíveis. Exemplo: CEP
+Atributos Compostos:
+	-Podem ser divididos em atributos básicos mais simples com significados independentes.
+	Exemplo: Atributo ENDEREÇO pode ser dividido em número,logradouro,cidade,estado ou CEP.
+Atributos MONOVALORADO:
+	- Possuem apenas um valor para uma entidade em particular.
+Atributos Multivalorados:
+	- Possuem múltiplos valores. (Uma única entidade possui diversos valores para este atributo.) Representado por um desenho de uma ELIPSE com LINHA DUPLA.
+Exemplo: O atributo TELEFONE pode possuir vários números de telefones para a entidade PESSOA.
+Exemplo02: O atributo IDIOMA de uma entidade ALUNO pode conter INGLÊS E FRANCÊS ou vários idiomas além do INGLÊS E DO FRANCÊS,ALEMÃO,JAPONÊS.
+ATRIBUTOS ARMAZENADOS:
+	- Aqueles que realmente pretendemos guardar no BD.
+ATRIBUTO DERIVADO:
+	- Podem ser gerados a partir de outros atributos. Por exemplo: O atributo DATA_NASCIMENTO pode derivar outro atributo chamado IDADE.
+ATRIBUTO CHAVE:
+	- é aquele atributo determinante. é um atributo único para cada elemento do conjunto, servindo para identificar UNIVOCAMENTE UM ELEMENTO.
+Exemplo: O atributo CPF pode ser um atributo determinante para a entidade PESSOA, pois diferencia cada funcionário de forma única dentro do conjunto.
+Já que 'DOIS FUNCIONÁRIOS NÃO PODEM TER O MESMO CPF'.
+
+Além disso,os atributos são classificados em :
+	ATRIBUTO DESCRITIVO: -  Descrevem e representam características de um objeto.
+	ATRIBUTO NOMINATIVO: -  Além de descrever, também definem nomes ou rótulos de identificação dos objetos aos quais pertencem.
+				Exemplo: Código,matrícula,número.
+	ATRIBUTO REFERENCIAL: - Faz referência a outra entidade. Exemplo: Chave estrangeira.
+
+RELACIONAMENTOS:
+	-	Um relacionamento pode ser entendido como uma associação entre instâncias de entidades devido a regras de negócio.
+São relações entre duas ou mais entidades, determinando uma associação entre as mesmas.
+(representado por um LOSANGO)- notação.
+
+GRAU DE RELACIONAMENTO:
+	- A primeira característica de um relacionamento é que este tem um grau. É o número de entidades que fazem parte desse relacionamento.
+* UMA ENTIDADE PODE PARTICIPAR DE UM RELACIONAMENTO COM QUAISQUER OUTRAS ENTIDADES DO MODELO, INCLUSIVE COM ELA MESMA. (AUTO-RELACIONAMENTO)(UNÁRIO)
+Exemplo: Um supervisor deve-se também se supervisionar.
+Exemplo: Uma instância ocorre quando o papel de esposa e marido ocorrem para o relacionamento CASAMENTO.
+É também chamado de RELACIONAMENTO RECURSIVO - AUTORRELACIONAMENTO - RELACIONAMENTO UNÁRIO.
+ - São casos especiais em que uma entidade se relaciona com si própria (DEVE ter um RELACIONAMENTO INCLUSO)
+Exemplo: Uma entidade FUNCIONÁRIO pode assumir o papel de gerente, coordenador ou supervisor.
+
+Relacionamentos Binários: 
+			- Duas entidades
+Relacionamentos Ternários:
+			- Três entidades
+Relacionamentos N-ários : 
+			- Acima de duas entidades.
+
+Observações sobre os atributos descritivos: 
+	Vale lembrar de que maneira geral os atributros descritivos descrevem as características e representam um objeto.
+	Pode ser assim com RELACIONAMENTOS também, além das ENTIDADES.
+		Um relacionamento pode possuir um atributo em especial. Isso ocorre quando há um relacionamento N:N que necessita ser 'quebrado' em dois
+								relacionamentos de 1:N.
+	Exemplo bem claro:
+			- Um médico atende vários pacientes e um paciente é atendido por vários médicos. (n:n)
+			- Podemos então usar um relacionamento entre as entidades MÉDICO E PACIENTE.
+			- Sendo assim a consulta pode ter o RELACIONAMENTO BINÁRIO e ainda possuir atributos como a data_consulta,valor_consulta e exames.
+
+Cardinalidade de Relacionamento:
+	- Procura definir o número de ocorrências ou instâncias de uma entidade se relaciona com a outra, tendo um mínimo e um máximo.
+Cardinalidade Mínima: 
+	- Define se o relacionamento entre duas entidades é obrigatório ou não. 
+	- Usada também para definir se é parcial ou opcional ou total/obrigatória.
+PARCIAL/OPCIONAL:
+	- Uma instância para uma certa ENTIDADE PODE OU NÃO participar de um relacionamento.
+	- Ela é OPCIONAL se a cardinalidade mínima for 0 zero, uma associação opcional.
+	- Ela é parcial se for igual ou maior que 1. 
+Por exemplo: Departamento (1.1)----------Alocação---------(10.N)Empregado
+-Devem existir pelo menos 10 empregados alocados = Parcialidade mínima.
+
+Cardinalidade de Atributos:
+	- Um atributo pode possuir uma cardinalidade que faz parte da entidade. Irá definir quantos valores esse atributo pode estar associado a u
+instância de uma entidade ou relacionamento a qual pertence.
+
+Exemplos: (1.1) - Obrigatória - Como é mínimo e máximo uma única vez. Não precisa ser representada no diagrama.
+(0.1) - Opcional - 
+(0,N) - Opcional e multivalorada(n)
+
+Conceitos de GENERALIZAÇÃO/ESPECIALIZAÇÃO:
+	- Generalização: Em que se cria um conjunto de entidades genérico contendo características em comum.
+	- Especialização: Apresentam diferenças nas características das entidades.
+
+Por exemplo:  			Entidade MÉDICO é uma GENERALIZAÇÃO.
+				Se modelarmos os dados, podemos usar a ESPECIALIZAÇÃO. Ocorre quando a ENTIDADE MÉDICO pode se ESPECIALIZAR em DUAS ENTIDADES:
+		- Médico Residente [ENTIDADE]
+		- Médico Efetivo   [ENTIDADE]
+				A especialização podem ser divididas em categorias,cada qual com seus atributos específicos.
+Assim, na especialização, podem possuir atributos em comum e atributos distintos. 
+	obs: O TRIÂNGULO representa uma associação de ESPECIALIZAÇÃO/GENERALIZAÇÃO.
+	OBS02: A entidade especializada HERDA as propriedades da entidade genérica.
+Exemplo:
+	- A entidade CLIENTE possui seus atributo chave código e nome, logo a associação (representada por um triângulo) leva a especialização/generalização
+Significa que a entidade Cliente foi especializada em duas outras entidades - [pessoa física][pessoa jurídica]
+(sendo que a entidade especializada HERDA as propriedades da entidade genérica)
+ 	A ESPECIALIZAÇÃO É O PROCESSO DE DEFINIR UM CONJUNTO DE SUBCLASSES DE UM TIPO DE ENTIDADE. A ENTIDADE QUE FOI ESPECIALIZADA É CHAMADA DE SUPERCLASSE.
+A GENERALIZAÇÃO É O PROCESSO DE ENCONTRAR CARACTERÍSTICAS COMUNS DE ALGUMAS ENTIDADES E CRIAMOS UMA SUPERCLASSE PARA ELAS.
+
+Restrições PARCIAL:
+	- Nem toda ocorrência da entidade genérica possui uma ocorrência(instância) correspondente em uma entidade especializada.
+Exemplo:Entidade FUNCINÁRIO está associado pela especialização ENTIDADES: - Motorista e - Secretária. 
+Na GENERALIZAÇÃO/ESPECIALIZAÇÃO PARCIAL: Nem todo funcionário é motorista e nem todo funcionário é secretária.
+obs: PODE HAVER FUNCIONÁRIOS QUE NÃO SEJAM NEM MOTORISTAS E NEM SECRETÁRIOS.
+
+RESTRIÇÃO TOTAL:
+		- Para toda a ocorrência da entidade genérica existe sempre uma ocorrência em uma das entidades especializadas.
+Exemplo:
+	- Entidade CLIENTE indica que é PESSOA FÍSICA OU PESSOA JURÍDICA. Obrigatoriamente deverá ser uma entidade ou a outra entidade.	
+	
+
+Exemplo:
+	Uma ENTIDADE DEPARTAMENTO pode ter no mínimo nenhum (0) empregado em sua alocação. Assim pode-se definir que pode ter um 
+minimo opcional. Indicando assim, que podem existir departamentos que não tem nenhum empregado relacionado a ele.
+TOTAL/OBRIGATÓRIO:
+	A cardinalidade mínima recebe uma associação obrigatória que indica que o relacionamento DEVE obrigatoriamente associar a uma instância de entidade.
+Com no mínimo 1, (um). Ou seja, uma entidade DEPARTAMENTO deve possuir pelo menos 1 (um)RELACIONAMENTO para a entidade EMPREGADO alocado,(1).
+
+	*** ATENÇÃO!! ** [AO CADASTRAR UM EMPREGADO ELE ENTÃO PODERÁ ESTAR ASSOCIADO A NENHUM DEPARTAMENTO, A PRINCÍPIO, PELA INSTÂNCIA DE CARDINALIDADE
+				MÍNIMA OPCIONAL , ZERO. O MODELO PERMITE ISSO]
+
+PARCIAL:
+	- A parcial mínima pode ser representada por qualquer número
+
+CARDINALIDADE MÁXIMA: Número máximo de instâncias da entidade associada que devem se relacionar a outra entidade.
+	Em um determinado contexto temos: 
+			Entidade: Estúdio ----- gerencia(relacionmento)--------Entidade: Filme
+Podemos definir o número de vezes que a entidade FILME pode associar a um ESTÚDIO(ENTIDADE). A qual é somente 1 filme.
+Já a entidade ESTÚDIO PODE gerenciar vários filmes, ou seja, sua associação é de cardinalidade máxima (n) para várias entidades FILMES.
+Sendo assim:
+			[Entidade: Estúdio (1)-------- gerencia-------(n) Entidade:Filme]
+					|			       ^
+					|			       |		
+					-------------------------------
+Conclui-se que o Estúdio gerencia diversos filmes (n)[Cardinalidade Máxima] e Filme pode pertencer a somente (1) estúdio.
+	*** ATENÇÃO!!! a CARDINALIDADE de uma entidade vai anotada do outro lado após o relacionamento, assim como a outra ENTIDADE, sua cardinalidade 
+							é do outro lado após o relacionamento. ***
+
+Questão concurso: CESPE-2008
+	Em um diagrama entidade-relacionamento, a cardinalidade representa o número de ocorrências das entidades em um dado relacionamento. [correto]
+	Explicação: A questão esta correta. Para definir o número de ocorrências de uma entidade usamos o conceito de cardinalidade, que indica
+quantas ocorrências de uma entidade participam no mínimo e no máximo de um relacionamento.
+Exemplo: Uma entidade EDITORA_de_LIVROS -(1,1)-------------------Publica(relacionamento)--------------------(0,n) Livros
+		Uma editora publica 'n' livros. Já a entidade LIVRO é obrigatoriamente publicado por no máximo 1(uma) editora.
+		A cardinalidade mínima ZERO representa que o relacionamento é OPCIONAL ou PARCIAL. ( ou seja, a editora pode publicar o livro ou não )
+		Obs: Se a cardinalidade mínima for representada com um número maior ou igual a zero, o relacionamento é OBRIGATÓRIO. 
+				Sendo assim, a ENTIDADE EDITORA DEVE publicar pelo menos 1 livro.
+Obs: N é um número arbitrário que representa qualquer valor maior que 1.
+
+Mais exemplos:
+	(0:N) - Um empregado pode trabalhar em nenhum ou muitos projetos.
+	(N:N) - Um empregado pode trabalhar em muitos projetos e um projeto tem vários empregados.
+	(1:1) - Uma Entidade A está associada no máximo a uma, somente, entidade em B e a Entidade B está associada no máximo a uma entidade em A.
+			[A-----------------B]
+			[B-----------------A]
+			
+	(1:M) - Uma entidade em A está associada a qualquer núnmero de entidade em B. Enquanto uma entidade em B está associada no máximo a uma(1)
+ entidade em A.
+	(M:M) - Uma entidade em A está associada a qualquer núnmero de entidade em B e uma Entidade em B está associada a qualquer número de entidades em A.
+			OBS: O NÚMERO DE ENTIDADES QUE PARTICIPAM DE UM TIPO DE RELACIONAMENTO É IRRESTRITO 
+				E ARMAZENAM MUITO MAIS INFORMAÇÕES DO QUE DIVERSOS RELACIONAMENTO BINÁRIOS.
+
+Importante:
+	- Por que o relacionamento é necessário?
+-Quando existem várias possibilidades de relacionamento entre pares de entidades
+-Quando ocorrer mais de um relacionamento entre o par de entidades.
+-Evitar ambiguidade.
+-Quando houver autorelacionamento.	
+
+ENTIDADE FRACA:
+		- É uma entidade que tem uma relação de dependência com outra entidade.
+		[A ENTIDADE FRACA SÓ EXISTE SE EXISTIR A ENTIDADE COM A QUAL ESTA RELACIONADA]
+São representadas por losangos duplos.
+Exemplo: A entidade funcionário possui a entidade DEPENDENTES com seus atributos.
+FUNCIONÁRIO-------------POSSUI-------------------------DEPENDENTE <--- Entidade Fraca
+
+Nas entidades fracas, sempre teremos uma participação total da entidade fraca. Um elemento da entidade fraca tem que estar associado a, pelo menos,
+um elemento da entidade normal.
+Existe também o relacionamento entre entidade fraca e a entidade normal chamado de RELACIONAMENTO IDENTIFICADOR. [Triângulo duplo]
+
+FCC-2013-ANALISTA:
+	- No projeto de BD relacionais é comum ocorrer a necessidade de modelar conjuntos de entidades fracas cuja a principal característica é:
+a) não possuir atributos que possam assumir a função de chave primária.{certo}
+[A entidade fraca não possui identificação própria e nem possuir atributos que possam ser definidos como chave primária.]
+[As entidades fracas só são identificadas por estarem relacionadas a entidades específicas conhecida como entidade forte que possui chave primária.]
+b) aceitar a inserção apenas de valores numéricos.(qualquer valor)
+c) ter apenas uma chave candidata.(não necessariamente)
+d) não aceitar atributos de tamanho variável. (aceita qualquer tamanho ou limitá-lo)
+e) ter,no máximo,três atributos.(não tem limite de atributos)
+
+ENTIDADE ASSOCIATIVA:
+		- Relacionamento: É uma associação entre entidades.
+Na modelagem ER não é prevista a possibilidade de associar a uma entidade com um relacionamento.Ou de associar dois relacionamentos entre si.
+Em alguns casos é desejável permitir uma associação entre uma entidade e um relacionamento, gerando uma ENTIDADE ASSOCIATIVA.
+Por exemplo:
+		- Temos a ENTIDADE MÉDICO--(N)-------- CONSULTA-------(n)Paciente
+Precisamos modelar o diagrama e colocar a entidade MEDICAMENTOS, RECEITADOS AOS PACIENTES.
+A solução é então transformar o relacionamento entre Médico e Paciente numa ENTIDADE ASSOCIATIVA e relacioná-la a ENTIDADE MEDICAMENTOS através de um outro
+relaciomento PRESCRIÇÃO.
+
+DER - Diagrama Entidade Relacionamento:
+	- É composto por um conjunto de objetos gráficos que visa representar todos os objetos do modelo ER tais como ENTIDADES,ATRIBUTOS,ATRIBUTOS CHAVES,
+RELACIONAMENTOS.
+	- O DER fornece uma visão lógica do BD. Proporciona um conceito mais generalizado de como estão estruturados os dados de um sistema.
+
+
+VENESP-2016-ANALISTA:
+	- Na modelagem de BD relacionais, considerando o modelo ER, um conjunto de relacionamentos binários é aquele que:
+a) é implementado por duas tabelas. [ERRADO](tabelas não é representado no modelo entidade-relacionamento)
+b) estabelece um relacionamento do tipo um para um.[ERRADO](Isso é cardinalidade e não grau)
+c) relaciona dois conjuntos de entidades distintos.[SIM][Grau de relacionamento 2, dois.]
+d) possui duas chaves primárias(não)[Relacionamento binário é grau de relacionamento]			
+e) possui dois atributos descritivos[não][não necessariamente]
+
+FCC-2018-SABESP:
+	- Considere que cada conta de água possui um identificador único e indivisível(IdConta) e é paga por um único cliente da SABESP(idCliente).
+Como cada cliente pode ter vários imóveis em regiões diferentes da cidade, poderá ter que pagar diversas conta de água, uma (conta) para cada imóvel que
+possui. Para construir um Modelo ER que retrate essas condições, um técnico deverá considerar, corretamente, que:
+a) se a entidade 'Cliente' tiver um campo 'Endereço' ele será um atributo simples.
+b) a relação entre Cliente e Conta é n:n.
+c) se a entidade 'Conta' tiver um atributo 'ValorTotal' ele será um atributo multivalorado.[NÃO][Valor total é um valor final único, impossível]
+d) a relação entre Cliente e Conta é 1:n.
+e) será necessária uma entidade associativa entre Cliente e Conta.
+
+FCC-SABESP-2018:
+	- Suponha que um relacionamento n:m entre duas entidades chamadas de 'ESTAÇÃO DE TRATAMENTO DE ÁGUA' & 'BAIRRO', onde um bairro pode receber 
+tratamento proveniente de uma ou mais estações e uma estação pode tratar a água de um ou mais bairros. Suponha, também, a existência de um atributo
+hipotético como o 'TIPO DE TRATAMENTO'. Que pode ser diferenciado ou igual, ainda que proveniente da mesma estação para bairros diferentes ou proveniente
+de estações distintas para o mesmo bairro. Em um modelo ER o 'tipo de tratamento' deve ser modelado como atributo?
+a)de entidade.
+b)da entidade.
+c)presente em ambas as entidades.
+d)do relacionamento entre as entidades.
+e) independente.
+
+Obs> Se duas entidades (estação e bairro) tem cardinalidade em seus relacionamentos do tipo (n:m) esta deve ser 'quebrada' em dois relacionamentos do 
+tipo (1:n).
+Obs: Para isso devemos gerar uma nova entidade que receberá as chaves primárias das entidades Estação e Bairro. Esta nova entidade podemos acrescentar
+quaisquer outros atributos dependentes da associação das duas entidades.
+obs: O tipo de tratamento deverá ser associado ao relacionamento entre as duas entidades. O atributo 'tipo de relacionamento' é na tabela de relacionamento.
+
+FCC-TRT-2013:
+	Umas das técnicas de modelagem ER nos conceitos mais importantes e navega em direção aos menos importantes. É comum que modelos ER desenvolvem
+em torno de algumas entidades que representam os conceitos mais importantes de um domínio ou aplicação.
+a)Bottom-up <-- A estratégia inicia a partir dos conceitos mais detalhados percorrendo o sistema até os mais abstratos.
+b)Inside-Out <-- Uma abordagem alternativa é a INSIDE-OUT em que se parte dos conceitos mais relevantes e gradativamente aos secundários.
+c)Top-Down <--- Parte dos conceitos mais abstratos até os mais detalhados.
+d)Modelo Conceitual <-- é a abstração mais próxima de um domínio de aplicação e as alternativas para modelagem de BD
+e)Modelo Lógico
+
+FCC-2013-TRT:
+No modelo ER, após termos identificado os atributos de cada um dos objetos, pode-se, sob o ponto de vista de classificação quanto a sua finalidade,
+enquadrá-los em 3 grandes grupos: descritivo,normativo e :
+a)referencial {correto}
+ATRIBUTO DESCRITIVO: Descrevem, representam características de um objeto. Exemplo: Altura,peso,data de nascimento.
+Atributo Nominativo: além de descrever, também definem nomes ou rótulos de identificação dos objetos aos quais pertencem. Ex: Código,mátricula,número.
+ATRIBUTO REFERENCIAL: Faz referência a outra entidade.
+
+FCC-2014-FISCAL:
+	Um funcionário ficou responsável pela elaboração de um modelo de dados e criação de um BD para a Receita Federal. O BD deve controlar os 
+funcionários da Receita, os departamentos aos quais estão vinculados e os projetos nos quais estão alocados.
+I - A Receita está organizada em departamentos. Cada departamento tem um nome único, número único e um funcionário que gerencia o departamento.
+Há, ainda, a data em que o funcionário começou a gerenciar o departamento.
+II - Um departamento controla vários projetos. Cada projeto tem um nome único, um único número e uma única data de início.
+III - Cada empregado tem um número único de CPF, número de seguro social, endereço,sexo, salário e data_nascimento;
+IV - Todo empregado está alocado em um departamento, mas pode trabalhar em diversos projetos, mesmo que controlados por diferentes departamentos.
+Controla-se o número de horas que cada empregado trabalha em cada projeto. Controla-se o supervisor direto de cada empregado que supervisiona seu trabalho.
+
+a) O fato de um funcionário ter que necessariamente estar alocado em um departamento é um caso de restrição de participação total, também chamada de
+DEPENDÊNCIA DE EXISTÊNCIA.[CERTA]
+[Dependência de existência = é uma restrição que implica que deve NECESSARIAMENTE EXISTIR UM RELACIONAMENTO ENTRE INSTÂNCIAS,ou seja, todo funcionário é obrigado a estar alocado a um departamento]
+
+b) Como não se espera que todo funcionário gerencie um departamento, a restrição de participação é nenhuma. Significando que não necessariamente uma
+entidade está relacionada a mais de um departamento por meio deste relacionamento de gerência.[errado]
+[A afirmativa está errada - se espera que algum funcionário gerencie o departamento, não obrigatório mas uma participação PARCIAL/OPCIONAL.]
+[No enunciado e no item 1 diz que a Receita cada departamento tem um funcionário que gerencia o departamento.]
+[No conjunto de entidades, nem todas as ocorrências participarão do relacionamento, portanto, é parcial.]
+
+c)A razão de cardinalidade para um relacionamento unário especifica o número mínimo de instâncias de relacionamento em que uma entidade pode participar.
+As razões de cardinalidade possíveis para os tipos de relacionamento unários são: 1:1,1:N,N:1 e N:N.[errado]
+[As razões possíveis na questão são para relacionamentos binários, quando uma entidade se relaciona com si própria tem-se um AUTORELACIONAMENTO]
+
+d) Como um departamento pode ter muitos funcionários a relação de cardinalidade, nesta ordem, é N:1 e como um empregado pode trabalhar em diversos
+projetos e um projeto ter diversos funcionários, a razão de cardinalidade é N:N.[ERRADA]
+[A questão está errada na primeira afirmação em relação a cardinalidade N:1 - A ordem está INVERSA, para confundir o candidato.]
+[ O correto seria afirmar uma razão de cardinalidade 1:N, na ordem, departamentos possuem diversos funcionário é 1(um) para muitos(n)]
+[A segunda afirmação sobre o empregado trabalhar em diversos projetos e um projeto ter diversos funcionários está CORRETO.]
+
+e)A restrição de participação determina se a existência de uma entidade depende de sua existência relacionada a outra entidade pelo tipo de relacionamento.
+Essa restrição determina o número máximo de instâncias de relacionamento em que cada entidade pode participar e pode ser do tipo nenhuma,total e parcial.[ERRADO]
+[A questão afirma que esssa restrição determina o número máximo de instâncias de relacionamento em cada entidade, sendo que a RESTRIÇÃO DE PARTICIPAÇÃO é também
+conhecida como RESTRIÇÃO DE CARDINALIDADE MÍNIMA, E NÃO MÁXIMA. O primeiro período da afirmativa esta correta.}
+[obs: Se a participação foi TOTAL, todas as entidades devem estar ligadas a, pelo menos, um elemento da outra entidade que faz parte do relacionamento.]
+[Se for PARCIAL, uma entidade pode existir mesmo não estando ligada a nenhum elemento da outra entidade em um relacionamento.]
+
+
+Obs: Para definir o número de ocorrências de uma entidade usamos o conceito de CARDINALIDADE.<-- Indica quantas ocorrências de uma entidade participam 
+no mínimo e no máximo do relacionamento. Em outras palavras, a cardinalidade de um relacionamento expressa quantas entidades de um grupo se relacionam
+como uma entidade do outro por instâncias.(ocorrências)
+Cardinalidade Mínima:
+	- Define-se o relacionamento entre duas entidades é OBRIGATÓRIO ou NÃO.
+É O NÚMERO MÍNIMO DE INSTÂNCIAS DA ENTIDADE ASSOCIADA QUE DEVEM SE RELACIONAR COM UMA INSTÂNCIA DA ENTIDADE EM QUESTÃO.
+A participação na cardinalidade mínima pode ser: 
+			PARCIAL/OPCIONAL OU TOTAL/OBRIGATÓRIA
+PARCIAL ou OPCIONAL:
+	- Uma (instância) ocorrência da entidade pode ou não participar de um determinado relacionamento.
+	- É indicado pela cardinalidade = 0 (zero)
+	- A cardinalidade mínima zero recebe a denominação de 'associação opcional'. Uma vez que indica que o relacionamento PODE OU NÃO associar uma
+ocorrência de entidade a cada instância da outra entidade em questão.
+
+Exemplo:
+	DEPARTAMENTO-(1.1)-----------ALOCAÇÃO--------------(0.N)-EMPREGADO
+
+A ENTIDADE DEPARTAMENTO pode ter no mínimo nenhum empregado (0), e no máximo, vários empregados.(n)
+Obs: Indica que podem existir departamentos que não tem nenhum empregado relacionado a ele.
+
+TOTAL ou OBRIGATÓRIA:
+	- Quando todas as instâncias (ocorrências) de uma entidade DEVEM participar de um determinado relacionamento.
+	- Indicado com a cardinalidade mínima maior que zero... 1
+	- A cardinalidade mínima (1) recebe a denominação de 'associação obrigatória', uma vez que indica que o relacionamento DEVE obrigatoriamente
+associar uma ocorrência (a uma instância) de entidade a cada instância de outra entidade.
+Exemplo:
+	ENTIDADE DEPARTAMENTO-(0.0)--------------->ALOCA-------------------(1.N)->EMPREGADO
+** Obs: Todos os departamentos devem possuir pelo menos(no mínimo) um empregado alocado.(1)
+	NÃO PODERÁ EXISTIR QUE UM DEPARTAMENTO NÃO TENHA NENHUM EMPREGADO.
+
+Cardinalidade Máxima de uma entidade: número máximo de instâncias da entidade associada que devem se relacionar com uma instância da entidade.
+Em modelos de ER geralmente mostram a cardinalidade máxima. Na ordem. ESQUERDA PRA DIREITA. ATENÇÃO.
+
+Na prática, há dois tipos de cardinalidade:
+	- CARDINALIDADE MÍNIMA: - Opcional: indica que o relacionamento é opcional representado por 0;
+				- Obrigatória: indica que o relacionamento é obrigatório representado por 1.
+
+	- CARDINALIDADE MÁXIMA: - 1 (UM) E muitos, representado pela letra 'n'.
+		[A REPRESENTAÇÃO DAS CARDINALIDADES 1:1, 1:N, N:N são considerados VALORES MÁXIMOS.]
+OBS IMPORTANTE:	
+		QUANDO A CARDINALIDADE MÍNIMA É OMITIDA, SUBENTENDE-SE QUE ELA PODE SER OPCIONAL(ZERO)
+
+FCC-2014-AUDITOR:
+	Está correlacionado corretamente o que está expresso en:
+
+	TIPO DE MODELO 		EXEMPLO DE ENTIDADE		ATRIBUTO		RELACIONAMENTO
+A	lógico			Receita				CPF			n_projetos_supervisionados
+B	conceitual		projeto				data_inicial		trabalha_em
+C	conceitual		empregado			supervisiona		e_supervisionado_por
+D	lógico			departamento			projeto			projeto_n
+E	de caso de uso		projeto				nmr_do_projeto		gerencia
+
+Navathe categoriza o modelo de dados em três níveis:
+	Modelo conceitual(alto nível):
+					Modelo de dados abstrato, representa as regras de negócio. Modelo adequado para o envolvimento do usuário, por não requer
+conhecimentos técnicos. Utiliza conceitos como entidades,atributos e relacionamentos. O modelo conceitual registra que dados podem aparecer no BD. E não qual
+estrutura estes dados serão armazenados.
+	MODELO lógico(nível intermediário):
+					Representa a estrutura de dados de um BD. Considerando limites impostos por algum tipo de tecnologia de banco de dados.
+Depende do tipo particular (paradigma) de SGBD que está sendo usado.
+	Modelo físico(baixo nível):
+					Descrevem como os dados são armazenados. Considera limites impostos pelo SGBD e pelos requisitos não funcionais dos 
+programas que acessam os dados. O modelo físico é dependente do SGBD que será implementado. Nesse modelo são representados detalhes de armazenamentos interno 
+de informações que não possui influencia sobre a programação de aplicações. Mas pode influenciar na PERFORMACE DAS APLICAÇÕES.
+
+Sendo assim, a questão proposta nos mostra os dados que podem aparecer no BD. Cita entidades,atributos e relacionamentos. 
+							[Eliminando as assertivas A,D e E.]
+
+Na letra C a banca destaca que Supervisiona é atributo de empregado. Que se enquadra em RELACIONAMENTO e não em atributo.
+A alternativa mais certa é a 'B'.
+Obs: Não há como identificar que é o modelo conceitual o correto sem analisar o nome dos atributos e relacionamentos. O modelo conceitual deve ser uma abstração
+bem simplificada da realidade. Isso ajuda no entendimento das regras de negócio. O modelo lógico inclui algo mais elaborado.
+
+FCC-2013-TRT:
+	- A técnica de diagramação no modelo ER é bem simples. Utiliza basicamente um losango para representar I e um retângulo para representar II.
+As lacunas I e II são preenchidas, respectivamente, por:
+	a)RELACIONAMENTO e ENTIDADEs. [correto]
+	b)Atributos-relacionamentos (atributos são ELIPSES E relacionamento LOSANGO)
+	c)entidades-relacionamentos (ENTIDADE é retângulo e relacionamento LOSANGO)
+	d)entidades-atributos (entidade é RETÂNGULO E atributos é ELIPSE)
+	e)atributos-entidades ( atributo é representado por ELIPSE e entidades por RETÂNGULO)
+
+2013-FCC-TRT:
+	- Nos modelos ER, alguns autores adotam para fins de caracterizaão de uma entidade, um critério que as classifica em FORTES OU FRACAS.
+Essa caracterização se dá por meio da análise de existência de duas condições básicas:
+DEPENDÊNCIA DE EXISTÊNCIA E DEPENDÊNCIA DE IDENTIFICADOR.
+
+DEVEMOS LEMBRAR QUE UMA ENTIDADE FRACA TEM SUA EXISTÊNCIA CONDICIONADA PELA ENTIDADE DA QUAL ELA DEPENDE. UMA INSTÂNCIA DA ENTIDADE FRACA DEVE ESTAR RELACIONADA
+COM UMA INSTÂNCIA DA ENTIDADE FORTE.
+Exemplo:
+	Entidade PRÉDIO--------POSSUI-------APARTAMENTO <Como entidade fraca
+Um apartamento está relacionado ao prédio e só poderá existir em um prédio. 
+Além da dependência de existência = é uma restrição que implica que deve NECESSARIAMENTE EXISTIR UM RELACIONAMENTO ENTRE INSTÂNCIAS,
+							todo apartamento é obrigado a estar alocado a um prédio.
+A entidade Fraca APARTAMENTO poderá depender também do IDENTIFICADOR da entidade FORTE.
+Nessa instância, o identificador da entidade forte poderá compor o identificador da entidade fraca.
+
+FCC-TCE-2012:
+O modelo conceitual de dados:
+a) é aquele em que os objetos, suas características e relacionamentos tem a representação de acordo com as regras de implementação e limitantes impostos
+por algum tipo de tecnologia.[ERRADO][INDEPENDE DO USO DE ALGUM TIPO DE BD]
+b) é aquele em que os objetos, suas características e relacionamentos tem a representação fiel ao ambiente observado, independente de limitações quaisquer
+impostas por tecnologias,técnicas de implementação ou dispositivos físicos.[CORRETO]
+c) é aquele elaborado respeitando-se e implementando-se conceitos tais como chaves de acesso, controle de chaves duplicadas, itens de repetição(arrays),
+normalização, ponteiros e integridade referencial, entre outros.[ERRADO][CHAVES DE ACESSO E ITENS DE REPETIÇÃO NÃO]
+d) é a fase da modelagem na qual é necessário considerar todas as particularidades de implementação, principalmente o modelo que será utilizado para a
+implementação futura.[ERRADO][NÃO CONSIDERA PARTICULARIDADES DE IMPLEMENTAÇÃO]
+e) está sempre associado às fases de projeto, constrastando com o modelo lógico, que sempre está associado à fase de análise, quando utilizado com as 
+metodologias de desenvolvimento de sistemas e implementado por ferramentas CASE.[ERRADO]
+
+***** O MODELO CONCEITUAL ESTÁ MAIS LIGADO AO ALTO NÍVEL DE ABSTRAÇÃO E NÃO LEVA EM CONTA O BANCO DE DADOS EM SI, NA REALIDADE ELE LEVA EM CONSIDERAÇÃO
+	A FORMA COMO AS ESTRUTURAS SERÃO CRIADAS PARA ARMAZENAR OS DADOS. POR ESTAR MAIS LIGADO AO NÍVEL MAIS ALTO, FAZ-SE NECESSÁRIO O ACOMPANHAMENTO
+		DO CLIENTE PARA QUE SEJAM COLETADOS OS REQUISITOS FUNCIONAIS QUE DARÃO SUPORTE À CONSTRUÇÃO DE TODO O MODELO. ***
+
+FCC-TRT-2012:
+	No modelo Entidade-Relacionamento:
+a) Entidades podem ter atributos, mas relacionamentos não podem ter atributos.[ERRADO] [Um relacionamento pode ter atributos. Um atributo em um relacionamento
+geralmente aborda aspectos temporais, como data/hora.]
+b) Uma chave é um conjunto de atributos cujos valores identificam um relacionamento de maneira única.[ERRADO]
+[UMA CHAVE É UM CONJUNTO DE UM OU MAIS ATRIBUTOS CUJOS VALORES IDENTIFICAM UM (INSTÂNCIA) OCORRÊNCIA DE MANEIRA ÚNICA. INSTÂNCIA = REGISTRO DE UMA TABELA]
+c) Um relacionamento é uma associação entre atributos[ERRADO][Relacionamento é uma associação de entidades]
+d) Todo relacionamento tem uma chave[ERRADO][NÃO É OBRIGATÓRIA A EXISTÊNCIA DE ATRIBUTOS EM RELACIONAMENTOS. Muito menos chaves.]
+e) Uma chave é um conjunto de atributos cujos valores identificam uma entidade de maneira única.[CORRETO]
+
+FCC-TRT-2010:
+	Considere um formulário eletrônico de pedidos onde conste o código e o nome do cliente que faz o pedido; o número e a data do pedido; e a lista
+de produtos pedidos contendo o código do produto, o nome do produto, a quantidade pedida do produto e o valor unitário do produto.
+Todos os dados serão persistidos em um SGBD relacional, com exceção dos totais. Todos os códigos são identificadores únicos.
+No moedelo ER não normalizado, o relacionamento entre Pedido e Produto(considere o vetor no sentido Pedido-Produto) é do tipo:
+
+a)entidade associativa [não pode ser devido a todos os identificadores serem únicos][ERRADO]
+b)entidade fraca [não pode ser devido a todos os identificadores serem únicos][ERRADO]
+c)1:n [não pode ser no máximo 1 PEDIDO, o cliente pode fazer vários pedidos.][ERRADO]
+d)n:m [O cliente pode solicitar vários pedidos e nele pode constar vários PRODUTOS.][CORRETO]
+e)n:1 [O cliente pode solicitar vários pedidos mas não pode ser somente no máximo 1 PRODUTO][ERRADO]
+
+A letra 'D' porque um pedido pode possuir no máximo N produtos e o mesmo ocorre com produtos que podem estar em no máximo 'M' pedidos,
+ uma vez que diversas pessoas podem querer adquirir os mesmos produtos.
+		*** UM PEDIDO PODE CONTER VÁRIOS PRODUTOS E UM PRODUTO PODE ESTAR EM VÁRIOS PEDIDOS (N:M). ***
+Quando isso ocorre, é necessário realizar a NORMALIZAÇÃO do modelo e criar uma tabela de relacionamento.
+A questão não menciona a cardinalidade com valores (min,max) e, portanto, vc deve considerar de forma geral.
+
+FCC-2011-DBA-INFRAERO:
+	No contexto da folha de pagamento de uma empresa, um funcionário de nome João ocupa o cargo de código 05 - Analista de Sistemas,
+é registrado na empresa sob a identidade 3.428, alocado no Departamento de Tecnologia e sua idade é 35 anos. Em um modelo ER normalizado,
+são entidade,relacionamento,atributo e chave, respectivamente:
+
+a)folha de pagamento,empresa,idade e cargo [ERRADO][folha de pagamento é o nome da tabela ou arquivo.]
+b)funcionário,empresa,cargo e idade[errado][idade não pode ser considerado um chave pois podem existir outros funcionários com a mesma idade.]
+c)funcionário,alocação,idade e identidade[CORRETO]
+d)código,funcionário,empresa e alocação[CÓDIGO é uma chave e não uma ENTIDADE, FUNCINÁRIO não pode ser um relacionamento, e sim uma ENTIDADE
+					assim como EMPRESA não pode ser um atributo e alocação é um RELACIONAMENTO e não uma chave, 
+						dentro da ordem e do contexto do enunciado]
+e)identidade,alocação,código e funcionário[ERRADO]
+[IDENTIDADE, dentro do contexto, é uma chave única. Alocação sim, pode ser um um RELACIONAMENTO.A empresa não pode ser um ATRIBUTO e sim uma ENTIDADE
+				e funcionário como CHAVE é inviável, temos vários funcionários que podem se repetir.]
+
+OBS:	ENTIDADE é um objeto do mundo real, concreto ou abstrato e que possui independência própria.
+	ALOCAÇÃO no contexto é um RELACIONAMENTO entre a ENTIDADE FUNCIONÁRIO e o setor (ENTIDADE DEPARTAMENTO).
+	IDADE É um atributo do funcionário.
+	IDENTIDADE pode ser um atributo chave, cada funcionário tem uma identidadde distinta.
+
+CESPE-2017-TCE:
+	O relacionamento muitos para muitos entre duas entidades possui atributos, ou seja, dados inerentes ao fato, e não às entidades.[CORRETO]
+[Os atributos inerentes ao relacionamento não são especificamente as entidades. O fato significa ao relacionamento e 'entidades' significa cada uma das
+tabelas do conjunto de entidades.]
+
+CESPE-2017-TRE:
+	Assinale a opção que corresponde ao tipo de restrição de integridade expressa no próprio diagrama de entidades e relacionamentos no modelo relacional:
+a)dependência 
+b)enumeração
+c)normas de aceitação
+d)cardinalidade
+e)repetição
+
+obs> Para definir o número de ocorrências de uma entidade usamos o conceito de CARDINALIDADE. Que indica quantas ocorrências de uma entidade participam no 
+mínimo e no máximo do relacionamento. A cardinalidade visa MANTER A INTEGRIDADE DO BD, em associação as regras do negócio, não permitindoque essas regras
+sejam quebradas causando anomalias no SGBD, dados repetidos ou fora da normalização.
+
+CESPE-2016-FUB:
+	Considerando o diagrama precedente, que representa o modelo ER de um sistema de aluguel de livros de uma repartição pública:
+- O atributo marcado com um asterisco em cada tabela indica que aquela é a chave primária da tabela, sendo necessária a especificação do seu tipo naquele momento[ERRADO]
+[NÃO HÁ NECESSIDADE DE ESPECIFICAÇÃO DE DOMÍNIO NO MOMENTO, TRATA-SE DE UM MODELO CONCEITUAL, SENDO NECESSÁRIO MAIS ADIANTE.]
+
+CESPE-2016-TCE:
+	- Considerando a figura apresentada, que ilustra o modelo de um BD hipotético. A figura excpõe um modelo lógico, uma vez que ele contém detalhes de
+implementação e é independente de um SGBD.[ERRADO]
+ [A figura mostra claramente um MODELO CONCEITUAL DE DADOS e não lógico. O modelo conceitual de dados é aquele em que os objetos, características e relacionamentos
+tem a representação fiel ao ambiente observado, independente de limitações quaisquer impostas por tecnologias, técnicas de implementação ou disp.físicos.]
+
+CESPE-TRE-PI-2015:
+	Considere que existe um entidade PESSOA com um relacionamento denominado CASAMENTO que pode associar diversas ocorrências na mesma entidade PESSOA.
+De acordo com as propriedades do digrama ER, o conceito desse relacionamento (casamento)pode ser definido como:
+
+a) generalização[ERRADO][Inicia-se com o agrupamento de atributos de entidades subclasses, de nível inferiror, para formar uma única entidade superior.]
+b) relacionamento binário[ERRADO][Relacionamento binário são duas entidades que participam de um relacionamento.]
+c) autorelacionamento[CORRETO][O relacionamento recursivo ou unário é quando ocorre quando uma entidade se relaciona com si própria.]
+d) entidade associativa[ERRADO][A redefinição de um relacionamento que passa a ser tratado com uma ENTIDADE.]
+e) especialização[ERRADO][O conceito de especialização começa com uma SUPERCLASSE de ENTIDADE de NÍVEL mais alto e termina com conjunto de tipos de entidades
+				de nível mais baixo denominados SUBCLASSES que possuem atributos adicionais para diferenciar uma ENTIDADE da OUTRA.]
+
+FUNIVERSA-2010-MPE:
+	Quando se constrói um BD, define-se o modelo de ER, que é a representação abstrata das estruturas de dados do BD e seus relacionamentos.
+Cade entidade pode se relacionar com uma ou mais entidades diferentes, resultando em MAPEAMENTOS. 1:1, 1:N, N:1, M:M. Esses mapeamentos, com base no número de
+entidades às quais outra entidade pode ser associada, denomina-se:
+a) CARDINALIDADE? [CORRETO]
+[Para definir o número de ocorrências de uma entidade usamos o conceitos de CARDINALIDADE. No modelo de ER, a cardinalidade de mapeamento expressa o número de
+entidades ao qual outra entidade pode estar associada via um relacionamento.
+b) Hierarquia
+c) Relacionamento - Um relacionamento pode ser entendido como uma associação entre instâncias de Entidades devido as regras de negócio. Normalmente ocorre entre
+instâncias de duas ou mais entidades. Podendo também ocorrer entre instâncias da MESMA ENTIDADE (autorelacionamento)
+d) Diagrama
+e) Agregação
+
+
+CESGRANRIO-PETROBRAS-2010:
+	Considere o modelo conceitual de dados representado pelo DER. O diagrama apresenta três relacionamentos: 
+o primeiro é 'lotado_em' que representa empregados lotados em departamentos.
+o segundo apresenta o relacionamento 'trabalha_em' que representa as associações dos empregados aos projetos em que trabalham
+o terceiro relacionamento é 'supervisão' que representa a associação entre empregados e seus supervisionados. Os atributos identificadores de cada entidade
+estão sublinhados.
+	A partir da análise do diagrama,não se pode inferir que é possível:
+a) determinar todos os empregados que não supervisionam outros empregados.[ERRADO]
+[É POSSÍVEL INFERIR QUE HÁ EMPREGADOS QUE NÃO SUPERVISIONAM NINGUEM DEVIDO A CARDINALIDADE(0:N)]
+
+b) determinar que empregados não estão lotados em departamento algum.[ERRADO]
+[É possível sim, pelo mapeamento de cardinalidade (0,1) em que empregado(entidade) pode estar em nenhum departamento e no máximo (1).]
+
+c) saber qual o departamento em que E trabalha, dado um empregado E qualquer.[ERRADO]
+[É possível sim pela chave estrangeira de departamento.]
+
+d) saber quais os empregados de 'D' que trabalham em 'P' para um determinado projeto 'P' e um determinado departamento 'D'.[ERRADO]
+[É possível gerando uma entidade com atributos chaves estrangeiras para projeto e empregado.]
+[É necessário quebrar o relacionamento n:m de projeto e empregado.]
+
+e) saber que há apenas um empregado que supervisiona todos os demais.(CORRETO)
+[Não é possível estimar a quantidade de empregados que são supervisores. O diagrama nos mostra somente o mapeamento e restrições de cardinalidade 'n' que pode 
+supervisionar vários.]
+[Para saber quantos empregados supervisonam empregados, é necessária realizar a operação de contagem dos registros armazenados.]
+
+CONSULPLAN-2011-CESAN:
+	EM BD, assinalide o nome do qualificador lógico de um objeto:
+a) Tabela[ERRADO][Conjunto bidimensional de dados]
+b) Tupla[ERRADO][FORA DO CONCEITO - São linhas que ocupam valores na instância em uma tabela]
+c) Atributo [CORRETO][O qualificador lógico de um objeto é o atributo, que irá definir/guardar as características das nossas entidades(nossos objetos)]
+d) Entidade [ERRADO][Entidade poode ser definida como um objeto do mundo real, concreto, abstrato e que possui existência independente.]
+e) Chave[ERRADO][IDENTIFICAÇÃO ÚNICA DE UM OBJETO]	
+
+IADES-2010-BD-CFA:
+	Em relação ao MER quando um atributo possui mais de um valor para cada entidade que caracteriza é definido como um atributo:
+a) chave[ERRADO][CHAVE É UM ATRIBUTO DE VALOR ÚNICO E INDIVISÍVEL]
+b) composto[errado][O atributo composto pode ser dividido em atributos mais simples e básicos com significados independentes.]
+c) multivalorado[CORRETO][O atributo multivalorado possui múltiplos valores para uma instância da entidade][Uma única entidade possui valores para este atributo.]
+d) derivado[ERRADO][O atributo derivado pode ser obtido a partir de outros atributos ou de outras entidade relacionadas.]	
+	
+OBs: EM UM PROJETO DE BD OS ATRIBUTOS COMPOSTOS OU MULTIVALORADOS NÃO PODEM TER VÁRIOS VALORES NO MESMO ATRIBUTO. <-- NORMALIZAÇÃO.
+
+FCC-2018-SEFAZ:
+	Uma adequada modelagem de dados é necessária antes da construção dos BD para que estes sejam suficientemente consistentes enquanto fontes de consulta
+pela fiscalização.
+Um Modelo de dados-exemplo para atender o controle de arrecadação tributária contém:
+
+	- CONTRIBUINTE (Pessoa física ou Jurídica):
+		Dados dos contribuintes como:
+			- CPF ou CNPJ (chave)
+			- Endereço-Contribuinte
+	- ARRECADAÇÃO:
+		Dados de arrecadação de tributo exigível como:
+			- tipo_tributo
+			- objeto_tributo
+			- num_ocorrencia_pagamento
+			- mes_anos_competencia
+			- valor_tributo
+			- data_vencimento
+			- data_pagamento
+
+		REGRAS DE NEGÓCIO:
+			- tipo_tributo: é o que identifica um tributo (IPVA,ICMS)
+			- objeto_tributo : é um número de identificação sobre o qual incide o tributo(matrícula,renavam,inscrição.estadual)
+			- num_ocorrencia_pagamento : é um número sequencial dentro do ano, usado no caso de cotas ou parcelamento do mesmo tributo.
+			- Contribuinte e Arrecadação relacionam-se em um-para-muitos cujo relacionamento tem o nome de EXIGIVEL.
+
+Um tipo característico de relacionamento para o qual se deve prestar especial atenção no MER é:
+	a) Agregação porque o relacionamento entre Contribuinte e Arrecadação se caracteriza como entidade associativa que irá, por sua vez, relacionar-se
+com instâncias correspondentes a outras parcelas de arrecadação.[ERRADO]
+[Nas regras de negócio do enunciado da questão nos mostra o atributo 'tipo_tributo' que identifica qual é o tipo de tributação, sem a necessidade de criar
+uma entidade associativa. E também tem o atributo 'num_ocorrencia_pagamento' em caso de parcelamento.] 	
+[Há também o relacionmento EXIGIVEL para tal fim com relacionamento 1:N]
+
+	b) Autorelacionamento da Entidade Arrecadação, no caso de associação entre parcelas do mesmo tributo.[ERRADO]
+[No caso de associação entre parcelas do mesmo tributo temos o atributo 'num_ocorrencia_pagamento' único da entidade. ]
+[As entidades Contribuintes e Arrecadação devem obrigatoriamente se relacionarem por serem grau 2 (binário) e cardinalidade 1:N.]
+	
+	c)Contribuinte como Entidade Fraca de Arrecadação porque esta última é quem determina a existência, ou não, da primeira.[ERRADO]
+[A entidade CONTRIBUINTE não pode ser dependente de ARRECADAÇÃO, AMBAS SÃO INDEPENDENTES, uma é física outra é abstrata. No contexto não há como.]
+	
+	d)Herança Não Exclusiva porque alguma instância da superclasse Contribuinte pode ou não estar associada a uma instância correspondente de Arrecadação.
+[ERRADO][Herança Exclusiva porque o contribuinte sempre  estará associado a uma instância da entidade Contribuinte]
+	
+	e)Generalização/Especialização TOTAL porque toda instância da superclasse Contribuinte precisa estar associada a uma instância correspondente de suas subclasses(física ou jurídica).
+[CERTO][ A GENERALIZAÇÃO/ESPECIALIZAÇÃO TOTAL GARANTE UMA HIERARQUIA DE CLASSE CONTRIBUINTE, SENDO QUE HÁ DOIS TIPOS ESPECÍFICOS DE ATRIBUTOS.
+		ASSIM CADA CLASSE DEVE MANTER SEU ATRIBUTO ESPECÍFICO E OS DEMAIS, QUE SÃO COMUNS, NA CLASSE SUPERIOR]
+
+
+FCC-2016-PREFEITURA:
+	-Um analista de Sistemas da Prefeitura de Teresina necessita modelar em um DER as consultas dos cidadãos aos processos públicos.
+O relaciomento da consulta definido é N:M(muitos-para-muitos). Todavia cada consulta realizada deve ter uma identificação própria e mais o atributo
+data da consulta. Este relacionamento assim especificado relaciona-se com outras entidades do modelo, de acordo com o levantamento de requisitos.
+	Pela característica assim definida, esse relacionamento de consulta deve ser desenhado como:
+
+a)entidade associativa = 	O relacionamento entre CIDADÃO E PROCESSO tem a cardinalidade N:M, assim deve ser 'quebrado' em dois relacionamentos 1:N
+e assim realizar a associação dos registros dos cidadãos com seus processos, acrescentando o atributo DATA para distinguir a associação dos registros.
+
+	UMA ENTIDADE ASSOCIATIVA É A REDEFINIÇÃO DE UM RELACIONAMENTO, QUE PASSA A SER TRATADO COMO SE FOSSE TAMBÉM UM ENTIDADE E ASSIM
+					SE RELACIONAR A UMA ENTIDADE OU A OUTRO RELACIONAMENTO.
+
+FCC-2018-ANASLITA-DPE:
+	NO MER utilizado em BD relacionais, a função desempenhada por um conjunto de entidades em um conjunto de relacionamentos é chamado de:
+	PAPEL = Terminologia correta para descrever os relacionamentos aos quais uma entidade participa é PAPEL, de acordo com normas de modelagem de BD.
+Exemplo: ENTIDADE PACIENTE tem um PAPEL em um relacionamento com a entidade MEDICO em que faz consulta.
+
+FCC-TRE-2017:
+	Em uma empresa cada projeto é desenvolvido por vários funcionários e cada funcionário só pode participar de um projeto. Para controlar os funcionários
+alocados em cada projeto foi criada a tabela abaixo em BD.
+
+	id_projeto	nome_projeto		  tempo_projeto	  matricula_funcionario		nome_funcionario
+	1234		Implantação de rede            2 meses		1				Pedro
+	2378		Desenvolvimento de site	       12 meses		6				JUca
+	1234		Implantação de rede		2 meses		3				João
+	2378		Desenvolvimento de site		12 meses	4				marcos
+	1234		Implantação de rede		2 meses		2 				Paulo
+	2378		Desenvolvimento site		12 meses	5				Adriana
+	5678		INstalação de PCs		2 meses		7				Maria
+
+Considerando as regras de modelagem de BD relacionais, esta tabela:
+a) está modelada corretamente, já que permite visualizar em que projeto cada funcionário está trabalhando e quantos funcionários estão alocados em cada projeto.
+[ERRADO][A primeira afirmativa esta correta, no segundo período não há como saber quantos funcionários estão alocados. Seria necessário fazer uma consulta.]		
+
+b) não esta correta, por seria necessário definir uma chave primária composta pelos campos id_projeto e matricula_funcionario, já que há repetição de id_projeto em várias linhas.
+[ERRADO][Não há necessidade de definir chaves primárias porque os atributos id_projeto e matricula_funcionario já possuem. Há repetição porque foi feita uma junção de
+duas tabelas.]
+
+c) deve ser desmembrada em duas tabelas relacionadas com cardinalidade 1:n(projeto e Funcionario), para evitar a repetição dos dados do projeto para cada
+funcionário que participa dele.[CORRETO][É necessário realizar a normalização do modelo de BD para recuperar as informações, remover anomalias e repetição.]
+
+d) não esta adequadamente modelada, pois um mesmo funcionário pode participar de vários projetos ao mesmo tempo, contrariando as regras do modelo relacional.
+[De acordo com a tabela e o enunciado da questão, um funcionário só pode participar de um um projeto. E o projeto é desenvolvido por vários funcionários]
+
+e) deve ser ampliada, incluindo-se outras informações sobre o projeto (como valor e descrição) e sobre os funcionários (cargo e função).[ERRADO]
+[NÃO HÁ NECESSIDADE DE AMPLIA-LA E SIM, DE EVITAR REPETIÇÃO DOS DADOS. SENDO ASSIM, O MELHOR É DESMEMBRA-LA EM DUAS TABELAS DE CARDINALIDADE 1:M]
