@@ -1,0 +1,62 @@
+MODELOS de BANCO DE DADOS:
+				MODELOS HIERÁRQUICOS:
+	Os dados são estruturados hierarquicamente em forma de árvore. É uma coleção de registros conectados por meio de ligações,
+onde cada registro é uma coleção de campos e cada campo possui um único valor.
+				MODELO EM REDE:
+Surgiu como uma extensão ao modelo hierárquico, eliminando o conceito de hierarquia e permitindo que um mesmo registro estivesse envolvido em 
+várias associações.
+				MODELO RELACIONAL:
+	Surgiu com a necessidade de aumentar a Indenpedência de Dados. Fundamentado nos conceitos de uma relação(TEORIA DE CONJUNTOS). O modelo relacional
+representa o BD como uma coleção de relações. Modelo mais utilizado atualmente. Veio da álgebra relacional, bem matemático.
+				MODELO ORIENTADO A OBJETOS(OO)
+	Surgiu em decorrência das linguagens de programação orientada a objetos e em função dos limites de armazenamento e representação semântica impostas
+no modelo relacional. No modelo OO toda ENTIDADE do mundo real é representada por um objeto. Um objeto está associado a um estado e um comportamento.
+
+		O 	que  é modelos de dados?
+	Um modelo de dados é um conjunto de conceitos usados para descrever a estrutura de um BD.
+Banco de Dados possibilitam a ABSTRAÇÃO DE DADOS, ocultando detalhes de armazenamento desnecessários para a maioria dos usuários.
+É a descrição formal da estrutura de um BD. A estrutura envolve: 
+								TIPOS DE DADOS
+								Relacionamentos
+								Restrições
+
+		              PROJETO DE BD.
+				Mundo Real
+				    |
+			  Análise de Requisitos	
+			  	    |
+			    Projeto Conceitual	--> Necessita-se de um esquema conceitual com base nos requisitos e tem como objetivo:
+							* Modelo E-R
+							* Estruturar a base de dados
+							* Restrições
+							* Semântica
+							* Relacionamento	
+				    |
+
+Modelo E-R = Peter Chen, um modelo conceitual de alto-nível projetado para ser compreensível aos usuários comuns.
+Representados por notações. Tem várias REPRESENTAÇÕES.
+Representação gráfica =  Diagrama Entidade Relacionamento.
+ENTIDADE =  Um objetivo com existência física ou abstrata independente.
+Representada através de um retângulo e descrita por propriedades particulares - Atributos.
+
+2019-VUNESP-CÂMARA
+Sobre o modelo hierárquico de BD, é correto afirmar que:
+	a) um registro não pode ser pai de mais de um registro filho - [PODE SIM, de vários.]
+	b) um registro pai pode ter relacionamento com, no máximo, 3 registros filhos. - [Não, Não tem máximo.]
+	c) um registro de tipo raiz só pode ter relacionamento com um único registro filho. [NÃO][Pode ter mais]
+	d) UM REGISTRO DO TIPO RAIZ NÃO PARTICIPA COMO REGISTRO FILHO EM QUALQUER RELACIONAMENTO - SIM
+	E) o campo de um registro filho admite apenas tipos de dados inteiros [vários tipos]
+
+
+2019-IBFC-Analista
+Os SGBD: Oracle,PostgreSQL,MySQL,Firebird e SQLServer são todos considerados como sendo um modelo de dados RELACIONAL.
+
+2019-CESPE - MPC-PA:
+	Assinale a opção que apresenta o modelo de dados caracterizado por organizar os dados em um estrutura do tipo árvore na qual cada
+registro tem um único 'pai' e é classificado em uma ordem específica. [MODELO HIERÁRQUICO] [o FILHO SÓ TEM UM PAI]
+	
+
+
+
+
+
