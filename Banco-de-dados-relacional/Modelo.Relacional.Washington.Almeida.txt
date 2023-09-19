@@ -1,0 +1,106 @@
+Modelo Relacional - Washington Almeida
+	- Introduzido por Codd em 1970 em pesquisas da IBM
+	- O modelo relacional representa um BD como um conjunto de relações
+( Fundamentado nos conceitos de uma relação matemática (teoria de conjuntos)
+*** As bancas não cobram mais sobre álgebra relacional **
+
+TERMINOLOGIA:
+	Uma linha é chamada de uma TUPLA
+	Um cabeçalho de coluna é o atributo.
+	Uma tabela é chamada de relação
+	O tipo de dados que descreve os valores que um atributo pode ter é DOMÍNIO.
+
+CONCEITOS BÁSICOS:
+	- Esquema da Relação:
+				- R: Nome da relação
+				- Ai : nome de um atributo,cujo domínio em R é denotado por Ai
+				- n: grau da relação
+
+Características da TABELA:
+	- COLUNA: Possui um nome distinto e representa um ATRIBUTO
+	- ATRIBUTO: Possui um domínio -  Valor que é representado por um tipo de dado
+	- Domínio: Possui valor atômico (indivisível)
+	- Valor nulo(null): Utilizado quando um atributo não possui valor ou seu valor é desconhecido.
+	- Linha : É distinta na tabela e representa uma tupla.
+
+RESTRIÇÃO DE RELAÇÃO:
+	- DOMÍNIO: Para cada TUPLA, o valor de cada atributo deve ser um valor atômico.
+Exemplo:
+	Matrícula dos servidores: conjunto de todos as matrículas possíveis para a totalidade de servidores.
+	Placas de Veículos: conjunto de todas as placas de veículos dentro de determinada região.
+	Idade: Conjunto de idades possíveis.
+
+RESTRIÇÃO DE DOMÍNIO: tipo de dado (FORMATO):
+	Exemplo: CPF do servidor: string de 11 caracteres.
+		 Placa de Veículo: string com três letras e quatro dígitos
+		 Idade do servidor: Tipo INTEIRO entre 18 e 100.
+
+	- CHAVE PRIMÁRIA:
+			- Implica a possibilidade de IDENTIFICAR UNICAMENTE CADA TUPLA DA RELAÇÃO.
+As tuplas da relação devem ser distintas definindo as chaves. [RESTRIÇÃO DE UNICIDADE]
+
+	- INTEGRIDADE:  1. Restrições de integridade de Entidade = 
+				1.1 = a CHAVE PRIMÁRIA (PK) não pode ser NULA em nenhuma tupla de qualquer relação.	
+					[Se for CHAVE COMPOSTA(MAIS DE UM ATRIBUTO),nenhum atributo pode ser nulo também]
+			2. Restrições de Integridade Referencial:
+				2.1 = Mantém a consistência entre tuplas de duas relações:
+		DECLARA QUE SE UMA TUPLA T1 EM UMA RELAÇÃO R1 FAZ REFERÊNCIA A UMA RELAÇÃO R2.
+A tupla 01(t1) deve fazer referência a uma tupla existente em R2 definindo uma chave estrangeira (FK).
+		*** OS ATRIBUTOS DE FK TEM OS MESMOS DOMÍNIOS QUE OS ATRIBUTOS DE PK.***
+
+Violação de Restrições de uma Relação:
+	As operações de INSERT,DELETE,UPDATE, não podem violar as restrições de domínio, de chave e de integridade de entidade
+e referencial.
+
+Exemplos de VIOLAÇÃO DE INTEGRIDADE:
+	* Inserir na tupla em entidade SERVIDOR com MATRICULA = NULL - Viola a restrição de integridade de entidade.
+	* Inserir na tupla em SERVIDOR com Matricula já existentes no BD viola a restrição de CHAVES.
+	* Inserir na tupla em SERVIDOR com Código de Depto inexistente em departamento viola a integridade referencial
+	* Excluir uma entidade DEPARTAMENTO que é referenciado por tuplas em SERVIDOR.
+
+2017-FCC-ANALISTA -DPE:
+	O modelo relacional em BD comporta o conceito de chaves primárias e de chaves condidatas, ambas incluindo a propriedade da unidade.
+Supondo 'K' um conjunto de atributos da tabela 'K', terá a propriedade da unicidadese:
+
+a) O número de atributos que compõem k for igual a 1.
+b) Comportar apenas 1 índice em seus atributos.
+c) Houver apenas 1 atributo do tipo numérico em k.
+d) Não houver duas tuplas de T com o mesmo valor para K.[CORRETO][não PODE HAVER DUAS TUPLAS DO MESMO VALOR PARA K]
+e) Todos os atributos de K tiverem a mesma limitação em seus números de caracteres.
+
+2017-IFB-PROFESSOR:
+	Segundo Elmasri(2011),na terminologia formal do modelo relacional, uma linha,um cabeçalho de coluna e a tabela, são chamados,
+respectivamente, de:
+a) Registro, atributo, domínio
+b) Tupla,atributo,relação[CORRETO]
+c) Registro,atributo e relação
+d) Relação, domínio e registro
+e) Relação,tupla e registro
+
+2016-CESPE-TCE:
+	No modelo relacional de dados, uma tabela é um conjunto ordenado de campos.{atenção}-[ERRADO]
+A BANCA TENTA CONFUNDIR O CANDIDATO COM 'CAMPOS' QUE SÃO 'ATRIBUTOS' E 'RELAÇÃO' COMO 'TABELA' - ATENÇÃO!
+[Segundo Navathe(2011) - Uma relação é definida como um conjunto de tuplas. 
+Matematicamente os elementos de um conjunto não possuem ORDEM entre eles, logo, 
+as TUPLAS em uma relação não possuem nenhuma ordem em particular.]
+
+2016-CESPE-FUNPRESP-EXE:
+	Em um modelo de dados relacional, a integridade referencial assegura que os valores dos campos presentes na chave estrangeira 
+apareçam na chave primária da mesma tabela, a fim de garantir a integridade de dados.[ERRADO]
+[1 - A chave estrangeira pode ser para a mesma tabela, que seriam os auto-relacionamentos]
+[2 - Chave estrangeira não necessariamente é para a chave primária, pode ser para a chave CANDIDATA TAMBÉM.]
+*** OBS: PARA O CESPE É NECESSÁRIA PARA A CHAVE PRIMÁRIA. ***
+
+2012 - CESPE - TJ-AC:
+	A restrição de integridade referencial impõe que o valor da chave primária seja nulo e numérico.[ERRADO]
+[Os valores da chave primária nunca poderão ser nulos, não é aceito no sistema de BD]
+[A RESTRIÇÃO DE INTEGRIDADE REFERENCIAL DEFINE QUE OS VALORES DOS CAMPOS QUE APARECEM NUMA CHAVE ESTRANGEIRA DEVEM APARECER
+NA CHAVE PRIMÁRIA(CANDIDATA) DA TABELA REFERENCIADA.]
+
+
+
+
+			
+	
+
+	- 	
