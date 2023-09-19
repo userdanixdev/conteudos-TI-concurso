@@ -1,0 +1,281 @@
+Professor - Ramon Souza - Banco de dados
+
+Glossário de termos:
+	- Abstração: Capacidade de esconder os detalhes de implementação
+	- Álgebra Relacional: Conjunto de operações realizadas que pode ser feitas nas relações(tabelas), tomando uma ou duas relações como entrada
+e retornando uma relação como saída.
+	- APLICAÇÃO,APLICATIVO OU SOFTWARE: Programa de computador com objetivo de desempenhar tarefas práticas. Em geral estão ligadas ao processamento de dados
+	- ARIDADE OU GRAU: Número de colunas em uma tabela.
+	- Atomicidade: Propriedade das transações que garante que uma transação seja executada ou por completo ou de forma alguma.
+	- Atributo = Coluna ou CAMPO de uma tabela.
+	- BD(Banco de dados): Coleção coerente de dados que representa um aspecto do mundo real com uma finalidade específica.
+	- Becape ou Backup: Cópia de segurança dos dados de um dispositivo de armazenamento.
+	- Booleano - Tipo de dados que possui apenas dois valores. VERDADEIRO OU FALSO.
+	- Cardinalidade - Número de quantas vezes uma entidade associa a outra via relacionamento.
+	- Campo de indexação - Campo(coluna ou atributo) utilizado para criar um índice.
+	- Catálogo de dados ou dicionário de dados - Local do SGBD onde ficam os metadados. Possui informações sobre a estrutura de cada arquivo, o tipo
+e o formato de armazenamento de cada item de dados e diversas restrições sobre os dados. Além de triggers, e stored procedures.
+	- Concorrência = Disputa pelo uso de um mesmo recurso.
+	- Consistência : Propriedade das transações que visa a manuntenção do cumprimento das regras e restrições de um BD.
+	- Consulta AD HOC - Criada na hora, no momento em que surge a necessidade. Não é salva no SGBD.
+	- Dependência Funcional - Relacionamento entre dois ou mais atributos de forma que o valor de uma tributo identifique o valor para outro atributo.
+	- Determinante(atributo) - Atributo que determina outro, isto é, cujo valor do outro é relacionado a ele.
+	- Domínio - Tipo de dado válido para uma coluna. Valores possíveis.
+	- DURABILIDADE :  Propriedade das transações que garante o armazenamento permanente dos dados.
+	- Esquema de BD: estrutura do banco, sem os dados. O esquema ainda é esquema com os dados, que são as INSTÂNCIAS.
+	- Índice: Estrutura de acesso auxiliar que permite agilizar a recuperação de registros. Oferece caminho de acesso secundário.
+	- Instância de BD: Dados armazenados em um instante.('fotografia' do banco)
+	- Integridade: É a capacidade de garantir que a informação não foi alterada sem autorização.
+	- ISOLAMENTO : Propriedade das transações que garante a não interferência entre transações.
+	- METADADOS: Dados que descrevem, identificam, explicam e localizam outros dados. Descrevem a estrutura do banco de dados.
+	- Modelo de dados = Descrição dos tipos de informações que estão armazenadas em um banco de dados.
+	- NULO(null)- Valor especial que representa 'falta de informação ou informação inaplicável.
+	- Persistência de dados: Armazenamento permanente.
+	- PONTEIRO: é um tipo de dados cujo valor se refere diretamente a um outro valor. É um apontador ou referência para um dado armazenado em outro lugar.
+	- REDUNDÂNCIA - Duplicação de dados.
+	- Relação - Sinônimo de tabela. Bloco de montagem básico do modelo RELACIONAL.
+	- RelVar ou variável de relação: cabeçalho de uma tabela, formado pelos pares domínio e nome.
+	- Restrição de integridade: Regras usadas para garantir a não violação e exatidão e a consistência dos dados.
+	- SGBD - Software para criar e manter um BD.
+	- Sistema de BD - uniçao do BD com o SGBD.
+	- Transação - Programa em execução ou processo que inclui um ou mais acessos ou operações de BD.
+	- Transparência para o usuário - Usuário não precisa conhecer os detalhes ou funcionamento interno.
+	- TUPLA - linha ou registro de uma tabela.
+	- VISÃO OU VIEW - Tabela virtual derivada de outras tabelas. Maneira alternativa de visualização dos dados.Consulta pré-definida ou armazenada,
+executada sempre que referenciada.
+	- VISÃO MATERIALIZADA (materialized view) - Visão armazenada.
+
+CONCEITOS:
+	- Um banco de dados é uma COLEÇÃO DE DADOS RELACIONADOS. Com fatos conhecidos que podem ser registrados e que possuem significado implícito.
+As propriedades IMPLÍCITAS são:
+				1. UM BD representa algum aspecto do mundo real. Chamado de minimundo ou universo de discurso.
+				2. Um BD é uma coleção lógica e coerente de dados com algum significado inerente. Portanto um BD NÃO É UMA VARIEDADE ALEATÓRIA
+DE DADOS.
+				3. Um BD é projetado, construído e populado com dados para uma finalidade específica. Possui um grupo definido de usuários
+e interessados.
+obs: Um BD pode ter qualquer tamanho e complexidade. Não se restringe a grandes quantidades de dados relacionados.
+obs02: Pode ser gerado manualmente ou de forma computadorizada.
+
+Para que possamos manipular esse dados de forma COMPUTADORIZADA, temos SGBD. Uma coleção de programas que permite ao usuário CRIAR e MANTER um BD.
+É um sistema de software de uso geral que visa facilitar:
+	1. Definição: Especificação de tipos, estruturas e restrições de dados.
+	2. Construção: Armazenamento dos dados em algum meio controlado.
+	3. Manipulação: Consulta, atualização e geração de relatórios.
+	4. Compartilhamento: Acesso simultâneo por usuários e sistemas.
+	5. Proteção: Proteção do sistemas contra defeitos e proteção de segurança contra acesso não autorizado ou malicioso.
+	6. Manuntenção: Evolução do sistema ao longo do tempo.
+LEMBRETE: O SGBD + BD É UM SISTEMA DE BANCO DE DADOS.
+
+CESPE-2019-SEFAZ:
+	As funções de um SGBD incluem:
+a) Gerenciar o becape e recuperação de dados, bem como o escalonamento de processos no processador por meio do banco de dados.[ERRADO]
+[O escalonamento de processos não é função do SGBD]
+
+b) Gerenciar o sistema de arquivos e a segurança do BD.[ERRADO][Gerenciar o sistema de arquivos não é função do SGBD]
+c) Gerenciar a entrada e saída de dispositivos, linguagens de acesso ao BD e interfaces de programação de aplicações.[ERRADO]
+[nÃO é função do SGBD gerenciar o a entrada e saída de dispositivos]
+d) Gerenciar a integridade de dados, o dicionário e o armazenamento de dados, bem como a memória do computador enquanto o SGBD estiver em execução.[ERRADO]
+[a MEMÓRIA do computador não é função do SGBD.]
+e) Transformar e apresentar dados, controlar o acesso de multiusuário e prover interfaces de comunicação do BD.[correto]
+
+CESPE-2018-AUDITOR:
+	Um BD é uma coleção de dados que são organizados de forma RANDÔMICA, sem significado IMPLÍCITO e de tamanho variável. Projetados para atender a uma
+proposta específica de alta complexidade, de acordo com o interesse dos usuários. [ERRADO]
+[UM BD É UMA COLEÇÃO DE DADOS QUE SÃO ORGANIZADOS DE FORMA COERENTE E COM SIGNIFCADO IMPLÍCITO.]
+[E TAMBÉM PARA ATENDER A UMA PROPOSTA ESPECÍFICA DE BAIXA COMPLEXIDADE, DE PREFERÊNCIA PARA OS USUÁRIOS.( ALTO NÍVEL DE ABSTRAÇÃO )]
+
+FCC-20148-SABESP:
+	Banco de dados é:
+a) Um aplicativo que manipula dados inter-relacionados. [ERRADO][Banco de dados não é um aplicativo. Um SGBD é um aplicativo para manipular os dados.]
+b) Um sistema de nuvens híbridas utilizados em sistemas bancários.[ERRADO][O BD não é um sistema de dados e muito menos em nuvem, mas sim um conjunto de dados]
+c) Um conjunto de dados necessários para o correto funcionamento do SO.[ERRADO][É um conjunto de dados, mas não é de sua definição ser necessário para o bom
+funcionamento de um sistema operacional.]
+d) Um conjunto de dados que visa manter a integridade e segurança do sistema.[errado][Errado porque não é de sua definição ter como objetivo manter a integridade
+e segurança de um sistema.]
+e) Uma coleção de dados inter-relacionados, representando informações sobre um domínio específico.	[CORRETO]
+
+Características dos Banco de dados:
+	- Outra abordagem comum para armazenamento de dados é o processamento de arquivos. No entanto, apresenta uma série de limitações e problemas.
+1.0 - Dados Redundantes: As informações em um arquivo podem precisar ser duplicadas em diversos outros arquivos.
+2.0 - Difícil Padronização: embora possa existir algum padrão no arquivo, é difícil garantir que esse padrão não será alterado. Um usuário poderia criar uma nova
+coluna no Excel sem nenhuma restrição.
+3.0 - Dificuldade de controlar múltiplos acessos: é muito difícil de controlar múltiplos acessos e as atualizações por parte de diferentes pessoas.
+	NO ENTANTO, PARA USOS MAIS COMPLEXOS E QUE REQUEREM MAIORES CONTROLES, É MAIS RECOMENDADO USAR A ABORDAGEM DE BANCO DE DADOS.
+AS PRINCIPAIS CARACTERÍSTICAS SÃO:
+	1.0 - Natureza autodescritiva de um sistema de BD: Um banco de dados contém uma definição ou descrição completa de sua estrutura e restrições.
+Essa definição é armazenada no catálogo de SGBD. Que por sua vez possui informações como a estrutura de cada arquivo, o tipo e o formato de armazenamento de cada
+item de dados e diversas restrições sobre os dados. A informação armazenada no catálogo é chamada de METADADOS. Descreve a estrutura do BD principal.
+	-PERCEBA QUE UM BANCO DE DADOS NÃO DEVE CONTER APENAS DADOS, MAS TAMBÉM SUAS DESCRIÇÕES DAS ESTRUTURAS DE ARMAZENAMENTOS.-
+	2.0 - Isolamento entre programas e abstração de dados:
+		A abstração de dados é a capacidade de um SGBD oferecer aos usuários uma representação conceitual de dados que não inclui muitos detalhes de como
+os dados estão armazenados ou como as operações são implementadas. Decorrente desse conceito temos:	
+									INDEPENDÊNCIA DOS DADOS DOS PROGRAMAS: A estrutura dos arquivos de dados é armazenada
+									no catálogo do SGBD separadamente dos programas de acesso.
+					INDEPENDÊNCIA DA OPERAÇÃO DO PROGRAMA:
+					Os programas podem atuar invocando operações e funções independentemente de como estas estão implementadas.
+
+OS bancos de dados podem ser utilizados em seperado dos programas de aplicações dos usuários(independência de dados). Os BD podem estar até mesmo em locais
+diferentes, ou seja, em servidores diferentes. Dessa forma, os programas aplicativos não estão interessados em como as funções de acesso ou manipulação estão
+implementadas(independência de operação). ISSO É O QUE CHAMAMOS DE ABSTRAÇÃO.
+
+	3.0 - SUPORTE DE MÚLTIPLAS VISÕES DE DADOS:
+		Cada usuário pode exigir um ponto de vista ou visão diferente do BD. Um SGBD multiusuário, cujos usuários tem uma série de aplicações distintas,
+precisa oferecer facilidades para definir múltiplas visões.
+	4.0 - COMPARTILHAMENTO DE DADOS E PROCESSAMENTO DE TRANSAÇÃO MULTIUSUÁRIO:
+		Um SGBD precisa incluir um software de controle de concorrência para garantir que vários usuários tentem atualizar o mesmo dado e que para isso
+seja possível de maneira controlada. Para que as atualizações sejam corretas. Várias máquinas clientes acessam o mesmo BD. Sendo assim, é importante controlar
+esse acesso para que não haja interferência indevida nos usos simultâneos.
+
+Autores:
+		ELSMARI E NAVATHE
+PRINCIPAIS CARACTERÍSTICAS DOS BANCO DE DADOS
+	* Natureza autodescritiva dos dados
+	* Isolamento entre programas e dados; abstração de dados.
+	* Suporte a múltiplas visões
+	* Compartilhamento de dados e processamento de transação multiusuário.
+
+VANTAGENS DO USO DE UM SGBD:
+	* Controle de redundância
+	* Restrição de acesso não autorizado
+	* Armazenamento persistente para objetos do programa.
+	* Estruturas de armazenamento e técnicas de pesquisa para o processamento eficiente de consulta.
+	* Backup e RECUPERAÇÃO.
+	* Múltiplas interfaces do usuário.
+	* Representação de relacionamentos complexos entre dados
+	* Restrições de integridade.
+	* Dedução e ação usando regras.
+	* Potencial para garantir padrôes.
+	* Tempo reduzido para desenvolvimento de aplicações.
+	* Flexibilidade
+	* Disponibilidade de informações atualizadas.
+	
+	Para o autor DATE:
+BENEFÍCIOS DA ABORDAGEM DE UM BANCO DE DADOS:
+		* O dado pode ser compartilhado
+		* A redundância pode ser reduzida
+		* Inconsistências podem ser evitadas
+	'	* Pode-se utilizar o suporte a transações
+		* A integridade pode ser mantida.
+		* A segurança pode ser aperfeiçoada
+		* Requisitos conflitantes podem ser balanceados
+		* Padrões poder ser utilizados.
+
+Para SYLBERCHATZ, KORTH E SUDARSHAN: AS DESVANTAGENS DE USAR SISTEMA DE ARQUIVO
+		* Redundância e inconsistência de dados
+		* Dificuldade de acesso aos dados
+		* Isolamento dos dados.
+		* Problemas de integridade	
+		* Problemas com ATOMICIDADE
+		* Anomalias de acesso CONCORRENTE.
+		* Problemas com segurança
+
+DESVANTAGENS DE UM SGBD:
+	* Alto investimento inicial em hardware, software e treinamento.
+	* Esforço adicional para oferecer funções de segurança, controle de concorrência, recuperação e integridade.
+
+CESPE-2018-IPHAN: - Acerca da abordagem relacional, de normalização e do SGBD, entre outros conceitos relativos a BD, julgue o item:
+	Padrões a serem impostos e requisitos contraditórios a serem equilibrados são considerados como desvantagens da abordagem de banco de dados.[ERRADO]
+[São considerados como uma VANTAGENS e não desvantagens.]
+[Conhecendo os requisitos da empresa, em oposição aos requisitos de usuários , o DBA(Administrador de Banco de dados] sobre a orientação do administrador de dados,
+podem estruturar um sistema da melhor forma para a emrpesa.]
+
+CESPE-2016-TCE:
+	A que se refere a um SGBD:
+		A principal característica da abordagem de BD consiste em apresentar as ferramentas de acesso físico dependentes da plataforma de armazenamento.
+[ERRADO][AS FERRAMENTAS DE ACESSO DEVEM SER INDEPENDENTES DA PLATAFORMA DE ARMAZENAMENTO. Há também o isolamento entre dados e programas em que a estrutura
+dos arquivos de dados é armazenada no catálogo do SGBD separadamente dos programas de acesso.]
+
+CESPE-2013-MS-ANALISTA:
+	Uma das desvantagens do uso do SGBD, em relação ao uso do sistema de arquivos tradicional, é a diminuição da ocorrência de redundância de dados, fenômeno
+que se refere às inconsistências entre as diversas representações do mesmo fragmento de dado em diferentes sistemas e arquivos.[ERRADO]
+[ERRADO PORQUE A REDUNDÂNCIA NÃO PODE SER CONSIDERADA UMA INCONSISTÊNCIA - ATENÇÃO - QUESTÃO PARA CONFUNDIR O CANDIDATO]
+[PARA RESOLVER O PROBLEMA USAMOS A REDUNDÂNCIA CONTROLADA PARA MELHORAR O DESEMPENHO DAS CONSULTAS]
+[A REDUNDÂNCIA NÃO É INCONSISTÊNCIA, PODE GERAR INCONSISTÊNCIAS]
+
+PROCESSAMENTO DE TRANSAÇÕES EM BANCO DE DADOS:
+	É uma característica do banco de dados compartilhar dados e processar transações multiusuário que geralmente executam uma ou mais transações.
+Uma TRANSAÇÃO é um programa em execução ou processo que inclui um ou mais acessos ou operações de banco de dados, como fazer a leitura ou inserir,excluir e 
+atualizar dados. Uma transação, em outras palavras, é um UNIDADE LÓGICA DE TRABALHO  que executa um conjunto de operações em um BD.
+Ao final da TRANSAÇÃO, o banco de dados precisa estar VÁLIDO E COERENTE. Que satisfaça todas as restrições especificadas para o banco. Deve manter a INTEGRIDADE.
+
+AO FALAR EM UNIDADE LÓGICA ESTAMOS NOS REFERENDO AO CONJUNTO DE OPERAÇÕES (CONSULTA,INSERÇÕES,ALTERAÇÕES,EXCLUSÕES) QUE PODEM SER REALIZADAS EM UM BD. 
+						UMA TRANSAÇÃO PODE CONTER MUITAS OPERAÇÕES.
+
+AS PROPRIEDADES DE UMA TRANSAÇÃO:
+		- ATOMICIDADE:	
+				É a propriedade que garante que uma transação é uma UNIDADE DE PROCESSAMENTO ATÔMICA. Deve ser realizada em sua totalidade ou
+não deve ser realizada. SE uma transação não for completada por algum motivo, alguma falha no sistema no meio da execução da transação, deve-se DESFAZER com o 
+ROLLBACK ( transação sem sucesso). Por sua vez, as operações de gravação de uma transação confirmada deve-se gravar com e confirmar com o 'COMMIT'
+
+		- CONSISTÊNCIA :
+				É levar o banco de dados de um estado consistente(válido) para outro. UM ESTADO CONSISTENTE DO BANCO DE DADOS É AQUELE
+QUE SATISFAZ TODAS AS REGRAS E RESTRIÇÕES.
+Obs: A responsabilidade pela consistência é atribuida aos programadores que escrevem os programas de BD e também aos módulos que o SGBD possui para restrições 
+de integridade.
+		- ISOLAMENTO:
+				É preciso que uma transação ocorra isoladamente das demais, embora centenas de transações possam ser executadas concorrentemente.
+O princípio funciona como um mecanismo de controle que visa assegurar que NENHUMA OUTRA TRANSAÇÃO, OPERANDO NO MESMO SISTEMA, POSSA INTERFERIR NO FUNCIONAMENTO
+DA TRANSAÇÃO CORRENTE. Outras transações não podem visualizar os resultados parciais das operações de uma transação em andamento.
+
+NÍVEIS DE ISOLAMENTO:
+	Nível 0: não grava sobre as leituras sujas das transações de nível mais alto.
+LEITURA SUJA: Ocorre quando a transação lê dados escritos por uma transação simultânea não efetivada.
+	Nível 1: não tem atualizações perdidas.
+	Nìvel 2: não tem atualizações perdidas ou leituras sujas.
+	Nível 3: Isolamente verdadeiro, permite leituras repetitivas.
+
+DURABILIDADE:
+		As mudanças aplicadas ao banco de dados pela transação confirmada precisam PERSISTIR NO BANCO DE DADOS. 
+Esta propriedade garante que os resultados de uma transação são permanentes e somente podem ser desfeitos somente por uma transação subsequente.
+AS MUDANÇAS NÃO DEVEM SER PERDIDAS POR CAUSA DE ALGUMA FALHA APÓS A REALIZAÇÃO DA TRANSAÇÃO.
+
+CESPE-2020-TJ:
+	Um sistema de BD proporciona a empresas o controle centralizado de todos os seus dados. O funcionamento do BD baseia-se em unidades lógicas de trabalho
+conhecidas como:
+a) ENTIDADES= [ERRADO][ENTIDADE É UM CONJUNTO DE OBJETOS DE UMA REALIDADE INDEPENDENTE.]
+B)OCORRÊNCIAS = [errado]Ou instâncias representa um registro em particular da entidade naquele momento.
+C)REGISTROS: [errado]São linhas ou tuplas de uma tabela.
+D)TABELAS: [ERRADO]Ou também uma RELAÇÃO é a estrutura do modelo relacional que serve para representar os dados e relacionamentos entre esses dados.
+E)TRANSAÇÕES: [CERTO][É um processo em execução que inclui um ou mais acessos ou operações de BD. Fazer leitura, inserir,excluir,atualizar....]
+
+[AS UNIDADES LÓGICAS DE TRABALHOS SÃO AS TRANSAÇÕES. AO FALAR EM UNIDADE LÓGICA DE TRABALHO ESTAMOS NOS REFERINDO AO CONJUNTO DE OPERAÇÕE QUE PODEM SER
+REALIZADAS EM UM BD]
+
+FCC-2018-CL-ANALISTA:
+	Para garantir algumas das propriedades ACID de um SGBD, um Analista de Sistemas verificou que:
+		I. Os protocolos de Controle de Concorrência garantem a consistência dos dados por meio de acessos concorrentes; (ISOLAMENTO)
+		II. Os protocolos de Recuperação de Falhas garantem a consistência dos dados após falhas do sistema.(DURABILIDADE)(ATOMICIDADE)
+
+	METADADOS E CATÁLOGO DE DADOS:
+Uma das características dos BD é a natureza da autodescrição do sistema de banco de dados por meio da definição ou descrição completa de sua estrutura
+e restrições, através dos metadados ou informações do descritor.
+	MEtadados(informações do descritor) são dados estruturados que descrevem, identificam,explicam,localizam e, portanto, facilitam a recuperação, uso
+e gestão de recursos de informação. São chamados de dados sobre outros dados.
+	A definição ou descrição completa dos metadados fica armazenada no catálogo ou dicionário de dados do SGBD.
+	No catálogo contém informações como a estrutura de cada arquivo,o tipo e o formato de armazenamento de cada item de dados e diversas restrições sobre
+os dados.
+O catálogo armazena informações sobre todos os esquemas e todos os mapeamentos correspondentes entre esses esquemas.Incluindo códigos, store procedures,triggers.
+O catálogo é usado pelo software de SGBD e também pelos usuários do BD que precisam de informações sobre a estrutura do BD.
+Assim podemos saber qual a relação de uma tabela com sua composição. Se são de 3 ou 4 colunas. Além disso, a coluna permite a inserção de dados do tipo
+caractere limitado a um certo tamanho, por exemplo.
+
+FCC-20149-SANASA:
+	Uma característica fundamental da abordagem de um banco de dados é que o sistema de BD possui não apenas o BD,mas também uma completa definição ou
+descrição da estrutura desse BD e sua restrições. Essa definição fica armazenada em um local que contém informações como a estrutura de cada arquivo
+o tipo e o formato de armazenamento de cada item de dado e várias restrições sobre os dados. A informação armazenada neste local tem uma certa denominação
+e descreve a estrutura do BD primário.	O local ao qual o texto se refere e a denominação da informação nele armazenada são:
+
+d) catálogo do SGBD - metadados
+[O local em que são armazenadas as informações sobre a estrutura dos arquivos, seus tipos e formatos é o catálogo ou dicionário do SGBD. ]
+[Esses dados são os chamados METADADOS ou INFORMAÇÕES DE DESCRITOR]
+
+CESPE-2016-TCE:
+	Com relação aos banco de dados relacionais:
+		O catálogo de um sistema de gerenciamento de BD relacional armazena a descrição da estrutura do BD e contém informações a respeito de cada
+arquivo, do tipo e formato de armazenamento de cada item de dado e das restrições relativas aos dados.[CORRETO]
+
+CESPE-2013-SERPRO:
+	Suponha haver necessidade de se recuperar o CPF de clientes. Nesse caso, o SGBD irá consultar se o campo CPF está no dicionário de dados ou no
+catálogo, acessando nos respectivos metadados.[CORRETO]
+[ALÉM DISSO, O SGBD USARÁ O CATÁLOGO PARA VERIFICAR SE O DADO REQUERIDO PODE SER RECUPERADO E COMO ELE SERÁ RECUPERADO, AO PASSO QUE, AO INSERIR OU ALTERAR
+DADOS, O CATÁLOGO IRÁ INFORMAR TAMBÉM QUE RESTRIÇÕES DEVER SEM OBSERVADAS.]
