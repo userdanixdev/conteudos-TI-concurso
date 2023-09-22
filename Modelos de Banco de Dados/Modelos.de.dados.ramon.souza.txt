@@ -1,0 +1,283 @@
+MODELOS DE BANCO DE DADOS - RAMON SOUZA
+	-Dependendo do grau de abstração utilizado para representar a estrutura, existem diversos modelos:
+		MODELO CONCEITUAL/ALTO NÍVEL:
+			- Representa conceitos que são facilmente compreendidos por usuários, como entidades, atributos e relacionamentos.
+			- Também é independente de hardware ou software. [DE NENHUM SGBD UTILIZADO PARA IMPLANTAR]
+			- Além disso, qualquer alteração tanto no software ou hardware, não terá efeito no modelo conceitual.
+O MODELO CONCEITUAL REGISTRA QUE DADOS PODEM APARECER NO BANCO DE DADOS, MAS NÃO REGISTRA COMO ESTES DADOS ESTÃO ARMAZENADOS.
+	O principal exemplo de um modelo conceitual é o MER (Modelo Entidade Relacionamento) representado pelo DIAGRAMA ENTIDADE-RELACIONAMENTO(DER)
+
+		MODELO LÓGICO, REPRESENTATIVO OU DE IMPLEMENTAÇÃO:
+			- Constitui uma representação específica de um modelo interno. Dependente de um modelo de BD em particular. Pode ser RELACIONAL,
+ORIENTADO A OBJETO, EM REDE OU HIERÁRQUICO. É um nível de abstração visto pela necessidade do usuário em querer implementa-lo.
+			- O modelo relacional é um dos principais exemplos de modelos lógicos. O modelo utiliza estruturas de relações (tabelas) para
+representar os dados.
+		
+		MODELO FÍSICO:
+			- Os modelos descrevem o armazenamento dos dados,sendo dependentes do SGBD específico (ex: Oracle,MySQL).
+			- É neste modelo que será utilizada a linguagem específica de um SGBD para definição dos dados para criar as estruturas físicas como 
+tabelas,campos,tipos de dados, restrições.
+			- Nesse modelo há detalhamentos dos campos em relação ao domínio, restrições e indexação.
+
+MODELO CONCEITUAL ------> INDEPENDE DO SGBD
+MODELO LÓGICO ----------> DEPENDE DO TIPO OU CLASSE DE SGBD, MAS NÃO DO SGBD ESPECÍFICO.(FERRAMENTA ESPECÍFICA)
+MODELO FÍSICO ----------> DEPENDE TOTALMENTE DO SGBD,ISTO É, DE UMA FERRAMENTA ESPECÍFICA ----> ORACLE,MONGODB, MYSQL, SQL-SERVER.
+
+FCC-2018-DPE-AM-ANALISTA:
+	Considerando a modelagem conceitual de BD relacionais, o objetivo principal é:
+a) detalhar as estruturas físicas de armazenamento dos dados que irão compor o BD.[ERRADO][MODELO FÍSICO OU PROJETO FÍSICO que busca detalhar as estruturas
+físicas de armazenamento que irão compor o BD.]
+b) descrever as interfaces de acesso externo às estruturas internas do banco.[ERRADO][Porque essa parte é do PROJETO LÓGICO ou MODELO LÓGICO que busca descrever
+as interfaces de acesso externo as estruturas internas do BD]
+c) descrever conjuntos de entidades representativas dos dados, bem como os conjuntos de relacionamentos entre esses conjuntos de entidades.[CORRETO]
+[NA MODELAGEM CONCEITUAL QUE SE BUSCA DESCREVER CONJUNTOS DE ENTIDADES REPRESENTATIVAS DOS DADOS, BEM COMO OS CONJUNTOS DE RELACIONAMENTOS ENTRE ESSES
+CONJUNTOS DE ENTIDADES]
+d) definir o sistema gerenciador de BD que será utilizado na implementação do BD.[ERRADO][É NO PROJETO OU MODELO LÓGICO QUE BUSCA DEFINIR O SISTEMA GERENCIADOR
+DE BD QUE SERÁ UTILIZADO NA IMPLEMENTAÇÃO DO BD]
+e) otimizar os algoritmos de consulta utilizados no BD.[ERRADO][É TAMBEM NO MODELO LÓGICO OU PROJETO LÓGICO QUE BUSCA OTIMIZAR OS ALGORITMOS DE CONSULTA
+UTILIZADOS NO BD.]
+
+CESPE-2018-STM-TÉCNICO:
+	-	Comparativamente aos usados pelos usuários leigos, os modelos de dados utilizados por programadores são considerados menos abstratos,pois contêm
+mais detalhes de como as informações estão organizadas internamente no BD.[CORRETO]
+[Os modelos lógicos e físico são menos abstratos pois apresentam mais detalhes acerca do BD. O modelo conceitual é o mais abstrato e não expõe diversos
+detalhes das estruturas de armazenamento, sendo facilmente entendido pelos usuários.]
+
+CESPE-2018-STM-TÉCNICO:
+	O modelo conceitual que reflete uma estrutura simplificada do BD, é responsável por registrar como os dados estão armazenados no SGBD.[ERRADO]
+[O MODELO CONCEITUAL NÃO TRATA 'COMO'OS DADOS ESTÃO ARMAZENADOS, MAS SOMENTE 'QUAIS' DADOS SERÃO ARMAZENADOS.]
+
+CESPE-2014-TJ-ANALISTA:
+	A construção de um modelo particular para cada SGBD obtido a partir da transformação do modelo conceitual é o obejtivo do projeto lógico.[certo]
+
+RESOLUÇÃO:
+	MODELO CONCEITUAL =  INDEPENDE DO SGBD.
+	MODELO LÓGICO = DEPENDE DO TIPO OU CLASSE DE SGBD,MAS NÃO DO SGBD EM ESPECÍFICO
+	MODELO FÍSICO = DEPENDE TOTALMENTE DO SGBD, ISTO É, DA FERRAMENTA ESPECÍFICA.
+
+A questão apenas cita que o projeto lógico constrói um modelo para o SGBD,sem deixar claro se está se referindo ao tipo ou a ferramenta específica. 
+Essas afirmações genéricas,embora confusas,tem sido consideradas corretas.
+
+CESPE-2011-MEC-ARQUITETO:
+	Em um projeto de BD, o modelo conceitual e o modelo lógico definem as entidades e seus relacionamentos. O primeiro modelo independe do tipo de SGBD e o
+segundo depende do tipo de SGBD a ser utilizado.[CORRETO]
+[MODELO CONCEITUAL INDEPENDE DO SGBD]
+[MODELO LÓGICO DEPENDE DO TIPO E DA CLASSE DO SGBD](MAS NÃO DO SGBD ESPECÍFICO)
+[MODELO FÍSICO DEPENDE TOTALMENTE DO SGBD -  DA FERRAMENTA ESPECÍFICA]
+
+						ESQUEMA X INSTÂNCIA
+
+Um esquema de BD é um esboço de um BD,representa geralmente a estrutura do banco, mas sem dados.
+Em outra definição é um conjunto de regras que governa um BD.
+A INSTÂNCIA OU ESTADO representa os dados que estão armazenados em um dado instante.
+Instâncias podem mudar ao longo do tempo,enquanto um esquema de BD é geralmente estático.
+
+CESPE-2020-MI-PSS:
+	Um esquema de BD é um conjunto de regras que governa um BD ou todo o conjunto de objetos pertencentes a determinado usuário.[CERTO]
+[Um ESQUEMA de BD representa a configuração lógica da totalidade ou de parte de uma base de dados relacional. Ele pode tanto como um representação visual
+quanto como um conjunto de fórmulas conhecidas como restrições de integridade que regem um BD.]
+
+								ARQUITETURA TRÊS ESQUEMAS
+
+- Visa separar as aplicações do usuário do BD físico.
+- Elas são divididas em três níveis:
+		1- NÍVEL EXTERNO OU VISÃO: - Cada esquema externo descreve a parte do banco de dados em que um usuário em particular está interessado e
+é ocultado o restante do banco de dados do grupo de usuários. (gerencia o modo como os dados serão vistos pelos usuários)
+		1.2 - Cada esquema externo é comumente implementado usando um modelo de dados representativo(lógico),possivelmente baseado em um projeto de
+esquema externo em um modelo de dados de alto nível.
+		2 - NÍVEL CONCEITUAL:
+			Possui um esquema conceitual que descreve a estrutura do BD inteiro para uma comunidade de usuários. 
+O esquema ou nível  conceitual OCULTA SO DETALHES DAS ESTRUTURAS DE ARMAZENAMENTO FÍSICO E SE CONCENTRA NAS DESCRIÇÕES DE ENTIDADES, TIPOS DE DADOS, RELACIONAMENTOS,
+OPERAÇÕES DO USUÁRIO E RESTRIÇÕES. Normalmente, um modelo de dados representativo (lógico) é usado para descrever o esquema ou nível conceitual quando um sistema de BD
+é implementado. Esse esquema conceitual de implementação costuma estar baseado em um PROJETO CONCEITUAL para um modelo de dados de ALTO NÍVEL.
+		3 - NÍVEL INTERNO: Existe um esquema interno que descreve a estrutura do armazenamento físico de BD. O esquema interno usa um modelo de dados
+físico e descreve os detalhes completos do armazenamento de dados e caminhos de acesso para o BD.
+
+OS PROCESSOS DE TRANSFORMAÇÃO DE REQUISIÇÕES E OS RESULTADOS ENTRE OS NÍVEIS SÃO CHAMADOS DE MAPEAMENTO.
+	- Mapeamento  conceitual/interno - especifica como a estrutura conceitual é armazenada fisicamente.
+	- Mapeamento  externo/conceital  - define a correspondência entre uma visão particular externa e o esquema conceitual do BD.
+
+CESPE-2019-TJ-AM:
+	Na arquitetura ANSI/SPARC de um SGBD,o nível externo trata do modo como os dados são visualizados por usuários individuais e o nível conceitual 
+oferece uma visão comunitária dos dados.[CORRETO]
+[Além disso quanto ao nível externo não significa necessariamente que haverá um modelo para cada usuário,mas sim que é neste nível que há maior proximidade com 
+usuário. Mas sim o usuário que irá realizar a interação no nível externo.]
+
+CESPE-2017-TRE-TÉCNICO:
+	A respeito da arquitetura de três esquemas para BD:
+a) Uma das desvantagens da arquitetura de três esquemas é a impossibilidade de aplicar a independência de dados.[ERRADO]
+[Afirmação totalmente inversa sendo assim como VANTAGEM e a POSSIBILIDADE de aplicar a independência de dados.]
+b) Um dos objetivos da arquitetura de três esquemas é aproximar o BD físico das aplicações.[ERRADO]
+[O CORRETO SERIA SEPARAR O BD FÍSICO DAS APLICAÇÕES.]
+c) O nível conceitual serve para descrever a estrutura do BD para um conjunto de usuários.[CORRETO]
+[ESSE NÍVEL SERVE PARA A COMUNIDADE EM GERAL E NÃO PARA UM CONJUNTO DE ESPECÍFICO DE USUÁRIOS.]
+d) Mapeamentos são as transformações que dados brutos armazenados sofrem para se tornar informações inteligíveis.
+e) O nível interno inclui uma série de visões do usuário utilizadas para descrever parte do BD.[ERRADO]
+[O NÍVEL EXTERNO QUE INCLUI UMA SÉRIE DE VISÕES PARA O USUÁRIO PARA DESCREVER PARTE DO BD.]
+
+A arquitetura de três esquemas pode ser usada para explicar melhor o conceito de INDEPENDÊNCIA DE DADOS. Que é a capacidade de alterar os esquema em um
+nível do sistema BD sem ter de alterar o esquema do nível mais alto.
+	Para isso existem dois tipos:
+		INDEPENDÊNCIA LÓGICA DE DADOS - Capacidade de alterar o esquema conceitual sem ter de alterar os esquemas externos ou de programas.
+Exemplo: Podemos alterar o esquema conceitual para expandi-lo acrescentando algum atributo ou entidade, para alterar restrições ou remoção de alguma tupla.
+Sendo assim, o esquema externo ou de aplicação devem trabalhar da mesma forma.
+		INDEPENDÊNCIA FÍSICA DE DADOS - Capacidade de alterar o esquema interno sem ter de alterar o esquema conceitual e, por consequência,sem
+alterar os esquemas externos. 
+	*** Mudanças no esquema interno podem ser necessários porque alguns arquivos físicos foram reorganizados para melhorar o desempenho da recuperação ou 
+atualização. ***
+
+CESPE - 2021-TCE:
+	A independência de dados é caracterizada pelo fato de os dados não dependerem do esquema físico e não precisarem ser reescritos se o esquema físico
+do BD for alterado.[CORRETO][A independência de dados é a capacidade de alterar um esquema inferior sem necessitar alterar o esquema superior.]
+
+	     MODELO DE DADOS                          X 					ARQUITETURA 3 ESQUEMAS
+
+1.São usados para representar os conceitos 				Representado por camadas de interação do usuário com o BD.
+   e descrever as estruturas de um BD 						Nível Externo ou nível de visão ou visões do usuário:
+	    MODELO CONCEITUAL (ALTO NÍVEL)						- Descreve-se a estrutura e usa-se parte do Banco de dados.
+1.Para ser de fácil entendimento ao usuário						- Modelo lógico baseado em modelo conceitual(do projeto)
+2.Alto nível de abstração								- Para o usuário final ou individuais
+	    MODELO LÓGICO,REPRESENTATIVO OU IMPLEMENTAÇÃO			Nível Conceitual:
+1.Modelo Relacional,objeto,objeto-relacional,xml,rede,hierárquico.			- Possui um esquema conceitual que descreve a estrutura do BD
+	1.2 - Representa os conceitos utilizados com base				  para uma comunidade de usuários.
+em estruturas específicas de BD dependentes de um TIPO específico.			- Usa-se um modelo de dados lógico(implementação) para descrever 
+	    MODELO FÍSICO:								  o nível conceitual.
+1 - Elaborados no Projeto Físico e descreve o armazenamento dos dados			- Descreve QUAIS os dados são armazenados na estrutura e suas relacões.
+em detalhes dependente de um SGBD específico.						- Oculta os detalhes das estruturas de armazenamento físico.										Nível Interno:
+2 - Busca otimizar os algoritmos de consulta utilizados no BD.				
+3 - Além de descrição de domínio,restrições, indexação.				Nível Interno:
+4 - Orientado a uma ferramenta específica de SGBD.					- Descreve COMO os dados estão armazenados e caminhos de acesso aos dados.
+											- Usa-se o modelo ou esquema físico de modelagem.
+	 										- Orientado a uma ferramente específica de SGBD (ex:ORACLE,MySQL)
+
+CESPE-2019-TJ-ASSISTENTE-PROGRAMADOR:
+	Na arquitetura ANSI/SPARC de um SGBD o nível interno trata do armazenamento físico dos dados, o nível externo trata do modo como os dados são visualizados
+por usuários individuais e o nível conceitual oferece uma visão comunitária dos dados.[CORRETO]
+[Em relação ao termo 'visão comunitária dos dados' esse deve ser interpretado como um modelo conceitual em que há a representação do BD inteiro.]
+	[QUANTO AO NÍVEL EXTERNO NÃO É UM MODELO PARA CADA USUÁRIO - MAS É UM NÍVEL EM QUE HÁ MAIOR PROXIMIDADE COM O USUÁRIO]
+OBS: O usuário que irá realizar a interação no nível externo - esse nível representa essa interação de um indivíduo como parte do BD.
+
+CESPE-2017-TRE:
+	A respeito da arquitetura de três esquemas para BD:
+a) Uma das desvantagens da arquitetura de três esquemas é a impossibilidade de aplicar a independência de dados.[ERRADO]
+[SERIA A POSSIBILIDADE DE APLICAR A INDEPENDÊNCIA]
+b) Um dos objetivos da arquitetura de três esquemas é aproximar o BD físico das aplicações.[ERRADO]
+[SERIA COMO OBJETIVO SEPARAR O FISICO DO LÓGICO, ASSIM COMO O LÓGICO PARA O EXTERNO POR MEIO DE MAPEAMENTOS]
+c) O nível conceitual serve para descrever a estrutura do BD para um conjunto de usuários.[CORRETO]
+d) Mapeamentos são as transformações que dados brutos armazenados sofrem para se tornar informações inteligíveis.[ERRADO]
+[MAPEAMENTOS SÃO AS TRANSFORMAÇÕES ENTRE OS NÍVEIS DA ARQUITETURA DE TRÊS ESQUEMAS, ISTO É, TRANSFORMAÇÃO EXTERNO/CONCEITUAL OU CONCEITUAL/FÍSICO]
+e) O nível interno inclui uma série de visões do usuário utilizadas para descrever partes do BD.[ERRADO]
+[O NÍVEL EXTERNO QUE INCLUI UMA SÉRIE DE VISÕES DO USUÁRIO UTILIZADAS PARA DESCREVER PARTES DO BD. O NÍVEL INTERNO DESCREVE AS ESTRUTURAS DE ARMAZENAMENTO.]
+
+			PRINCIPAIS MODELO DE DADOS (MODELOS LÓGICOS)
+
+MODELO RELACIONAL: Representa um BD como uma COLEÇÃO DE TABELAS bidimensionais(linhas x colunas), onde cada tabela pode ser armazenada como um arquivo separado.
+						
+						MODELO DE OBJETOS: 
+Define um BD em termos de OBJETOS,PROPRIEDADES e RELAÇÕES.
+		   - Objetos com a mesma estrutura e comportamento pertencem a uma CLASSE.
+		   - As operações de cada classe são especificadas com PROCEDIMENTOS PREDEFINIDOS, chamados de MÉTODOS.
+		   - As classes podem ser organizadas em HIERARQUIA (HERANÇA),caso em que uma classe filha (SUBCLASSE) herda as propriedades e métodos
+da classe pai(SUPERCLASSE).
+		   - Nesse modelo há o ENCAPSULAMENTO - que é o processo de esconder os detalhes de um objeto ou de restringir o acesso direto a alguns 
+componentes de um objeto. 
+		   - Polimorfismo - que é a característica na qual os mesmo atributos ou métodos podem ser utilizados por objetos distintos e com implementações
+distintas.
+Exemplo: 
+		No modelo Objeto temos a hierarquia de classe (HERANÇA):
+		Sendo 'Veículo' uma superclasse e 'Carro' e 'Bicicleta' como suas SUBCLASSES.			
+** Os objetos compartilham as mesmas características ** Sendo assim, cada 'carro' é um objeto em específico. Um Hyundai HB20 de placa XXX é um objeto.
+As PROPRIEDADES são representadas na parte intermediária da superclasse 'veículo' como 'marca' e 'modelo'.
+Pela herança, as subclasses herdam as propriedades e métodos da superclasse e portanto tanto 'carro' quanto 'bicicleta' também possuem os atributos
+'marca' e 'modelo'.
+		Os métodos ou operações são representados na parte inferior da caixinha. Assim, a superclasse veículo possui o método 'acelerar()', 
+bicicleta() possui um método 'acelerar()' e a outra subclasse 'carro' possui os métodos 'ligar()','desligar()'e 'acelerar()'. E dentro do método vai
+a implementação,isto é, o código que declara o comportamento que deverá ser realizado.
+	OBSERVE QUE O MÉTODO ' ACELERAR()' está presente nas três classes. Exemplo de POLIFORMISMO.--> A implementação dos métodos pode ser diferente
+em cada classe. A aplicação será diferente para cada classe.
+
+	MODELO OBJETO-RELACIONAL:
+		- Os SGBDs relacionais tem estendido seus modelos para incorporar conceitos de BD de objeto.
+Neste modelo tanto uma tabela  TABELA CONTA quanto classes do modelo de objetos.Exemplo CLASSE CONTA.
+		- As informações da TABELA CONTA são armazenadas no BD e a MANIPULAÇÃO é feita por meio das classes e objetos.
+A COMUNICAÇÃO OBJETO-TABELA É REALIZADA PELO PROGRAMA COM AUXÍLIO DE FRAMEWORKS DE MAPEAMENTO OBJETO-RELACIONAL.
+	
+	MODELO XML:
+		- Utiliza estruturas de árvore hierárquicas e combina conceitos de BD com conceitos dos modelos de representação de documentos.
+Os dados são representados como elementos - com uso de tags(etiquetas) e podem também ser aninhados para criar estruturas hierárquicas complexas.
+	MODELO DE REDE:
+		- Um modelo antigo que representa DADOS como TIPOS DE REGISTRO e também representa um tipo limitado de relacionamento 1:N.
+O relacionamento 1:N(um-para-muitos) relaciona uma instância de um registro a muitas instâncias de registros usando algum mecanismo de ligação com
+ponteiros nesses modelos.
+Exemplo:
+		A entidade 'DEPARTAMENTO' pode se relacionar com vários 'EMPREGADOS'(entidade), mas cada 'EMPREGADO' só está ligado a um 'DEPARTAMENTO'.
+
+	MODELO HIERÁRQUICO:
+		- Representa os dados como estruturas de ÁRVORE HIERÁRQUICA.
+		- O registro principal é chamado RAIZ(root).
+			- Cada registro de um único pai mas só pode ter vários 'filhos'.
+			- Um registro que não seja 'pai' em nenhum relacionamento é denominado 'folha'(leaf)
+			- Nenhum elemento é 'filho' de dois 'pais', mas um mesmo elemento pode ser 'pai' de mais de um 'filho'.
+
+RESUMO MODELO DE DADOS:
+	- Modelo Relacional : Dados como uma coleção de tabelas
+	- Modelo de objetos: Dados como objetos,propriedades(atributos) e operações(métodos)
+	- Modelo Objeto-relacional: SGBD relacionam com extensões para modelos de objetos.
+	- Modelo XML: Estrutura de árvores hierárquicas com uso de tags.
+	- Modelo de rede: Registros relacionados de forma 1:N
+	- Modelo hierárquico: Estruturas de árvores hierárquicas de 'pais' e 'filhos'.
+
+CESPE-2019-ANALISTA-TJ-AM:
+	A respeito de modelos de dadose e de modelos orientados a objetos, com o emprego da linguagem de modelagem unificada, julgue o item que se segue.
+		No modelo relacional, um objeto de dados mantém internamente dados e um conjunto de operações que agem sobre os dados.[ERRADO]
+[O modelo relacional os dados são armazenados em tabelas e não usam objetos.]
+
+CESPE-2019-MPC-PA-ANALISTA:
+	Assinale a opção que apresenta o modelo de dados caracterizado por organizar os dados em uma estrutura do tipo árvore, na qual cada registro tem um
+único 'pai' e é classificado em uma ordem específica.
+a)híbrido - representa os dados utilizando estruturas de mais de um modelo.
+b)de rede - representa os dados como tipos de registro e também representa um tipo limitado de relacionamento 1:N, chamado de tipo de conjunto.
+c)relacional - representa um BD como uma coleção de tabelas, onde cada tabela pode ser armazenada como um arquivo separado.
+d)hierárquico -  CORRETO - representa os dados como estruturas de árvore hierárquicas em que cada hierarquia simboliza uma série de registros relacionados em
+uma estrutura de 'pais' e 'filhos'. O registro principal é chamado de raiz(root). Cada registro tem um único pai e os registro podem ter vários filhos,
+Um registro que não seja 'pai' em nenhum relacionamento é denominado 'folha'(leaf).
+e)orientado a objetos - orietando a objetos define um BD em termos de OBJETOS,PROPRIEDADES E OPERAÇÕES.
+
+CESPE-2018-SEFAZ:
+	O modelo de dados que possui métodos e capacidade de encapsulamento é o?
+a) semiestruturado
+b) baseado em objetos - correta
+c) entidade-relacionamento
+d) relacional
+e) distribuído
+
+			Um modelo de dados de objeto define um BD em termos de OBJETOS,PROPRIEDADES E OPERAÇÕES. Objetos com a mesma estrutura e comportamento
+pertencem a uma classe. As operações de cada classe são especificadas com procedimentos predefinidos chamados de MÉTODOS. As classes podem ser organizadas em
+HIERARQUIAS(HERANÇAS) caso em que classe filha(subclasse) herda as propriedades e métodos da classe pai(SUPERCLASSE).
+ Nesse modelo, há o ENCAPSULAMENTO -
+				    processo de esconder os detalhes de um objeto ou de restringir o acesso direto a alguns componentes de um objeto.
+POLIMORFISMO - Característica na qual os mesmos atributos ou métodos podem ser utilizados por objetos distintos e com implementações distintas.
+
+FCC-2017-TST:
+	Considere que um determinado tipo de BD organiza os dados na forma de uma pirâmide, onde o registro principal no topo da pirâmide é chamado de registro
+RAIZ. Os registro são organizados como pai e filho onde um registro filho sempre tem apenas um registro pai ao qual ele está ligado, como em uma árvore familiar
+normal. Em contrapartida, um registro pai pode ter mais de um registro filho ligado a ele.
+Trata-se do BD:
+a) HIERÁRQUICO - O modelo hierárquico representa os dados como ESTRUTURAS DE ÁRVORE HIERÁRQUICAS. Cada hierarquia simboliza uma série de registro relacionados em
+um estrutura de 'pais' e 'filhos'. O registro princiapl é chamado de RAIZ (ROOT). Cada registro tem um único 'pai', mas pode ter vários 'filhos'.
+Um registro que não seja 'pai' em nenhum relacionamento é denominado 'folha'(leaf).
+	*** NÃO EXISTE UMA LINGUAGEM PADRÃO PARA O MODELO HIERÁRQUICO, UMA BASTANTE CONHECIDA É A DL/1 QUE É USADA NA INDÚSTRIA POR MUITO TEMPO.**
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
