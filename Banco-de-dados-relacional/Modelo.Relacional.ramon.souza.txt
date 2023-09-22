@@ -1,0 +1,53 @@
+MODELO LÓGICO RELACIONAL - Professor Ramon Souza
+	- São conjunto de relações ou tabelas que representam dados e relacionamentos.
+	- Segue o princípio de que o BD seja percebido pelos usuários como TABELAS.
+( OS DADOS PODEM ESTAR ARMAZENADOS FISICAMENTE EM OUTRAS ESTRUTURAS(índices,listas,sequências)
+	- Devem representar VALORES EXPLÍCITO EM POSIÇÕES DE COLUNAS EM LINHAS DE TABELAS. - Princípio da informação -
+
+Para o autor C.J Date é descrito em seu aspecto estrutural para ser percebido pelos usuários como TABELAS.
+E as TABELAS satisfazem a certas RESTRIÇÕES DE INTEGRIDADE:
+							- As restrições de integridade fornecem a garantia de que mudanças feitas no BD por usuários 
+							autorizados não resultem em perda da consistência dos dados. Assim, as regras de integridade
+							protegem o BD de danos acidentais.
+Aspecto Manipulador: Para C.J Date os operadores disponíveis para que o usuário possa manipular essas tabelas são operadores que derivam tabelas a partir
+de outras tabelas.
+
+Na arquitetura ANSI/SPARC é uma COLEÇÃO DE ESTRUTURAS DE DADOS, formalmente chamadas de RELAÇÕES e informalmente de TABELAS, compondo o nível conceitual.
+				COLEÇÃO DE OPERADORES - Álgebra e o cálculo relacional que constituem a base da linguagem SQL
+				COLEÇÃO DE RESTRIÇÕES DE INTEGRIDADE - Definindo o conjunto consistente de estados de base de dados e de alterações de estados.
+Ampliando o conceito da arquitetura ANSI/SPARC, Date diz:
+	- Uma coleção ilimitada de tipos escalares(incluindo em particular o tipo booleano ou valor verdade)
+	- Um gerador de tipo de relação e uma interpretação pretendida para esses tipos de relações gerados.
+	- Recursos para definição de variáveis de relação. um relvar(variável relacional) é um CONJUNTO DE PARES ORDENADOS DE DOMÍNIO E NOME QUE SERVE COMO UM
+CABEÇALHO PARA UMA RELAÇÃO.
+	- Um operador de atribuição relacional para atribuição de valores de relações a essas RELVARS.
+	- Coleção ilimitada de operadores relacionais genéricos(álgebra relacional) para derivar valores de relações a partir de outros valores de relações.
+
+CESPE-2018-PF:
+	Ao analisar um computador, Marcos encontrou inúmeros emails,vídeos e textos advindos, em sua maioria, de comentários em redes sociais. Descobriu também
+que havia relação entre vários vídeos e textos encontrados em um diretório específico. Assertiva: Nessa situação, tendo como referência somente essas informações
+Marcos poderá inferir que se trata de um grande banco de dados relacional, visto que um diretório é equivalente a uma tabela e cada arquivo de texto é
+equivalente a uma tupla; além disso, como cada arquivo possui um código único, poderá deduzir que esse código é a chave primária que identifica o aquivo de forma
+unívoca.[errado]
+[Um BD RELACIONAL não é formado por DOCUMENTOS, mas sim por um conjunto de tabelas. O princípio da informação afirma que todos os dados devem ser organizados
+em tabelas ( ainda que armazenados em estruturas diferentes)sendo assim, todo o conteúdo de informação do BD é representado por valores explícitos em posições
+de colunas em linhas de tabelas. Como esse banco não é percebido pelo usuário como um conjunto de tabelas, mas sim como um conjunto de documentos e outras mídias
+NÃO SE TRATA DE UM BANCO RELACIONAL.]
+
+CESPE-2015-TCU-AUDITOR:
+	Os bancos de dados relacionais são constituídos de três componentes: uma coleção de estrutura de dados (relações ou tabelas), uma coleção de operadores
+(linguagem SQL) e uma coleção de restrições de integridade (conjunto consistente de estados de base de dados e de alterações de estados.)[CORRETO]
+[A arquitetura ANSI/SPARC em três níveis considera que o BD relacional consiste em três componentes:
+		- Coleção de estruturas de dados: Formalmente chamadas de relações, ou informalmente de tabelas, compondo o nível conceitual.
+		- Coleção de operadores: álgebra e cálculos relacionais que constituem a base da linguagem SQL
+		- Coleção de restrições de integridade : Definindo o conjunto consistente de estados de base de dados e de alterações de estados.
+
+COSEAC-2019-UFF:
+	- A integridade do BD é mantida por meio de:
+a) consultas. [ERRADO]
+B) JUNções. [errado]
+c) Expressões calculadas[errado]
+d) RESTRIÇÕES [CORRETO][As restriçõies de integridade são usadas para garantir a exatidão e a consistência dos dados em um BD relacional. As restrições
+de integridade fornecem a garantia de que mudanças feitas no BD por usuários autorizados não resultem em perda da consistência dos dados.
+Sendo assim, as regras de integridade protegem o BD de DANOS ACIDENTAIS.]
+	
