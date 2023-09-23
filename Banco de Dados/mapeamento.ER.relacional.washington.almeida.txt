@@ -1,0 +1,47 @@
+MAPEAMENTO ER PARA RELACIONAL - PROFESSOR WASHINGTON ALMEIDA
+
+CESPE-MPE-ANALISTA:
+	- Tendo em vista que ao se desenvolver um sistema de vendas e compras para um cliente, devem-se descrever os produtos, as entradas, as saidas, o 
+controle de estoque e o lucro das vendas, julgue o item subsequente, relativo a modelagem de dados para a aplicação descrita.
+Situação hipotética:
+	O responsável pela modelagem de dados para a aplicação em apreço propôs o seguinte modelo lógico de BD relacional:
+		Tipo_de_produto(codigo_produto,descricao_produto)
+		Produto(codigoProduto,descriçãoProduto,precoProduto,codigotipoproduto)
+		Codigotipoproduto referencia tipo_de_produto
+Nesse modelo lógico, um TipoDeProduto se relaciona com várias entidades do tipo produto. Com essa notação, a visão do cliente se torna clara
+e direta sobre como serão implementados e armazenados os dados.[CORRETO][N:1 - cardinalidade, sendo assim, a questão está correta.]
+
+2018-CESPE-PF:
+	Considerando o MER, infere-se na aplicação das regras para a transformação do modelo ER em um modelo relacional, é necessário
+realizar a fusão das tabelas referentes as entidades envolvidas no relacionamento.
+[ERRADO][No caso do diagrama apresentado de cardinalidade N:1 é necessário adicionar atributo-chave na entidade referenciada PRODUTO]
+[Se fosse cardinalidade 1:1 poderia ocorrer a fusão (junção de tabelas)]
+
+Ao analisar o ER em questão, Paulo verificou que há duas chaves identificadas com o mesmo nome: código - em tipo de produto e em produto. Paulo sabe que o 
+conceito de chaves é básico para estabelecer relações entre linhas de tabelas de um BD relacional e que as chaves primárias devem ser únicas.
+Nessa situação, Paulo deve invalidar o modelo ER em questão, pois ele está semanticamente errado, já que não pode haver chaves primárias com nomes iguais,
+ainda que em entidade distintas.[ERRADO][No mapeamento para o MODELO RELACIONAL as entidades DISTINTAS podem ter chaves primárias, dependendo da cardinalidade
+necessita-se o uso de uma FK para estabelecer a normalização do modelo relacional. É o caso do atributo-chave estrangeira para a entidade PRODUTO]
+
+FCC-2017-TRE:
+	Considere hipoteticamente que em um Tribunal cada Juiz conta com a ajuda de vários Assistentes, de acordo com o volume de processos que precisa
+analisar e julgar. Cada Assistente, por sua vez, auxilia vários Juízes, de acordo com a demanda de trabalho. Se Juiz e assistente forem entidades de um modelo
+de dados relacional, a cardinalidade entre elas será N:M.
+Na criação das tabelas a partir do modelo:
+a) a chave primária da tabela Juiz será chave estrangeira na tabela Assistente e a chave primária da tabela Assistente será a chave estrangeira na tabela Juiz.
+[ERRADO][Visto no enunciado que a cardinalidade de relações são de M:N. A maneira correta de normalizar essas relações seria 'fatiar' o relacionamento em 
+dois relacionamentos 1:N com uma outra tabela de ligação entre Juiz e Assistente]
+b) Será necessário criar uma tabela de ligação entre Juiz e Assistente e o relacinamento N:M dará lugar a dois relacionamentos 1:N.[CORRETO]
+c) será estabelecido um relacionamento bidirecional entre as tabelas Juiz e Assistente, com cardinalidade 1:1[ERRADO]
+[Com cardinalidade 1:1 seria correto estabelecer uma chave estrangeira e uma chave primária para cada entidade, de qualquer forma são vários assistentes e 
+vários Juízes, relacionamento muitos-para-muitos.]
+d) para que a relação M:N seja mantida, as chaves primárias das tabelas Juiz e Assistente deverão ser compostas pelo Id do Juiz e pelo Id do Assistente.
+[ERRADO][CADA TABELA TEM SUA CHAVE, SEM CHAVES COMPOSTAS, SEM NECESSIDADE]
+e) será necessário criar uma tabela de ligação entre Juiz e Assistente, gerando assim dois relaciomentos 1:1.
+(É necessário junção de tabelas em cardinalidade 1:1).
+
+
+
+
+
+
