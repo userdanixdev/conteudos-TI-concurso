@@ -1,0 +1,688 @@
+MODELAGEM NÍVEL LÓGICO - RELACIONAL - PROFESSORA PATRÍCIA QUINTÃO
+	- A finalidade global deste modelo é descrever o dados usando um formato tabular padrão(todos os elementos são localizados em TABELAS BIDIMENSIONAIS)
+	- O conceito de tabela é mais forte no modelo relacional.
+	- Cada uma dessas tabelas é atribuido um NOME ÚNICO.
+	- As tabelas organizam os dados em linhas e colunas, simplificando o acesso e a manipulação dos dados.
+	- Uma vez colocados os dados no BD relacional utiliza-se as operações de ÁLGEBRA RELACIONAL.
+NA TERMINOLOGIA MODELO RELACIONAL:
+	- Cada tabela é chamada de RELAÇÃO
+	- Uma linha da uma tabela é chamada de TUPLA.
+	- O nome de cada coluna é chamado de ATRIBUTO.
+	- O tipo de dado que descreve cada coluna é chamado de DOMÍNIO.
+	- O DOMÍNIO é um conjunto de valores atômicos, indivisível.
+	- As relações tem um GRAU. Grau ou ARIDADE é o número de atributos(colunas) que a mesma possui.
+
+BANCO DE DADOS--->COLEÇÃO DE RELAÇÕES
+RELAÇÃO----> UMA TABELA
+ÚNICO REGISTRO----> SERÁ CHAMADO DE LINHA(TUPLA)
+ATRIBUTO------> SERÁ CHAMADO DE COLUNA
+DOMÍNIO----> TIPOS DE VALORES QUE PODEM APARECER EM UMA COLUNA
+
+NO MODELO FÍSICO UMA RELAÇÃO É UMA TABELA
+NO MODELO FÍSICO UM ATRIBUTO É UM CAMPO
+NO MODELO FÍSICO UMA TUPLA É UM REGISTRO.
+
+ESAF-2002-SRF:
+	Em um BD relacional, os objetos que realmente armazenam os dados são as tabelas.
+
+CARACTERÍSTICAS DAS RELAÇÕES:
+	- Cada ATRIBUTO de uma relação tem um nome que é único para aquela relação.
+( não podem existir dois atributos com o mesmo nome dentro da relação )
+		***No entanto, duas relações distintas podem compartilhar o mesmo nome para algum atributo***
+
+TODOS OS ATRIBUTOS DEVEM TER VALORES ATÔMICOS, ÚNICOS.
+Sendo assim, não é possível ter atributos multivalorados ou compostos no modelo relacional.
+O MER aceitava esses atributos.
+TODAS AS TUPLAS DEVEM SER ÚNICAS
+- CADA TUPLA DEVE TER NO MÍNIMO UM VALOR DIFERENTE -
+
+No modelo Relacional a ordem das tuplas(linhas)não é relevante.
+No modelo Relacional a ordem dos ATRIBUTOS(colunas) é RELEVANTE.
+Para o autor C.J DATE uma tupla é um conjunto, não importando os valores.
+
+CESPE-TJ-2014:
+	No modelo Relacional, sob o ponto de vista do usuário, a ordem em que as linhas estão armazenadas nas tabelas é insignificante.[CERTO]
+[A ORDEM DAS LINHAS NÃO É RELEVANTE. A ORDEM DAS COLUNAS É RELEVANTE - a não ser que a correspondência entre elas e seus valores seja mantida.]
+
+ORDENAÇÃO -
+	A ordenação de TUPLAS em uma relação pode ser definida como um conjunto que são definidas matematicamente como elementos de um conjunto da relação.
+*** A ORDEM DELAS NÃO ALTERA EM NADA A RELAÇÃO ***
+Sendo assim,uma TUPLA é uma lista ordenada de valores, que não é RELEVANTE. AGORA A ORDEM DAS COLUNAS É RELEVANTE A MENOS QUE A CORRESPONDÊNCIA ENTRE ELAS
+E SEUS VALORES SEJA MANTIDA.
+
+CESPE-TCE-AUDITOR-2017:
+	Acerca de aspectos diversos referentes a BD relacionais julgue o item a seguir. Em uma relação, os nomes das colunas são únicos, as linhas são distintas
+entre si e a ordem da disposição das linhas e colunas é irrelevante para o BD.[ERRADO]
+[OS nomes das colunas são únicos - CORRETO - Os nomes das colunas são usados para ajudar na interpretação do significado dos valores em cada linha.
+Se tivermos várias colunas com o mesmo nome, teríamos informações REDUNDANTES.]
+[As linhas são distintas entre si - CORRETO - Cada linha representa um registro diferente]
+[A ordem da disposição das linhas e colunas é irrelevante para o BD -  ERRADO - Uma relação é definida como um conjunto de TUPLAS.
+Matematicamente, os elementos de um conjunto não tem ordem entre eles, portanto, as tuplas em uma relação não tem qualquer ordem em particular.
+No entanto, as colunas são ordenadas de acordo com a ordem em que aparecem no comando CREATE TABLE em SQL. Isso é relevante, principalmente no ponto de vista
+físico.]
+Seria correto afirmar: Em uma relação, os nomes das colunas são únicos, as linhas são distintas entre si e a ordem da disposição das linhas é IRRELEVANTE.
+
+									CHAVES
+	As tabelas relacionam-se umas às outras por meio de CHAVES. Uma chave pode ser definida como um conjunto de um ou mais atributos que determinam a
+UNICIDADE de cada registro.
+OBS: A UNICIDADE DOS REGISTROS, DETERMINADA POR SUA CHAVE, É FUNDAMENTAL PARA A CRIAÇÃO DOS ÍNDICES.
+
+TIPOS DE CHAVES:
+	SUPERCHAVE: é um conjunto de um ou mais atributos, tomados coletivamente, que nos permitem identificar de forma exclusiva uma tupla na relação.
+			Cada relação tem pelo menos uma superchave padrão.
+			A superchave especifica uma restrição de exclusividade de que duas tuplas não podem ter os mesmos valores para todos os seus atributos.
+			Sendo assim uma superchave pode ter atributos redundantes ou desnecessários para a identificação única de uma tupla.
+	CHAVE PRIMÁRIA(PK-PRIMARY KEY): É um atributo ou uma combinação de atributos(colunas) cujos valores distinguem uma linha das demais, dentro de uma tabela.
+É um identificador EXCLUSIVO de todas as informações de cada registro dando-lhe UNICDADE. A chave primária nunca se repetirá.
+	CHAVE ALTERNATIVA(CHAVE CANDIDATA): é aquela que possui um identificador único que não foi escolhida para ser chave primária podendo ser a mais próxima
+a ser nomeada a ser chave primária.
+exemplo: Em uma tabela na qual existem os campos CPF,TITULO_ELEITOR e NUMERO_IDENTIDADE tem-se que todos esses atributos são únicos,eles são chamados de 
+CHAVES CANDIDATAS ou CHAVES ALTERNATIVAS. Uma dessas chaves convenientemente será escolhida como chave primária e as demais permanecerão como CHAVES CANDIDATAS.
+	CHAVE ESTRANGEIRA(FK-FOREIGN KEY) : É um atributo(coluna) ou combinação de atributos(colunas) cujos valores aparecem na chave primária(candidata) de uma
+tabela do banco. é necessária e formada apartir de um relacionamento com a chave primária da outra tabela. Ela permite navegar em um banco de dados relacional.
+UMA TABELA PODE TER VÁRIAS CHAVES ESTRANGEIRAS E CADA CHAVE ESTRANGEIRA PODE REFERENCIAR UMA TABELA DIFERENTE.
+
+	O MODELO RELACIONAL TEM POR FINALIDADE REPRESENTAR OS DADOS COMO UMA COLEÇÃO DE RELAÇÕES EM QUE CADA RELAÇÃO É REPRESENTADA POR UMA TABELA, COMPOSTA POR
+LINHAS,COLUNAS E CHAVES PRIMÁRIAS, RELACIONADAS POR MEIO DE CHAVES ESTRANGEIRAS.
+
+CHAVE ESTRANGEIRA - É uma chave primária que vai 'morar' em outra tabela, por isso ela é chamada de estrangeira.
+			*** Toda chave estrangeira é uma chave primária em alguma tabela e serve para permitir um relacionamento entre tabelas no modelo relacional.
+Uma chave estrangeira é aquela que permite uma ligação lógica entre duas tabelas. é um atributo ou conjunto de atributos que se ligam logicamente a chave primária
+ou candidata de outra tabela.
+Chave estrangeira é um atributo que pode ser CHAVE PRIMÁRIA ou CANDIDATA de outra relação.
+
+CESPE-ANTAQ-2014-ANALISTA:
+	Nos modelos lógicos, uma relação é a representação de um relacionamento entre duas tabelas.[ERRADO]
+[O QUE PERMITE UM RELACIONAMENTO ENTRE DUAS TABELAS É A CHAVE ESTRANGEIRA]
+[UMA RELAÇÃO É UMA TABELA QUE TERÁ UM NOME ÚNICO E UM CONJUNTO DE ATRIBUTOS]
+
+ESAF-2009-ANA-ANALISTA:
+	Um conjunto de um ou mais atributos, tomados coletivamente, para identificar unicamente uma tupla numa relação é denominado:
+a)chave assimétrica -[errado]- criptografia
+b)Chave simétrica - [errado] - criptografia
+c)Super Chave - [CORRETO] - Para uma relação temos diversos subconjuntos de atributos que podem servir como chave. Cada conjunto distinto de atributos que pode
+identificar de forma unívoca uma relação é chamado de SUPERCHAVE.
+d)chave secundária[ERRADO]
+e) chave de tupla[ERRADO]
+
+RESTRIÇÕES DE INTEGRIDADE:
+	O modelo relacional traz consigo uma série de restrições. Que são regras aplicadas pelo BD para garantir que o banco permaneça íntegro,exato e consistente.
+RESTRIÇÃO DE INTEGRIDADE DE DOMÍNIO:
+	Visa garantir que os valores que cada atributo irá receber estejam dentro do seu domínio.
+(ESSA RESTRIÇÃO VAI AVALIAR OS VALORES DE UMA DETERMINADA COLUNA OU ATRIBUTO PARA CHECAR SE ELE PERTENCE AO DOMÍNIO DEFINIDO NA CRIAÇÃO DA RELAÇÃO.)
+	INTEGRIDADE DE VAZIO:
+			Subtipo da integridade de domínio, verifica se um campo pode ou não receber NULL em uma coluna da tabela.
+INTEGRIDADE DE CHAVE(RESTRIÇÃO DE CHAVE):
+			Em uma relação deve ter pelo menos uma chave. A existência de pelo menos uma chave é uma condição OBRIGATÓRIA.
+RESTRIÇÃO DE ENTIDADE:
+	Especifica que nenhum valor de chave primária pode ser nulo. Uma tupla em uma tabela que se refere a uma outra relação deve referenciar uma tupla 
+existente naquela relação. 
+INTEGRIDADE REFERENCIAL:
+	Visa garantir que o valor de um campo que é chave estrangeira em uma tabela exista na chave primária da tabela de origem.
+ASSIM O VALOR DA CHAVE ESTRANGEIRA SEMPRE QUE EXISTIR DEVE ESTAR ASSOCIADO A UM VALOR DA CHAVE PRIMÁRIA DA OUTRA RELAÇÃO. PODENDO ASSUMIR VALOR NULL
+
+INTEGRIDADE SEMÂNTICA:
+	As restrições de integridade semântica ou regras de negócio são implementadas por meio de TRIGGERS(gatilhos) e STORED PROCEDURES(procedimentos armazenado no banco)
+
+Resumo:
+	Restrições de integridade :
+		- Regras aplicadas pelo BD para garantir que ele permaneça íntegro,exato e consistente.
+( Elas resguardam o BD contra danos acidentais, assegurando que mudanças não resultem na perda da consistência dos dados. )
+	Integridade de domínio[restrição de domínio]:
+		- Visa garantir que os valores que cada atributo irá receber estejam dentro do seu domínio.
+	Integridade de vazio:
+		- Subtipo da integridade de domínio,verifica se um campo pode ou não receber NULL.
+	Integridade de chave:
+		- Impede que uma chave primária se repita.
+		- Uma relação deve ter pelo menos uma chave.
+		- A existência de pelo menos uma chave é uma condição OBRIGATÓRIA.
+		- Tendo-se em vista que uma relação é definida como um conjunto de tuplas e todas elas devem ter um valor distinto.
+	Restrição de ENTIDADE:
+		- Especifica que nenhum valor de chave primária pode ser nulo.
+	Integridade Referencial:
+		- Visa garantir que o valor de um campo que é chave estrangeira em uma tabela exista na chave primária na tabela de origem.
+
+	A ESPECIFICAÇÃO DE UM BD RELACIONAL DEVE CONTER NO MÍNIMO A DEFINIÇÃO DO SEGUINTE:
+		TABELAS QUE FORMAM O BD
+		COLUNAS QUE AS TABELAS POSSUEM
+		RESTRIÇÕES DE INTEGRIDADE
+		FORMA-SE ASSIM O ESQUEMA
+
+Lembre-se de que o cabeçalho de uma tabela contém os ATRIBUTOS ou CAMPOS.
+Cada ATRIBUTO contém um NOME, TIPO e ORDEM NA TABELA. Isso gera o conceito de ESQUEMA.
+Além disso, o esquema deve descrever se um certo atributo deve ser chave ou não para realizar o relacionamento com outras tabelas.
+
+***Dessa forma, somente o cabeçalho de uma tabela NÃO CONFIGURA UM ESQUEMA.***
+
+REGRAS DE CODD PARA BD RELACIONAL
+	Essas regras tem o objetivo de definir o que é necessário para que um sistema de gerenciamento de BD seja considerado RELACIONAL.
+obs:* As doze regras de Codd são na verdade um conjunto de treze regras(são enumeradas de zero a doze.)
+
+REGRA 0: 
+Regra fundamental ou regra base:
+	- Um SGBD relacional deve gerenciar seus dados usando exclusivamente capacidades relacionais.
+REGRA 1:
+	- A regra da informação ou princípio da informação:
+		Todas as informações de um BD relacional devem ser representadas logicamente como valores de coluna em linhas dentro das tabelas.
+REGRA 2:
+	- Regra de garantia de acesso:
+		Cada um e qualquer valor atômico(datum) possui garantia de ser logicamente acessado pela combinação do nome da tabela, 
+do valor da chave primária e do nome da coluna.
+
+REGRA 3:
+	- Tratamento sistemático de valores nulos:
+		- O SGBD deve permitir que cada campo possa permanecer nulo(vazio). Os nulos devem ser representados e tratados de modo sistemático,
+independentemente do tipo de dados.
+REGRA 4:
+	- Catálogo online dinâmico baseado no Modelo Relacional:
+		- Os metadados devem ser armazenados e gerenciados como dados comuns, em tabelas no inteiror do BD. Esses dados devem estar disponíveis aos 
+usuários autorizados, utilizando a linguagem relacional padrão do BD.
+REGRA 5:
+	- Sub linguagem ampla de dados:
+		- O BD relacional pode suportar várias linguagens. No entanto deve suportar uma linguagem declarativa bem definida com suporte para definição de
+dados, definição de visualização, manipulação de dados(interativa ou por programa), restrições de integridade, autorização e gerenciamento de transações(iniciar, confirmar e desfazer)
+REGRA 6:
+	- Atualização de visões:
+		- todas as visões que são teoricamente atualizáveis devem ser atualizáveis pelo sistema.
+REGRA 7:
+	- Inserção,atualização e exclusão de alto nível:
+		- o BD deve dar suporte a configuração do nível de inserções, atualizações e exclusões. Isto significa que a capacidade de manipular um conjunto
+de dados através de um comando, deve se estender as operações de DML (data manipulation language)
+REGRA 8:
+	- Independência física de dados:
+		- Aplicativos e recursos 'ad hoc' não são afetados logicamente quando os métodos de acesso ou as estruturas de armazenamento físico são alterados.
+REGRA 9:
+	- Independência lógica de dados:
+		- Aplicativos e recursos 'ad hoc' não são afetados logicamente quando de alterações de estruturas de tabela que preservem os valores originais da
+tabela(alteração da ordem ou inserção de colunas). Alterações nas relações e nas visualizações (views) causam pouco ou nenhum impacto nas aplicações.
+REGRA 10:
+	- Independência de integridade:
+		- Deve ser possível que todas as restrições de integridade relacional sejam definidas na linguagem relacional e armazenadas no catálogo de 
+sistema, não no nível de aplicação. As aplicações não devem ser afetadas quando ocorrer mudanças nas restrições de integridade.
+REGRA 11:
+	- Independência de distribuição:
+		- A distribuição de partes do SGBD em várias localidades deve ser transparente para os usuários. Os usuários não são afetados pela localização 
+dos dados (BD distribuídos X BD locais)
+REGRA 12:
+	- Não transposição das regras:
+		- Se o sistema dá suporte a acesso de baixo nível aos dados, não deve haver um modo de negligenciar as regras de integridade do BD.
+
+	FASES DA MODELAGEM DE DADOS:
+	- atenção aos termos que definem as fases de modelagem de dados. --- Modelo Conceitual -MER
+									 --- Modelo Lógico - MODELO RELACIONAL
+									 --- Modelo Físico
+	- MER (modelo entidade relacionamento ) corresponde a fase conceitual do projeto do BD. -Visão mais próxima do usuário tem dos dados.
+	- Modelo Relacional - Segunda fase do projeto - Corresponde ao modelo LÓGICO.
+		- Modelagem a nível lógico
+		- Conjunto de relações ou tabelas
+		- Algebra relacional
+		- Tabelas + restrições de integridade + operadores de manipulação
+		- Base do modelo relacional é o uso de tabelas bidimensionais (linhas x colunas)
+		- relação (tabela) - Possui GRAU ou ARIDADE que é o número de atributos(colunas) que a mesma possui.	
+		- Cada relação terá um nome único e que possui um conjunto de atributos com seus respectivos nomes e domínios.
+		- Domínio - Nome dado ao tipo de valor que pode aparecer em cada coluna.
+		-Características da relação:
+			- ORDENAÇÃO:
+			- A ordem das linhas não é relevante.
+			- A ordem das colunas é relevante ( a não ser que a correspondência entre elas e seus valores seja mantida )
+			ATOMICIDADE:
+			- Todos os atributos devem ter valores ATÔMICOS, ou seja, ÚNICOS..
+			- Não pode haver atributos MULTIVALORADOS.
+			IDENTIDADE:
+			- Cada atributo precisa ter um nome único naquela relação.
+			UNICIDADE:
+			- Todas as tuplas devem ser únicas. Não pode haver 2 ou mais linhas com TODOS atributos iguais.
+			(alguns atributos podem ser iguais em mais de uma linha, o que não pode ter é 2 linhas com TODOS os atributos iguais, pois seria a mesma tupla)
+			- Atributo é chamado de COLUNA no modelo relacional. 
+			- Alguns atributos podem ter valores não aplicáveis ou desconhecidos para algumas situações. São os valores NULOS ou NULL
+			- Um registro no modelo físico é chamado de linha(tupla). - Coleção de valores de dados relacionados.
+ UM VALOR INDIVIDUAL EXISTENTE NA INTERSEÇÃO DE QUALQUER LINHA COM COLUNA SERÁ CHAMADO DE DADO.
+			- Atenção ao conceito de DEPENDÊNCIA FUNCIONAL - Ocorre quando o VALOR assumido por um atributo DETERMINA o valor de outro atributo.
+exemplo: O CPF determina o nome de uma pessoa, já o nome não determina o CPF. A chave primária DETERMINA TODOS os demais atributos de uma tupla.
+			CHAVES:
+			- Chave Primária (Primary Key): -  Uma ou mais colunas com valores que são únicos dentro da tabela e por isso podem ser usados para
+identificar as linhas dessa tabela. Por restrição de integridade,os valores das chaves primárias não podem haver valores nulos e nem repetidos.
+			- Chave Estrangeira é um conjunto de um ou mais atributos de uma relação que fazem referência a chave primária de outra relação.
+			[ATÉ MESMO A PRÓPRIA TABELA NOS AUTO-RELACIONAMENTOS][conexões entre tabelas somente serão expressas através de valores das colunas]
+			- Chave Alternativa(chave candidata) = Em certas sittuações mais de uma coluna ou combinação de colunas servem para distinguir uma linha
+das demais dentro de uma tabela.
+
+CESPE-2018-PF:
+	Em um banco de dados relacional, os dados são armazenados em tabelas e as tabelas organizadas em colunas.
+O modelo relacional representa os dados em um BD como um conjunto de TABELAS.[CORRETO]
+[O modelo Relacional representa os dados em um BD como um conjunto de TABELAS, que no modelo são denominadas RELAÇÕES.
+CADA RELAÇÃO TERÁ UM NOME, QUE SERÁ ÚNICO E UM CONJUNTO DE ATRIBUTOS COM SEUS RESPECTIVOS NOMES E DOMÍNIOS.]
+*** Os atributos, são comumente denominados CAMPOS ou COLUNAS da relação. O número de colunas de uma relação representa o GRAU(aridade) deste relação.
+Cada linha de uma relação é denominada TUPLA.
+
+FCC-2019-BANRISUL:
+	Em um BD relacional existem as tabelas Cliente e ContaCorrente com cardinalidade tal que um cliente poderá possuir diversas contas-correntes e cada conta
+corrente poderá ser conjunta, ou seja, pertencer a mais de um cliente. Para implementar corretamente a ligação entre essas tabelas em um SGBD padrão:
+a) a chave primária da tabela Cliente deverá aparecer na tabela ContaCorrente e vice-versa.[ERRADO][Para cardinalidade muito-para-muitos. m:n é necessário
+criar uma outra tabela com os atributos chave.]
+b) bastará criar as duas tabelas e estabelecer uma restrição de integridade referencial direta.[ERRADO][Somente em cardinalidade 1:N para tal fim.]
+c) será necessário que as duas tabelas tenham chave primária composta[errado][não seria o caso.]
+d) será necessário definir uma restrição circular de cardinalidade n:m direta por meio de ID do cliente e do número da conta-corrente.[errado]
+e) será necessário criar uma tabela de associação entre elas.[CORRETO][Um cliente pode ter várias contas correntes e uma conta corrente pode pertencer a vários
+clientes. Para lidar com este tipo de relacionamento é necessário criar uma nova tabela que mapeia a associação entre as duas tabelas quebrando este relacionamento.
+Nesta tabela teríamos o número da conta e o ID do cliente.]
+
+FCC-TCE-2018:
+	Considere que uma tabela de um BD relacional possui uma chave primária composta por um único atributo. Essa tabela tem como propriedade:
+a) a chave primária não pode ser do tipo booleano, nem do tipo inteiro; [ERRADO][São restrições de domínio que não se aplicam ao enunciado da questão]
+b) a chave primária deve ser do tipo inteiro longo. [errado][São restrições de domínio que não se aplicam ao enunciado da questão.]
+c) metade dos seus registros, no máximo, pode ter esse atributo com o valor nulo[errado][Não existe esse tipo de restrição.]
+d) nenhum par de seus registros pode ter o mesmo valor para esse atributo na chave primária.[CORRETO][Sendo simples ou composta, a chave primária tem o registro
+de maneira única em uma tabela de BD. Deste modo, nenhum par de seus registros pode ter o mesmo valor para esse atributo]
+e) o armazenamento da chave primária na tabela deve ser feita de forma criptografada.[errado]
+
+VUNESP-TJM-2017:
+	Um dos conceitos básicos da modelagem de BD relacionais são as chaves primárias, sobre as quais, é correto afirmar que:
+a) devem ser compostas por,pelo menos, dois atributos.[errado][As chaves primárias devem ser compostas por um ou mais atributos.]
+b) em cada BD deve haver uma tabela que armazena as chaves primárias de todas as demais tabelas.[errado][cada tabela armazena ao menos uma chave primária.]
+c) devem ser armazenadas, de forma redundante, em pelo menos duas tabelas distintas do BD[errado][Não podem ser redundantes, a chave primária é
+uma atributo único em cada tabela.]
+d) não podem ser formadas por nomes próprios[ERRADO][Podem ter nomes próprios contanto que sejam de forma única.]
+e) podem ser formadas tanto por atributos numéricos quanto por atributos literais.[correto][podem conter valores literais ou numéricos desde de que não se repitam.]
+
+VUNESP-MPE-ANALISTA-2016:
+	Considerando BD relacional, o modelo relacional há os conceitos de chaves candidata, primária e estrangeira, sobre os quais é correto afirmar que uma
+a) chave estrangeira deve ser criptografada [errado]
+b) chabe estrangeira deve ser do tipo simples (ter apenas um atributo)[errado][pode ser composta, com mais de um atributo.]
+c) chave primária deve ser do tipo autoincremento.[errado][Por sua natureza e a depender do SGBD específico já possui autoincremento]
+d) chave primária deve do tipo composto(ter mais de um atributo)[errado][pode ser simples - com somente um atributo.]
+e) relação pode ter mais de uma chave candidata[correto]
+
+Conceitos: 
+		Uma chave primária é um ou mais atributos que representam um registro de forma única em uma tabela. Esse registro também pode ser chamado de TUPLA.
+		Uma chave estrangeira é um atributo em uma determinada tabela cujos valores são chave primária em outra tabela. Isso que promove o relacionamento.
+		Uma chave candidata é um ou mais atributos em uma tabela que tem potencial de ser uma chave primária, mas não foi eleita para isso.
+O fato de ter potencial é que o atributo seria capaz de descrever um registro de forma única na tabela, mas não precisou ser usado para esta função.
+Exemplo: a Tabela FUNCIONÁRIO (matrícula,nome, cpf,sexo,rg). A chave primária pode ser considerada a 'matrícula', porém, CPF e RG seriam capazes também de ser
+um atributo chave primária porque descrevem de forma única um registro(valor sem repetição)
+
+ESAF-2007-SEFAZ:
+	Quando o atributo chave primária de uma entidade é exportado para outra entidade geram-se:
+a) chaves estrangeiras [correto] - [é um atributo ou combinação de atributos cujos valores aparecem necessariamente na chave primária de uma tabela.
+a chave estrangeira é o mecanismo que permite a implementação de relacionamento.(navegalibilidade)]
+b) erros[errado]
+c) views [errado]
+d) chaves primária duplicadas[errado]
+e) agregações[errado]				
+
+CESPE-TCM-AUDITOR-2018:
+	Considerando os conceitos de BD relacionais, assinale a opção correta a respeito das propriedades de uma tupla:
+a) A tupla tem o mesmo significado e as mesmas propriedades de uma tabela. [ERRADO][não possuem o mesmo significado - As tuplas são as linhas das tabelas
+Uma tabela é um conjunto de tuplas.]
+b) Os componentes de uma tupla são ordenados da esquerda para a direta.[errado][NÃO HÁ ORDENADAÇÃO POIS UMA TUPLA É DEFINIDA EM TERMOS DE CONJUNTOS MATEMÁTICOS
+QUE NÃO POSSUEM ORDENAÇÃO DOS SEUS ELEMENTOS.]
+c) Cada tupla contém exatamente um valor para cada um de seus atributos. [CORRETO][OS ATRIBUTOS DE UMA RELAÇÃO DEVEM TER VALORES ATÔMICOS
+ASSIM CADA COLUNA DEVE TER UM VALOR DENTRO DO SEU DOMÍNIO E PODE OU NÃO CONTER VALORES NULOS]
+D) Um subconjunto de uma tupla não é considerado um tupla.[errado][Um subconjunto de uma tupla é considerado um tupla também, inclusive valor vazio.]
+e) Uma tupla nunca é vazia, seu grau pode variar de 1 até n.[errado][uma tupla pode conter um valor NULO ou vazio. Então ela pode variar de 0 até n.]
+
+CESPE-PF-2018:
+	Ao analisar um computador, Marcos encontrou inúmeros emails,videos e textos advindos,em sua maioria, de comentários em redes sociais. Descobriu
+também que havia relação entre vários vídeos e textos encontrados em um diretório específico. Nessa situação, tendo como referência essas informações.
+Marcos poderá inferir que se trata de um grande BD relacional, visto que um diretório é equivalente a uma tabela e cada arquivo de texto é equivalente a uma
+tupla, além disso, como cada arquivo possui um código único, poderá deduzir que esse código é a chave primária que identifica o arquivo de forma unívoca.
+
+[UM BD relacional organiza dados em tabelas e o relacionamento é feito, unicamente, por meio de chaves estrangeiras. Além disso, na implementação de um BD
+são necessárias regras de normalização que faciliam a recuperação dos dados. Um BD também deve ser implementado usando arquitetura de SGBD.]
+
+CESPE-AUDITOR-2015:
+	EM um relacionamento de tabelas de um BD relacional. a chave estrangeira serve para referenciar uma entidade dentro da outra tabela, facilitando,
+assim a busca e o agrupamento dessas entidades.[correto]
+
+ESAF-MF-2013:
+	No modelo relacional de BD:
+a) o cabeçalho de uma tabela contém os atributos. [CORRETO]
+b) o modelo do atributo é o conjunto de valores permitidos. [errado][o correto seria o DOMÍNIO UM CONJUNTO DE VALORES PERMITIDOS NO ATRIBUTO.]
+c) o cabeçalho de uma tabela contém instâncias[ERRADO][O correto seria que no cabeçalho completo junto com as tuplas e as restrições de integridade contem o ESQUEMA.]
+d) o domínio do atributo é a sua descrição.[errado][O domínio é um conjunto de valores possíveis para um determinado atributo.]
+e) o corpo da tabela contém relacionamento qualitativos.
+
+FCC-2014-AUDITOR:
+	- Existe a tabela FUNCIONARIO, cuja a chave primária é CPF.
+	- Existe a tabela DEPARTAMENTO cuja a chave primária é NUMERODEP.
+	- O campo NDEP da tabela FUNCIONARIO refere-se ao número do departamento ao qual um funcionário está alocado.
+	- O valor de NDEP em qualquer tupla da tabela FUNCIONARIO deve corresponder a um valor da chave primária da tabela.
+	- DEPARTAMENTO em alguma tupla desta tabela.
+O campo NDEP pode ser:
+a) a chave estrangeira na tabela DEPARTAMENTO em relação a tabela FUNCIONARIO.
+b) o atributo referencial da superchave da tabela DEPARTAMENTO.
+c) a chave estrangeira na tabela FUNCIONARIO em relação a tabela DEPARTAMENTO.
+d) a chave secundária da tabela DEPARTAMENTO.
+e) a segunda chave primária da tabela FUNCIONARIO em relação a tabela DEPARTAMENTO.
+
+O campo NDEP da tabela FUNCIONARIO deve corresponder a um valor da chave primária de DEPARTAMENTO, sendo assim este campo deve ser marcado como FOREIGN KEY.
+Resumo tipos de chave:
+	Uma chave primária não pode possuir valores nulos, não pode possuir valores repetidos e pode ser formada por um ou múltiplos campos de uma tabela.
+	Ela é considerada um identificador único para cada entrada de uma tabela.
+	Chave alternativa: (alternate key ou unique index) são chaves candidatas que não são chaves primárias, são identificadores únicos também que visam
+garantir que nenhuma tupla será duplicada e não fazem parte do conjunto formador da chave primária.
+	Chave estrangeira são elos de ligação entre as tabelas e as mesmas devem necessariamente serem chaves primárias em uma tabela(pode ser ela mesma)
+
+FCC-MPE-ANALISTA-2013:
+	Umas das formas de impor restrições em um BD relacional é por meio das chaves primárias, sobre as quais pode-se afirmar que:
+a) não se aplicam para conjuntos de entidades com menos de 5 atributos.[errado][Não existe esse tipo de restrição]
+b) o tamanho mínimo de seus atributos deve ser de 10 caracteres.[errado][Não existe esse tipo de restrição.]
+c) devem ser formadas por,no mínimo, 3 atributos[errado][Não existe esse tipo de restrição.]
+d) os valores de seus atributos devem ser distintos para cada entidade de um conjunto de entidades. [CORRETO][Em chaves primarias simples é formada por um
+único campo da tabela(o campo não pode ter dois ou mais registros de mesmo valor e também não pode conter nenhum registro nulo.]
+[As chaves primárias compostas são formadas por mais de um campo, os valores de cada campo podem se repetir,mas não a combinação desses valores.
+por isso a importância da declaração do tipo de domínio alfanumérico para não se combinarem. As chaves primárias não tem limitação da quantidade de atributos
+para serem formadas e nem tipo de dados que as forme.]
+e) não podem conter atributos do tipo alfanumérico.[errado][Podem conter. Não existe restrição de domínio,somente para NULO.]
+
+FCC-TCE-2012:
+	Em relação a BD, uma chave primária pode ser formada por uma ou mais colunas e deve possuir um identificador único para:
+a) cada uma das colunas pertencente a essa chave.
+b) cada coluna da tabela
+c) uma tupla(formada por linhas e colunas)
+d) todos os registros da tabela
+e) cada linha da tabela.[correto]
+
+Resolução:
+	A chave primária pode ser formada por uma ou mais colunas e deve possuir um identificador único PARA CADA LINHA DA TABELA. e não para todos os registros
+da tabela. É um único campo que possibilita o relacionamento entre tabelas, que deve ser formado por valores alfanuméricos. Para garantir que não se combinem se
+formar uma chave primária COMPOSTA.
+
+FCC-TRT-2012:
+	Considere:
+I - Regra 1 - Todas as informações são representadas de forma explícita no nível lógico e exatamente em apenas uma forma, por valores em tabelas.
+II - Regra 2 - Cada um e qualquer valor atômico(datum)possui a garantia de ser logicamente acessado pela combinação do nome da tabela, do valor da chave primária
+e do nome da coluna.
+III - Regra 3 - Valores nulos não devem ser utilizados de forma sistemática, independente do tipo de dado ainda que para representar informações inexistentes
+e informações inaplicáveis.
+Das regras de Codd para BD relacionais, esta correto afirmar:
+a) I, apenas.[ERRADO][A II TAMBÉM ESTA CORRETA.]
+b) II, apenas.[ERRADO][A I ESTÁ CORRETA.]
+c)I e II,apenas.[correta]
+d)II e III, apenas.[errado][A REGRA 3 DO ENUNCIADO DA QUESTÃO ESTÁ ERRADA.]
+e)I,II,III.[ERRADO][A REGRA III ESTÁ INCORRETA DO ENUNCIADO DA QUESTÃO.]
+
+Em 1985, Edgar Codd publicou as regras de definição dos SGBDS RELACIONAIS. Essas regras servem como modelo de referência sobre o que deve ser um BDR.
+REGRA ZERO:
+	Todas as regras baseiam-se no conceito de que para que um BD seja considerado RELACIONAL, deve utilizar recursos RELACIONAIS exclusivamente para seu
+gerenciamento.
+REGRA UM: INFORMAÇÃO (PRINCÍPIO DA INFORMAÇÃO):
+		- Todas as informações de um BDR devem ser representadas logicamente como valores de coluna em linhas dentro das tabelas.
+REGRA DOIS: GARANTIA DE ACESSO:
+		- Deve-se garantir que todos os valores de uma tabela possam ser acessados por meio de uma combinação de nome da tabela, valor da chave primária
+e nome da coluna.
+REGRA TRÊS: TRATAMENTO DE NULOS - 
+		- Os nulos devem ser representados e tratados de modo sistemático, independentemente do tipo de dados.
+REGRA QUATRO: CATÁLOGO ONLINE DINÂMICO COM BASE NO MODELO RELACIONAL:
+		- Os metadados devem ser armazenados e gerenciados como dados comuns, ou seja, em tabelas no interior do BD. Esses dados devem estar disponíveis
+aos usuários autorizados, utilizando a linguagem relacional padrão do BD.
+REGRA CINCO: SUBLIMGUAGEM AMPLA DE DADOS:
+		- O BDR pode suportar várias linguagens. No entanto deve suportar uma linguagem declarativa bem definida com suporte para definição de dados,
+definição de visualização, manipulação de dados(interativa ou por programa), restrições de integridade, autorização e gerenciamento de transações(iniciar,confirmar e
+desfazer).
+REGRA SEIS: ATUALIZAÇÃO DE VISUALIZAÇÃO:
+		- Qualquer visualização que teoricamente possa ser atualizada deve ser por meio do sistema.
+REGRA SETE: INSERÇÃO,ATUALIZAÇÃO E EXCLUSÃO DE ALTO NÍVEL - 
+		- O BD deve dar suporte a configuração do nível de inserções, atualizações e exclusões. Ter a capacidade de manipular um conjunto de dados 
+através de um comando, deve-se estender as operações de DML(data manipulation language) como INSERT,UPDATE e DELETE.
+REGRA OITO: INDEPENDÊNCIA FÍSICA DE DADOS -
+		- Aplicativos e recursos 'ad hoc' não são afetados logicamente quando os métodos de acesso ou as estruturas de armazenamento físico são alterados.
+
+'ad hoc' --> Termo em latim usado no jurídico para comunicar uma condição temporária que remete a uma conclusão rápida, específica e provisória.
+		Uma consulta ad hoc em BD é um tipo de consulta SQL criada no momento em que surge uma necessidade, a partir de requisito específico
+			e que não é salva no SGBD(diferente dos procedimento armazenados)para que não seja reutilizada posteriormente.
+		ESSE TIPO DE CONSULTA NASCE DE SOLICITAÇÕES NÃO-PLANEJADAS, CUJA NECESSIDADE NÃO FORA PREVISTA COM ANTECEDÊNCIA, SURGINDO DE MOMENTO.
+
+NO GERAL AS SOLICITAÇÕES NÃO-PLANEJADAS SÃO CARACTERÍSTICAS DE APLICAÇÕES PARA APOIO À DECISÃO, COMO APLICAÇÕES PARA BI(BUSINESS INTELLIGENCE)
+			OU DATA MINING(MINERAÇÃO DE DADOS) E AS CONSULTAS AD-HOC SÃO BEM COMUNS NESSES SISTEMAS.
+**** se a consulta ad hoc for criada usando uma string dinâmica(script PHP ou PYTHON) podemos chamá-la simplesmente de CONSULTA DINÂMICA.****
+***** As consultas dinâmicas são consideradas consulta ad-hoc porque também não consistem em declarações armazenadas****
+
+REGRA NOVE: INDEPENDÊNCIA LÓGICA DE DADOS:
+		- Aplicativos e recursos 'ad hoc' não são afetados logicamente quando de alterações de estruturas de tabela que preservem os valores originais
+da tabela(alteração da ordem ou inserção de colunas). Alterações nas relações e nas visualizações(views) causam pouco ou nenhum impacto nas aplicações.
+REGRA DEZ: INDEPENDÊNCIA DE INTEGRIDADE :
+		- Deve ser possível que todas as restrições de integridade relacional sejam definidas na linguagem relacional e armazenadas no catálogo do sistema
+e não no nível da aplicação. As aplicações não devem ser afetadas quando ocorrer mudanças nas restrições de integridade.
+REGRA ONZE:INDEPENDÊNCIA DE DISTRIBUIÇÃO:
+		- Os usuários finais e aplicativos não conhecem nem são afetados pela localização dos dados(BD distribuidos VS BD locais).
+REGRA DOZE: NÃO TRANSPOSIÇÃO DAS REGRAS:
+		- Se o sistema dá suporte a acesso de baixo nível aos dados, não deve haver um modo de negligenciar as regras de integridade do BD.
+
+ESAF-2006-TRF:
+	Uma das regras da integridade do modelo relacional é a possibilidade que um atributo que participe da chave primária de uma relação básica aceite um e
+somente um valor nulo.[ERRADO][NENHUM ATRIBUTO QUE PARTICIPA DA CHAVE PRIMÁRIA PODE TER VALORES NULOS.- DEVEM POSSUIR VALORES QUE NÃO SE REPITAM]
+
+ESAF-2006-TRF:
+	Em um BD, quando se deseja garantir que uma coluna ou combinações de coluna, a qualquer momento, nenhum par de linhas da tabela deve conter o mesmo valor
+naquela coluna ou combinação de colunas, é necessário definir uma chave primária.[CORRETO][CHAVE PRIMÁRIA NADA MAIS É DO QUE UM CONJUNTO DE UM OU MAIS CAMPOS,
+CUJOS VALORES, CONSIDERANDO A COMBINAÇÃO DE VALORES DE TODOS OS CAMPOS DA TUPLA, NUNCA SE REPETEM.]
+
+FUNIVERSA-PC(DF)-2012:
+	Em um SGBD relacional definem-se conjuntos de estados e mudanças de estados consistentes do BD, determinando-se os valores que podem e o que não podem ser
+armazenados nesses conjuntos. Essa afirmação conceitua:
+a)Gatilho ou Trigger[ERRADO][GATILHO OU TRIGGER É UM BLOCO DE COMANDOS T-SQL QUE É AUTOMATICAMENTE EXECUTADO QUANDO UM COMANDO DML FOR EXECUTADO EM UMA TABELA BD]
+[SÃO USADAS PARA REALIZAR TAREFAS RELACIONADAS COM VALIDAÇÕES, RESTRIÇÕES DE ACESSO, ROTINAS DE SEGURANÇA E CONSISTÊNCIA DE DADOS. DESSA FORMA O SGBD USA ESSES
+CONTROLES E DEIXAM DE SER EXECUTADOS PELA APLICAÇÃO DO USUÁRIO E PASSA A SER EXECUTADO POR TRIGGERS EM DETERMINADAS SITUAÇÕES:
+		* MECANISMOS DE VALIDAÇÃO ENVOLVENDO MÚLTIPLAS TABELAS
+		* CRIAÇÃO DE CONTEÚDO DE UMA COLUNA DERIVADA DE OUTRAS COLUNAS DA TABELA
+		* REALIZAÇÃO DE ANÁLISES E ATUALIZAÇÕES EM OUTRAS TABELAS COM BASE EM ALTERAÇÕES/INCLUSÕES DA TABELA ATUAL.]
+[SENDO ASSIM A LETRA 'A' ESTÁ INCORRETA - GATILHOS NÃO DETERMINA VALORES E NÃO DETERMINA O QUE PODE OU NÃO PODE SER ARMAZENADO.]
+b)tabela. [ERRADO][TABELA ORGANIZAM DADOS EM LINHAS E COLUNAS, SIMPLIFICANDO O ACESSO E A MANIPULAÇÃO DOS DADOS. CADA TABELA É CHAMADA DE RELAÇÃO, UMA LINHA DE UMA 
+TABELA É CHAMADA DE TUPLA E O NOME DE CADA COLUNA É CHAMADA DE ATRIBUTO, O TIPO DE DADOS QUE DESCREVE CADA COLUNA É O DOMÍNIO.]
+c) restrições de integridade[CORRETA][SÃO FUNDAMENTAIS PARA A CONSISTÊNCIA DO BD. SÃO REGRAS APLICADAS PELO BD PARA GARANTIR QUE ELE PERMANEÇA ÍNTEGRO.
+EXATO E CONSISTENTE. ELAS DETERMINAM O QUE SERÁ ARMAZENADO OU NÃO, DETERMINAM VALORES E MUDANÇAS EM UM SGBD RELACIONAL.]
+		*** RESTRIÇÕES DE INTEGRIDADE:
+				- Integridade de domínio - Visa garantir que os valores que cada atributo irá receber esteja dentro do seu domínio.
+				- Integridade de Vazio - Subtipo de integridade de domínio que verifica se um campo pode ou não receber NULL.
+				- Integridade de Chave - Impede que uma chave primária se repita.
+								- Uma chave é um atributo ou conjunto de atributos cujo valor ou combinação de valores deva ser
+									distinto em qualquer instância da relação.
+								- UMA RELAÇÃO DEVE TER PELO MENOS UMA CHAVE.
+								- É NECESSÁRIO E CONDIÇÃO OBRIGATÓRIA TER PELO MENOS UMA CHAVE NA TABELA.
+								 (tendo em vista que uma relação é definida como um conjunto de TUPLAS e todas as TUPLAS
+									devem ter um valor DISTINTO.)
+				- Restrição de Entidade: Especifica que nenhum valor de chave primária pode ser NULO.
+				- Integridade referencial: VISA GARANTIR QUE O VALOR DE UM CAMPO QUE É CHAVE ESTRANGEIRA EM UMA TABELA EXISTA NA CHAVE PRIMÁRIA
+								NA TABELA DE ORIGEM.
+				- Integridade Semântica: Existem as restrições de integridade semântica ou regras de negócio que são implementadas por meio
+									de gatilhos ou STORED PROCEDURES.
+d)tupla[ERRADO][OS ATRIBUTOS E SEUS VALORES DESCREVEM AS INSTÂNCIAS DE UMA ENTIDADE, FORMANDO O QUE CHAMAMOS DE TUPLAS OU REGISTROS.]
+e)chave estrangeira[ERRADO][O TERMO CHAVE ESTRANGEIRA DESIGNA UMA COLUNA OU COMBINAÇÃO DE COLUNAS CUJOS VALORES APARECEM NA CHAVE PRIMÁRIA DE OUTRA TABELA.]
+				[EM OUTRAS PALAVRAS, É O MECANISMO QUE PERMITE A IMPLEMENTAÇÃO DE RELACIONAMENTOS EM UM BD RELACIONAL]
+
+ESAF-2010-TECNOLOGIA:
+	Em SGBD, existem as seguintes categorias de restrições de integridade:
+a) Integridade de domínio, Integridade de vazio, Integridade de chave,Integridade referencial.
+b) Integridade de acesso, Integridade de entrada, Integridade de saída,Integridade referencial.
+c) Integridade de domínio, Integridade de completude, Integridade de chave, Integridade posicional.
+d) Integridade de cardinalidade,Integridade de vazio, Integridade de autorização de acesso, Integridade associativa.
+e) Integridade de generalização/especialização,integridade de usuários,Integridade de chave,Integridade referencial.
+
+RESTRIÇÕES DE INTEGRIDADE: São regras de consistência de dados que é ganrantida pelo próprio SGBD.
+	- Sâo garantia automaticas pelo SGBDR
+	- Integridade de domínio:
+		- Define os valores que podem ser assumidos pelos campos de uma coluna.
+	- Integridade de Vazio:
+		- Especifica se os campos de uma coluna podem ou não serem vazios.
+	- Integridade de chave:
+		-Define que os valores da chave primária e alternativa devem ser únicos.
+	- Integridade Referencial:
+		- Define que os valores do campos que aparecem numa chave estrangeira devem aparecer na chave primária(candidata) da tabela referenciada.
+Esquematizando:
+	- Restrições de Integridade: Regras aplicadas pelo BD para garantir que ele permaneça íntegro,exato e consistente.
+		- Resguardam o BD contra danos acidentais,assegurando que mudanças não resultem na perda da consistência dos dados.
+	- Restrição de Domínio: Visa garantir que os valores que cada atributo irá receber estejam dentro do seu domínio.
+	- Integridade de Vazio: Subtipo da integridade de domínio, verifica se um campo pode ou não pode receber NULL.
+	- Integridade de chave: Impede que uma chave primária se repita.
+				Uma relação deve ter pelo menos uma chave.
+				A existência de pelo menos uma chave é condição obrigatória, tendo-se em vista que uma relação é definida
+como um conjunto de tuplas e, todas as tuplas devem ter um valor distinto.
+	- Restrição de Entidade:
+				Especifica que nenhum valor de chave primária pode ser nulo.
+	- Integridade Referencial:
+		- Visa garantir que o valor de um campo que é chave estrangeira em uma tabela exista na chave primária na tabela de origem.
+	- Integridade Semântica:
+		- As restrições de integridade semântica ou regras do negócio são implementadas por meio de GATILHOS ou STORED PROCEDURES.
+FUNCAB-EMDUR-2014:
+	I- Em um modelo relacional, o campo chave primária poderá ter o valor nulo.[ERRADO]
+	II - O relacionamento é um conjutno de associações entre ocorrências de entidades.[CORRETO]
+	III - As colunas de modelo relacional, correspondentes aos atributos,podem ser chamadas de campos.[OS ATRIBUTOS DEFINIDOS NO DER CORRESPONDEM
+AS COLUNAS DO DIAGRAMA TABULAR RELACIONAL QUE SÃO CONVERTIDAS EM CAMPOS DAS TABELAS DO BD.]
+
+São verdadeiras apenas:
+a) I -A I está errada porque  uma chave primária não poderá conter valor nulo.
+b) II - A II está correta, mas a III também está correta.
+c) III - A III está correta, não somente ela,a II também esta correta.
+d) I e II - A afirmativa I está errada.
+e) II e III	- Alternativa correta.
+
+FUNCAB-2014-PRODAM:
+	As relações são implementadas com restrições de modo a impedir que o BD seja inconsistente. A restrição de integridade referencial e a restrição
+de integridade de entidade são aplicadas para as seguintes quantidades de relação, respectivamente:
+a) uma e uma
+b) uma e duas
+c) duas e uma
+d) duas e duas
+e) uma e várias
+[RESOLUÇÃO: A INTEGRIDADE REFERENCIAL AVALIA SE ASSOCIAÇÃO DE DUAS RELAÇÕES ESTÁ CORRETA. SE UMA RELAÇÃO FAZ REALMENTE REFERÊNCIA A OUTRA EXISTENTE,
+PORTANTO ENVOLVE DUAS TABELAS.
+JÁ A RELAÇÃO DE INTEGRIDADE AVALIA SE UMA RELAÇÃO ESTÁ CORRETA DE ACORDO COM AS REGRAS DE INTEGRIDADE. SE UM ATRIBUTO POSSUI O VALOR DENTRO DO DOMÍNIO] 
+			PORTANTO A QUESTÃO CORRETA É A LETRA 'C' - DUAS E UMA.
+
+CESPE-TCE-AUDITOR-2017:
+	Acerca de aspectos diversos referentes a BDR,julgue os itens:
+A chave estrangeira (foreign key) é o campo que estabelece o relacionamento entre duas tabelas de bancos distintos, sendo necessariamente chave primária
+na tabela de um dos bancos.[ERRADO]
+[A QUESTÃO DESTACAO RELACIONAMENTO ENTRE DUAS TABELAS EM BANCOS DISTINTOS, QUE NÃO ESTÁ CORRETO. UMA CARACTERÍSTICA IMPORTANTE DA CHAVE ESTRANGEIRA
+É QUE ELA DEVE PERTENCER AO MESMO DOMÍNIO DA CHAVE PRIMÁRIA A QUAL ELA FAZ REFERÊNCIA. PORTANTO, SE A TABELA A CONTÉM UM ATRIBUTO ID QUE É CHAVE PRIMÁRIA
+DO TIPO INTEIRO, ENTÃO A CHAVE ESTRANGEIRA QUE FAZ REFERÊNCIA A ESSA CHAVE PRIMÁRIA TAMBÉM DEVE SER DO TIPO INTEIRO.
+PARA RESUMIR A CHAVE ESTRANGEIRA É UM DADO QUE ESTABELECE UM RELACIONAMENTO ENTRE DUAS TABELAS DISTINTAS DO MESMO BANCO DE DADOS.]
+
+FGV-2015-FISCAL:
+	Chaves estrangeiras (foreign keys) constituem um importante conceito na construção de BDR.No banco BD, o número de chaves estrangeiras que
+deveriam ser especificadas é:
+a)1	b)2	c)3	d)4	e)5
+	Chave estrangeira (foreign key) é um atributo(coluna) ou combinação de atributos(colunas) cujos valores aparecem na chave primária (candidata)
+de uma tabela do banco. A chave estrangeira é o macanismo que permite a implementação de relacionamentos(navegabilidade) em um BDR.
+Sendo assim, a tabela Venda na qual devem existir duas chaves estrangeiras 'codigoC'- referindo a chave primária do 'CLIENTE' e 'codigoP' referenciando
+a chave primária da tabela 'PRODUTO',para implementar os dois relacionamentos.
+
+	Como nomeP e nomeC em Cliente são chaves candidatas,seu valores não podem ser repetidos.
+
+FCC-TJ-2014:
+	Na modelagem de um BDR, um dos principais itens a ser considerado é o conjunto de entidades, cujos atributos:
+a) indicam o número máximo de entidades que cada conjunto de entidades poderá possuir.
+
+b) Tem um limite máximum de entidades que cada conjunto de entidades poderá possuir.[ERRADO][LIMITE MÁXIMO E MÍNIMO SÃO CARDINALIDADE EM MODELO CONCEITUAL]
+c) contêm as permissões atribuídas a cada um dos usuários do BD.[ERRADO][PERMISSÕES DE ACESSO NADA TEM HAVER COM O CONCEITO DE ATRIBUTO]
+d) representam propriedades descritivas próprias a cada membro do conjunto de entidades.[CERTA]
+e) contêm a relação de sistemas gerenciadores de BD que podem suportar a modelagem realizada.[ERRRADO]
+
+[RESPOSTA 'D' - UMA ENTIDADE É REPRESENTADA POR UM CONJUNTO DE ATRIBUTOS QUE REPRESENTAM PROPRIEDADES DESCRITIVAS DE CADA MEMBRO DE UM CONJUNTO
+DE ENTIDADES. OS ATRIBUTOS SÃO OS DADOS QUE SE DESEJA GUARDAR SOBRE CADA ENTIDADE.]	
+
+FCC-TJ-ANALISTA-2014:
+	Uma estrutura importante de um BDR é o dicionário de dados:
+a) não contempla o nome dos atributos de cada tabela.
+b) ocupa uma área máxima prevista de armazanamento de 1kb
+c) contém apenas a relação de usuários de BD.
+d) deve conter o nome das tabelas presentes no BD.[correta][Resposta mais completa das alternativas sobre um dicionário de dados.]
+e) é uma tabela que contém o histórico de utilização do BD.[ERRADO][CATÁLOGO DE DADOS - CONTÉM MUITO MAIS INFORMAÇÃO DO QUE SOMENTE HISTÓRICOS]	
+
+Um dicionário de dados é um elemento que reúne todas as informações contidas na estrutura de um BD. Nesta estrutura, chamada também de metadados, há
+informações sobre nome das tabelas, campos ou nome dos atributos, tpipos de campos, relacionamentos,cardinalidades e tudo relacionado a estrutura e
+esquema do BD.	
+
+FGV-AUDITOR-2014:
+	As restrições de integridade são um dos principais objetivos de um SGBD. Nesse contexto, analise a afirmativa seguinte:
+	[Integridade de Entidade - Funciona ao nível da coluna da tabela do BD, sendo que cada tabela deve possuir na sua definição uma chave secundária.]
+	[afirmativa acima FALSA - A INTEGRIDADE DE ENTIDADE REFERE-SE A IDENTIFICAÇÃO DO REGISTRO A PARTIR DA CHAVE PRIMÁRIA.]	
+
+ESAF-2010-TECNOLOGIA:
+	Um modelo de BDR deve conter no mínimo a definição de:
+a) tabelas,colunas da tabelas e restrições de integridade
+b) títulos,colunas dos atributos e restrições de integridade
+c) títulos,colunas das tabelas e restrições de manutenção
+d) tabelas, relações entre linhas das tabelas e opções de integridade
+e) associações de restrição,colunas referenciadas e restrições de desempenho.
+
+** [A especificação de um BDR(chamado de esquema do BD) deve conter no mínimo a seguinte definição:
+	- TABELAS - que formar o BD
+	- Colunas - Que as tabelas possuem
+	- Restrições de integridade - Que fornecem uma forma de garantir que as mudanças realizadas pelos usuários não resultem na perda de consistência
+dos dados, assegurando o correto relacionamento entre as tabelas.] ***
+
+FCC-MPE-2015:
+	Um analista precisa criar as estruturas de tabelas usando um SGBD, com base em um DER e um MRA. Durante o seu trabalho ele deverá criar uma:
+a) Tabela para cada relacionamento apontado no DER.[errado][dependerá das cardinaliadades e grau das entidades.]
+b) tabela com todos os atributos representados no DER.[ERRADO][Somente uma tabela com um conjunto de atributos.]
+c) tabela para cada tupla representada no Modelo Relacional Ampliado RM/T[ERRADO]
+d) tabela para cada Entidade do DER.[CORRETO]
+e) chave primária de tabela para cada atributo de cada tupla representada no Modelo Relacional Ampliado.[CHAVE PRIMÁRIA DEVERÁ SER ÚNICA E NÃO PODE SE REPETIR][ERRADO]
+
+VUNESP-2014-ANALISTA:
+	Em um BDR deve haver em cada uma de suas relações, um conjunto de um ou mais atributos que não admite valores iguais, nesse conjunto,para qualquer
+par de tuplas da relação. Esse conjunto de atributos tem a seguinte denominação:
+a) abstração
+b) chave primária
+c)domínio
+d)índice
+e)instância
+		[resposta: B - CHAVE PRIMÁRIA - Primary Key é um termo composto por uma ou mais colunas com valores que são únicis dentro da tabela
+			e por isso podem ser usados para identificação das linhas (tuplas) da tabela. Em chaves primárias, não poderá haver
+					valores nulos e nem repetição de tuplas(linhas).]
+
+Conceitualizando uma questão:
+	2020- A chave primária pode ser constituída por um conjunto de atributos.
+			[O TERMO CHAVE PRIMÁRIA DESIGNA UM ATRIBUTO OU CONJUNTO DE ATRIBUTOS QUE DIFERENCIA UMA TUPLA DAS DEMAIS DENTRO DE UMA RELAÇÃO(TABELA).]
+	[EXEMPLO:
+			PENSE AGORA EM UMA RELAÇÃO QUE TENHA UNIDADES DE UM CONDOMÍNIO. NESSE CONDOMÍNIO HÁ VÁRIOS BLOCOS(A,B,C,D....) E CADA BLOCO
+				TEM APARTAMENTOS(101,102,103,104). Várias unidades estarão no mesmo bloco A e várias unidades terão o mesmo
+						número 101(101 do bloco A, 101 do bloco B) Uma chave primária, nesse caso, poderia ser uma
+				COMBINAÇÃO DO ATRIBUTO 'BLOCO' COM O ATRIBUTO 'APARTAMENTO'. Assim, pode-se identificar cada unidade
+						por meio da combinação 'bloco/apartamento'.]
+
+IADES-TRE-2014:
+	Um BDR é aquele que utiliza maneiras de armazenar,manipular e recuperar dados unicamente na forma de tabelas. A respeito de um BDR:
+a) Todo dados pode ser acessado lógica e unicamente usando-se nome da tabela, o valor da chave primária e o nome da coluna.[CORRETA]
+[UM BANCO DE DADOS RELACIONAL É CONSTITUIDO DE UMA COLEÇÃO DE RELAÇÕES(TABELAS). EM UMA RELAÇÃO, CADA TUPLA É CONSTITUÍDA POR UMA COLEÇÃO
+	DE VALORES DE DADOS RELACIONADOS E OS VALORES SÃO DENOMINADOS INSTÂNCIAS DE UMA ENTIDADE.
+	A INSTÂNCIA DE UMA RELAÇÃO É UM CONJUNTO DE TUPLAS DE UMA RELAÇÃO SENDO IMPORTANTE PARA A COLEÇÃO DE ESQUEMA DE RELAÇÕES.]
+b) As informações podem ser representadas de forma hierárquica, como em uma estrutura de dados em árvore.[errado]
+[em um banco de dados relacional as informações são armazenadas em forma de tabela. E tabelas são estruturas de linhas e colunas, onde cada
+	linha contém um mesmo conjunto de colunas.]
+c) Dados inexistentes são representados pelo valor zero, quando numéricoos, ou pelo valor branco, quando caracter.[errado]
+[Dados inexistentes são representados pelo token NULL, significando que nenhu, dado foi digitado e/ou não houve padrão ou restrição na coluna ou no
+tiipo de dados]
+d)Operações de manipulação de dados em tabelas são realizadas em um conjunto de linhas ou em uma linha.[errado]
+[Operações de manipulação de dados em tabelas são realizadas em um conjunto de linhas ou em uma linha.]
+e) Em uma tabela do modelo relacional, cada linha deve possuir, em todas as colunas,o mesmo tipo de dado.[ERRADA]
+[EM UMA TABELA DE MODELO RELACIONAL, CADA LINHA DEVE POSSUIR A MESMA QUANTIDADE DE COLUNAS E CADA COLUNA DEVE POSSUIR O MESMO TIPO DE DADOS EM CADA
+LINHA, MAS AS COLUNA PODEM POSSUIR TIPOS DE DADOS DISTINTOS.]
+
+CESPE-SEFAZ-2019:
+	Uma das regras de Codd para o modelo relacional consiste:
+a)na dependência de dados físicos(mudanças na memória e no método de acesso.)[ERRADO][No que diz respeito aos dados físicos são a INDEPENDÊNCIA DE DADOS FÍSICOS 
+na qual consiste em que aplicativos e recursos 'ad hoc' não são afetados logicamente quando os métodos de acesso ou as estruturas de armazenamento físico são alterados.]
+b) na indenpendência de distribuição.[CORRETA][REGRA 11:Independência de distribuição: A distribuição de partes do SGBD em várias localidades deve ser transparente 
+para os usuários. Os usuários não são afetados pela localização dos dados (BD distribuídos X BD locais)]
+c) na presença de uma linguagem de programação no SGBD que promova interface com BD, com segurança e atualização de dados.[ERRADO]
+[Nas regras de Codd não nos mostra uma linguagem de programação no SGBD para promover interface com BD, apesar que de fato, existem operações para tal fim.
+	Na regra 05, Codd nos fala que um BDR pode suportar várias linguagens. E que deve suportar uma linguagem declarativa bem definida com suporte para
+a definições de dados,visualização e manipulação de dados, restrições de integridade, autorização e gerenciamento de transações. Assim como na REGRA 07, CODD
+diz que o BDR deve dar suporte a configuração de nível de inserções, atualizações e exclusões. Significa que a capacidade de manipular um conjunto de dados através
+de um comando, deve se estender as operações de DML.]
+d) na subversão das regras de integridade ou restrições quando utilizada uma linguagem de baixo nível.[ERRADO][CODD NÃO MENCIONA LINGUAGENS DE BAIXO NÍVEL EM SUAS REGRAS.]
+e) no não tratamento das atualizações de visões de dados.[ERRADO][Nas regras de Codd ele menciona sobre o tratamento de views:
+									REGRA 6:Atualização de visões:
+								   todas as visões que são teoricamente atualizáveis devem ser atualizáveis pelo sistema.]
+
+
+
+
+
+
+
+
+
